@@ -1,0 +1,95 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "loading": "Loading...",
+    "back": "Back"
+  },
+  "nav": {
+    "meuDia": "Today",
+    "sonhos": "Dreams",
+    "objetivos": "Goals",
+    "acao": "My Action",
+    "configuracoes": "Settings"
+  },
+  "auth": {
+    "loginTitle": "Log in",
+    "signupTitle": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Log in",
+    "signupButton": "Create account",
+    "logout": "Log out",
+    "noAccount": "Don't have an account yet?",
+    "createAccount": "Create account",
+    "hasAccount": "Already have an account?",
+    "goToLogin": "Log in",
+    "tagline": "Dream. Plan. Act. Move forward."
+  },
+  "meuDia": {
+    "greetingMorning": "Good morning, {name}",
+    "greetingAfternoon": "Good afternoon, {name}",
+    "greetingEvening": "Good evening, {name}",
+    "dailyMessage": "You're building this, one day at a time.",
+    "actionsToday": "{count, plural, =0 {No actions} one {# action} other {# actions}} for today",
+    "habitsToday": "{count, plural, =0 {no habits} one {# habit} other {# habits}} to pick back up",
+    "emptyToday": "Nothing planned for today. How about a small step?",
+    "viewActions": "View My Action"
+  },
+  "sonhos": {
+    "title": "Dream List",
+    "addNew": "Add a dream",
+    "descriptionPlaceholder": "Write down a dream of yours...",
+    "targetDate": "Target date (optional)",
+    "markRealized": "Mark as realized",
+    "unmarkRealized": "Undo realized",
+    "realizedOn": "Realized",
+    "empty": "Your dreams haven't been written here yet. Start now.",
+    "realizedMessage": "You made this dream happen. ✨",
+    "confirmDelete": "Delete this dream?"
+  },
+  "objetivos": {
+    "title": "My Goals",
+    "subtitle": "What do you want to have achieved?",
+    "period6Months": "6 months",
+    "period1Year": "1 year",
+    "period5Years": "5 years",
+    "period10Years": "10 years",
+    "placeholder": "Write your declaration for this period...",
+    "saved": "Saved"
+  },
+  "acao": {
+    "title": "My Action",
+    "tabHoje": "Today",
+    "tabHabitos": "Habits",
+    "addAction": "New action",
+    "actionPlaceholder": "What will you do today?",
+    "addHabit": "New habit",
+    "habitPlaceholder": "Habit name",
+    "streakLabel": "{count, plural, =0 {no streak yet} one {# day in a row} other {# days in a row}}",
+    "checkIn": "Check in today",
+    "undoCheckIn": "Undo",
+    "missedDayMessage": "No worries, pick it back up whenever you're ready.",
+    "emptyActions": "No actions for today yet.",
+    "emptyHabits": "No habits added yet.",
+    "archiveHabit": "Archive"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "languageComingSoon": "More languages coming soon",
+    "currency": "Currency",
+    "timezone": "Timezone",
+    "saved": "Preferences saved"
+  },
+  "pwa": {
+    "installButton": "Install Plano A",
+    "installTitle": "Take Plano A with you",
+    "installBody": "Install the app for faster access, right from your home screen.",
+    "iosInstallHint": "Tap Share, then \"Add to Home Screen\" to install Plano A.",
+    "dismiss": "Not now"
+  }
+}
