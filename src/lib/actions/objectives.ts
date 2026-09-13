@@ -1,17 +1,30 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import type { ObjectivePeriod } from "@/lib/types/database.types";
 
-export async function upsertObjective(period: ObjectivePeriod, formData: FormData) {
+export interface ObjectiveActionState {
+  success?: boolean;
+  error?: string;
+}
+
+export async function upsertObjective(
+  period: ObjectivePeriod,
+  _prevState: ObjectiveActionState,
+  formData: FormData,
+): Promise<ObjectiveActionState> {
   const declaration = String(formData.get("declaration") ?? "");
 
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return;
+  if (!user) {
+    const t = await getTranslations("objetivos");
+    return { error: t("error") };
+  }
 
   await supabase
     .from("objectives")
@@ -21,4 +34,5 @@ export async function upsertObjective(period: ObjectivePeriod, formData: FormDat
     );
 
   revalidatePath("/objetivos");
+  return { success: true };
 }

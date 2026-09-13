@@ -12,13 +12,13 @@
 - [x] Gerar `src/lib/types/database.types.ts` a partir do projeto real (`supabase gen types typescript`)
 - [ ] Identidade visual final (a paleta atual é um placeholder premium neutro) — inclui repensar a Página Inicial, hoje visualmente fraca (direção ainda não decidida)
 - [ ] Ícones finais do PWA (os atuais em `public/icons/` são placeholders gerados por script)
-- [ ] Corrigir tradução (i18n): next-intl está configurado, mas a tradução não está sendo aplicada em todo lugar
-- [ ] Meus Objetivos: adicionar onboarding/placeholder de ajuda (a seção não sugere como preencher as metas)
+- [x] Corrigir tradução (i18n): mensagens de erro de login/cadastro traduzidas e seletor de idioma funcional adicionado em Configurações
+- [x] Meus Objetivos: onboarding via placeholders de exemplo por período + feedback de "Salvo"
 
 ## Backlog — Minha Visão (grupo)
 
 - [ ] Mural dos Sonhos / Vision Board (moodboard visual: adicionar imagens e textos, comentários, editar/excluir itens; upload via Supabase Storage, export/compartilhamento)
-- [ ] Cápsula do Tempo (a pessoa escreve o que quer conquistar, escolhe um prazo, e o app envia por e-mail nessa data; mensagens seladas para o futuro, abertura agendada; cogitado cobrar valor extra por período de retenção — feature paga)
+- [ ] Cápsula do Tempo (a pessoa escreve o que quer conquistar, escolhe um prazo, e o app envia por e-mail nessa data via Resend; mensagens seladas para o futuro, abertura agendada; design deve contemplar desde já a cobrança por período de retenção estendida — feature paga, ainda que a implementação de billing venha depois)
 - [ ] Gratidão (registro de gratidão)
 
 ## Backlog — Minha Ação (grupo, estendido)
@@ -29,7 +29,7 @@
 
 ## Backlog — Minha Evolução (grupo)
 
-- [ ] Afirmações (IA gera afirmações novas todo dia) / Mentalizações (vídeos guiados) / Programas (conteúdo guiado)
+- [ ] Afirmações (IA via API da Anthropic/Claude gera afirmações novas todo dia) / Mentalizações (vídeos guiados) / Programas (conteúdo guiado)
 - [ ] Espiritualidade (Meu Espaço de Fé)
 - [ ] Progresso / Conquistas (mapa, badges — manter tom não-punitivo)
 
@@ -38,7 +38,7 @@
 - [ ] Pagamentos e assinaturas (planos, cobrança)
 - [ ] Painel Admin / CMS (Academia, programas, conteúdo)
 - [ ] Analytics de produto (retenção, uso — respeitando privacidade)
-- [ ] Expansão i18n: tradução completa en/es (revisão humana), seletor de idioma ativo, conversão de moeda
+- [ ] Expansão i18n: tradução completa en/es (revisão humana, seletor pt-BR/en já implementado em Configurações), conversão de moeda
 - [ ] Hardening de proteção de conteúdo (screenshot protection, watermark em share cards, rate limiting, anti-scraping)
 - [ ] Share Cards (geração de imagem compartilhável para conquistas/sonhos/streaks)
 - [ ] Academia / CMS (cursos, conteúdo guiado)
@@ -47,4 +47,5 @@
 
 - Cada item acima deve virar uma issue própria quando entrar em planejamento; ao iniciar o trabalho, mover para "Em progresso" nesta seção e linkar o PR.
 - O grafo do `graphify` deste projeto deve ser gerado/atualizado com `plano-a/` como working root — nunca a partir da raiz `Freelancer/`.
+- Gaps de infra que Mural dos Sonhos, Cápsula do Tempo e Afirmações vão exigir do zero: Supabase Storage (bucket + policies, hoje inexistente) e um mecanismo de cron/agendamento (necessário tanto para Cápsula do Tempo quanto para Afirmações — vale decidir uma solução única e reutilizável para as duas).
 - Preocupação de posicionamento de produto: hoje o app está parecendo mais um app de planejamento do que algo que guia a pessoa a se desenvolver. Não está claro se completar o restante do backlog (mural, cápsula, afirmações, mentalização) resolve isso — tratar como questão de posicionamento de produto, não só de features faltando.

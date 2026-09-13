@@ -27,7 +27,9 @@
     "createAccount": "Criar conta",
     "hasAccount": "Já tem conta?",
     "goToLogin": "Entrar",
-    "tagline": "Sonhe. Planeje. Aja. Avance."
+    "tagline": "Sonhe. Planeje. Aja. Avance.",
+    "missingFields": "Preencha e-mail e senha.",
+    "invalidCredentials": "E-mail ou senha incorretos."
   },
   "meuDia": {
     "greetingMorning": "Bom dia, {name}",
@@ -58,8 +60,12 @@
     "period1Year": "1 ano",
     "period5Years": "5 anos",
     "period10Years": "10 anos",
-    "placeholder": "Escreva sua declaração para este período...",
-    "saved": "Salvo"
+    "placeholder6Months": "Ex.: Terminei o curso de inglês e já consigo bater um papo simples.",
+    "placeholder1Year": "Ex.: Quitei as dívidas do cartão e comecei a guardar uma reserva.",
+    "placeholder5Years": "Ex.: Mudei de carreira para algo que realmente me energiza todo dia.",
+    "placeholder10Years": "Ex.: Comprei minha casa e tenho liberdade para escolher onde viver.",
+    "saved": "Salvo",
+    "error": "Não foi possível salvar. Faça login novamente."
   },
   "acao": {
     "title": "Minha Ação",
@@ -80,7 +86,6 @@
   "settings": {
     "title": "Configurações",
     "language": "Idioma",
-    "languageComingSoon": "Mais idiomas em breve",
     "currency": "Moeda",
     "timezone": "Fuso horário",
     "saved": "Preferências salvas"

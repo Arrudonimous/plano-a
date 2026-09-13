@@ -27,7 +27,9 @@
     "createAccount": "Create account",
     "hasAccount": "Already have an account?",
     "goToLogin": "Log in",
-    "tagline": "Dream. Plan. Act. Move forward."
+    "tagline": "Dream. Plan. Act. Move forward.",
+    "missingFields": "Please fill in email and password.",
+    "invalidCredentials": "Incorrect email or password."
   },
   "meuDia": {
     "greetingMorning": "Good morning, {name}",
@@ -58,8 +60,12 @@
     "period1Year": "1 year",
     "period5Years": "5 years",
     "period10Years": "10 years",
-    "placeholder": "Write your declaration for this period...",
-    "saved": "Saved"
+    "placeholder6Months": "E.g.: I finished the English course and can already hold a simple conversation.",
+    "placeholder1Year": "E.g.: I paid off my credit card debt and started building an emergency fund.",
+    "placeholder5Years": "E.g.: I changed careers to something that genuinely energizes me every day.",
+    "placeholder10Years": "E.g.: I bought my own home and have the freedom to choose where I live.",
+    "saved": "Saved",
+    "error": "Couldn't save. Please log in again."
   },
   "acao": {
     "title": "My Action",
@@ -80,7 +86,6 @@
   "settings": {
     "title": "Settings",
     "language": "Language",
-    "languageComingSoon": "More languages coming soon",
     "currency": "Currency",
     "timezone": "Timezone",
     "saved": "Preferences saved"
