@@ -7,8 +7,11 @@
   --surface-muted: #f0ece3;
   --primary: #1e2a4a;
   --primary-foreground: #ffffff;
-  --accent: #3f6659;
+  --accent: #a8631f;
   --accent-foreground: #ffffff;
+  --hero-from: #1e2a4a;
+  --hero-to: #34436b;
+  --danger: #dc2626;
   --border: #e4ddd0;
   --muted-foreground: #6b7280;
 }
@@ -22,6 +25,9 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-hero-from: var(--hero-from);
+  --color-hero-to: var(--hero-to);
+  --color-danger: var(--danger);
   --color-border: var(--border);
   --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-geist-sans);
@@ -35,8 +41,11 @@
     --surface-muted: #21242f;
     --primary: #8fa3d6;
     --primary-foreground: #12141c;
-    --accent: #7fb3a0;
+    --accent: #e2a15c;
     --accent-foreground: #12141c;
+    --hero-from: #1d2646;
+    --hero-to: #2c3a62;
+    --danger: #f87171;
     --border: #2b2f3d;
     --muted-foreground: #9aa1b0;
   }

@@ -2,13 +2,20 @@
 
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import {
+  ActionIcon,
+  HomeIcon,
+  SettingsIcon,
+  StarIcon,
+  TargetIcon,
+} from "@/components/nav/NavIcons";
 
 const ITEMS = [
-  { href: "/hoje", labelKey: "meuDia", icon: "🏠" },
-  { href: "/sonhos", labelKey: "sonhos", icon: "🌟" },
-  { href: "/objetivos", labelKey: "objetivos", icon: "🎯" },
-  { href: "/acao", labelKey: "acao", icon: "🚀" },
-  { href: "/configuracoes", labelKey: "configuracoes", icon: "⚙️" },
+  { href: "/hoje", labelKey: "meuDia", Icon: HomeIcon },
+  { href: "/sonhos", labelKey: "sonhos", Icon: StarIcon },
+  { href: "/objetivos", labelKey: "objetivos", Icon: TargetIcon },
+  { href: "/acao", labelKey: "acao", Icon: ActionIcon },
+  { href: "/configuracoes", labelKey: "configuracoes", Icon: SettingsIcon },
 ] as const;
 
 export function BottomNav() {
@@ -27,13 +34,11 @@ export function BottomNav() {
                 href={item.href}
                 className={`flex flex-col items-center gap-1 px-2 py-3 text-xs transition-colors ${
                   isActive
-                    ? "text-primary font-medium"
+                    ? "font-medium text-accent"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <span aria-hidden="true" className="text-lg leading-none">
-                  {item.icon}
-                </span>
+                <item.Icon />
                 {t(item.labelKey)}
               </Link>
             </li>

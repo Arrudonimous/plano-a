@@ -38,7 +38,7 @@ export function TodayActionList({ actions }: { actions: DailyAction[] }) {
             <button
               type="button"
               onClick={() => deleteDailyAction(action.id)}
-              className="text-xs text-muted-foreground hover:text-red-600"
+              className="text-xs text-muted-foreground hover:text-danger"
               aria-label="delete"
             >
               ✕

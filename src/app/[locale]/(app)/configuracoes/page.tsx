@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { updatePreferences } from "@/lib/actions/profile";
+import { LanguageSwitcher } from "@/components/settings/LanguageSwitcher";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -25,9 +26,9 @@ export default async function ConfiguracoesPage() {
 
       <Card>
         <p className="text-sm font-medium">{t("language")}</p>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Português (Brasil) — {t("languageComingSoon")}
-        </p>
+        <div className="mt-2">
+          <LanguageSwitcher />
+        </div>
       </Card>
 
       <form

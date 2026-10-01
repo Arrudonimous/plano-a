@@ -1,6 +1,6 @@
 "use server";
 
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 
@@ -16,7 +16,8 @@ export async function signUpAction(
   const password = String(formData.get("password") ?? "");
 
   if (!email || !password) {
-    return { error: "Preencha e-mail e senha." };
+    const t = await getTranslations("auth");
+    return { error: t("missingFields") };
   }
 
   const supabase = await createClient();
@@ -48,7 +49,8 @@ export async function signInAction(
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    return { error: "E-mail ou senha incorretos." };
+    const t = await getTranslations("auth");
+    return { error: t("invalidCredentials") };
   }
 
   const locale = await getLocale();
