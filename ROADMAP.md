@@ -19,7 +19,7 @@
 
 - [x] Mural dos Sonhos / Vision Board: aba "Mural" em Sonhos com imagens (upload direto ao Supabase Storage, redimensionadas no navegador) e textos, comentários e editar/excluir. Pendente: export/compartilhamento (ver Share Cards) e aplicar a migration `0007_dream_board.sql` no projeto Supabase real
 - [x] Cápsula do Tempo: aba "Cápsula" em Sonhos (mensagem + data de envio, até 1 ano), e-mail via Resend por job diário (`/api/cron/deliver-capsules`, idempotente, com retentativas). O design já prevê a retenção estendida paga (`retention_tier = 'extended'`, hoje bloqueada por RLS); a cobrança em si depende do item "Pagamentos e assinaturas". Pendente para entrar no ar: aplicar `0008_time_capsules.sql`, configurar Resend/`CRON_SECRET` (ver README). Observação: o conteúdo de cápsulas pendentes fica oculto na interface, mas o próprio dono ainda consegue lê-lo via API
-- [ ] Gratidão (registro de gratidão)
+- [x] Gratidão: página `/gratidao` (registros diários do que foi bom, agrupados por dia, com excluir); conta como "dia com passo" no Progresso. Pendente para entrar no ar: aplicar `0010_gratitude.sql`
 
 ## Backlog — Minha Ação (grupo, estendido)
 
@@ -32,7 +32,7 @@
 - [x] Afirmações: página `/afirmacoes` com 3 afirmações novas por dia geradas pela API do Claude (personalizadas por sonhos/objetivos, sem repetir as recentes), com histórico e cartão "Afirmação do dia" em Meu Dia. Pendente para entrar no ar: aplicar `0009_affirmations.sql` e definir `ANTHROPIC_API_KEY`
 - [ ] Mentalizações (vídeos guiados) / Programas (conteúdo guiado)
 - [ ] Espiritualidade (Meu Espaço de Fé)
-- [ ] Progresso / Conquistas (mapa, badges — manter tom não-punitivo)
+- [x] Progresso / Conquistas: página `/progresso` com mapa da jornada (4 horizontes), mapa de constância (12 semanas) e 15 conquistas derivadas do histórico (sem tabela nova; nunca se perdem, sem marcar falhas). Lógica pura testada com `npm test`
 
 ## Backlog — Plataforma / Infra
 

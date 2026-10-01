@@ -48,7 +48,11 @@
     "affirmationTitle": "Afirmação do dia",
     "affirmationEmpty": "Receba afirmações novas, feitas para você, todos os dias.",
     "affirmationCta": "Receber minhas afirmações de hoje",
-    "affirmationMore": "Ver as afirmações de hoje"
+    "affirmationMore": "Ver as afirmações de hoje",
+    "gratitudeTile": "Gratidão",
+    "gratitudeHint": "Registre o que foi bom",
+    "progressTile": "Progresso",
+    "progressHint": "Jornada e conquistas"
   },
   "sonhos": {
     "title": "Lista dos Sonhos",
@@ -159,5 +163,99 @@
     "retry": "Tentar de novo",
     "previous": "Dias anteriores",
     "aiNote": "Geradas por IA a partir dos seus sonhos e objetivos. Para isso, esses textos são enviados à Anthropic (Claude) no momento da geração."
+  },
+  "progresso": {
+    "title": "Progresso",
+    "summaryActive": "{count, plural, one {Você deu passos em # dia} other {Você deu passos em # dias}} nos últimos 30 dias. Isso é construir.",
+    "summaryStart": "Cada começo conta. Que tal dar um passo pequeno hoje?",
+    "statDreams": "Sonhos realizados",
+    "statDreamsValue": "{realized} de {total}",
+    "statSteps": "Ações concluídas",
+    "statActiveDays": "Dias com passos (30 dias)",
+    "statStreak": "Maior sequência de hábito",
+    "statStreakValue": "{count, plural, =0 {começando} one {# dia} other {# dias}}",
+    "mapTitle": "Mapa da jornada",
+    "horizonDefined": "definido",
+    "horizonOpen": "ainda em aberto",
+    "activityTitle": "Constância",
+    "activityLegend": "Dia em que você deu um passo",
+    "activityAria": "{count, plural, one {# dia} other {# dias}} com passos nas últimas {weeks} semanas",
+    "achievementsTitle": "Conquistas",
+    "unlockedCount": "{unlocked} de {total}",
+    "noneYet": "Suas primeiras conquistas aparecem aqui conforme você avança.",
+    "inProgress": "Em caminho",
+    "toDiscover": "Para descobrir",
+    "progressOf": "{current}/{target}",
+    "achievements": {
+      "firstDream": {
+        "title": "Primeiro sonho",
+        "description": "Você escreveu o seu primeiro sonho."
+      },
+      "dreamRealized": {
+        "title": "Sonho realizado",
+        "description": "Você realizou um sonho."
+      },
+      "fourHorizons": {
+        "title": "Quatro horizontes",
+        "description": "Você definiu objetivos de 6 meses a 10 anos."
+      },
+      "firstStep": {
+        "title": "Primeiro passo",
+        "description": "Você concluiu a sua primeira ação."
+      },
+      "tenSteps": {
+        "title": "Dez passos",
+        "description": "Você concluiu 10 ações."
+      },
+      "fiftySteps": {
+        "title": "Cinquenta passos",
+        "description": "Você concluiu 50 ações."
+      },
+      "habitWeek": {
+        "title": "Uma semana de constância",
+        "description": "7 dias seguidos em um hábito."
+      },
+      "habitMonth": {
+        "title": "Um mês de constância",
+        "description": "30 dias seguidos em um hábito."
+      },
+      "tenActiveDays": {
+        "title": "Dez dias de presença",
+        "description": "Você deu um passo em 10 dias diferentes."
+      },
+      "thirtyActiveDays": {
+        "title": "Trinta dias de presença",
+        "description": "Você deu um passo em 30 dias diferentes."
+      },
+      "firstBoardItem": {
+        "title": "Primeira visão",
+        "description": "Você adicionou o primeiro item ao seu mural."
+      },
+      "tenBoardItems": {
+        "title": "Mural em construção",
+        "description": "Você já tem 10 itens no seu mural."
+      },
+      "firstCapsule": {
+        "title": "Mensagem ao futuro",
+        "description": "Você selou a sua primeira cápsula do tempo."
+      },
+      "weekOfAffirmations": {
+        "title": "Sete dias de afirmações",
+        "description": "Você recebeu afirmações em 7 dias."
+      },
+      "weekOfGratitude": {
+        "title": "Sete dias de gratidão",
+        "description": "Você registrou gratidão em 7 dias."
+      }
+    }
+  },
+  "gratidao": {
+    "title": "Gratidão",
+    "subtitle": "Pequenos registros do que foi bom. Eles mudam o jeito de olhar para o dia.",
+    "placeholder": "Hoje sou grato(a) por...",
+    "add": "Registrar",
+    "empty": "Nada registrado ainda. Comece com uma coisa boa de hoje.",
+    "today": "Hoje",
+    "confirmDelete": "Excluir este registro?"
   }
 }

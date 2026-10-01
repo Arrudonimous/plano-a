@@ -63,6 +63,14 @@ npm run build
 npm run start
 ```
 
+## Testes
+
+```bash
+npm test
+```
+
+Roda os testes unitários da lógica pura (`src/**/*.test.ts`, via `node --test`): sequências de hábito, conquistas e mapa de constância.
+
 ## Instalabilidade como PWA
 
 - **Lighthouse**: `npx lighthouse http://localhost:3000/hoje --view` contra o build de produção.

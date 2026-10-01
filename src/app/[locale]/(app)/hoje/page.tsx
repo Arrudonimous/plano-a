@@ -196,6 +196,22 @@ export default async function HojePage() {
           </li>
         ))}
       </ul>
+
+      <ul className="grid grid-cols-2 gap-3">
+        {[
+          { href: "/gratidao", title: t("gratitudeTile"), hint: t("gratitudeHint") },
+          { href: "/progresso", title: t("progressTile"), hint: t("progressHint") },
+        ].map(({ href, title, hint }) => (
+          <li key={href}>
+            <Link href={href} className="block h-full">
+              <Card className="h-full p-4 transition-colors hover:bg-surface-muted">
+                <span className="block text-sm font-semibold">{title}</span>
+                <span className="mt-0.5 block text-xs text-muted-foreground">{hint}</span>
+              </Card>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
