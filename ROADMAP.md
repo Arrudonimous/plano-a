@@ -17,7 +17,7 @@
 
 ## Backlog — Minha Visão (grupo)
 
-- [ ] Mural dos Sonhos / Vision Board (moodboard visual: adicionar imagens e textos, comentários, editar/excluir itens; upload via Supabase Storage, export/compartilhamento)
+- [x] Mural dos Sonhos / Vision Board: aba "Mural" em Sonhos com imagens (upload direto ao Supabase Storage, redimensionadas no navegador) e textos, comentários e editar/excluir. Pendente: export/compartilhamento (ver Share Cards) e aplicar a migration `0007_dream_board.sql` no projeto Supabase real
 - [ ] Cápsula do Tempo (a pessoa escreve o que quer conquistar, escolhe um prazo, e o app envia por e-mail nessa data via Resend; mensagens seladas para o futuro, abertura agendada; design deve contemplar desde já a cobrança por período de retenção estendida — feature paga, ainda que a implementação de billing venha depois)
 - [ ] Gratidão (registro de gratidão)
 
@@ -47,5 +47,5 @@
 
 - Cada item acima deve virar uma issue própria quando entrar em planejamento; ao iniciar o trabalho, mover para "Em progresso" nesta seção e linkar o PR.
 - O grafo do `graphify` deste projeto deve ser gerado/atualizado com `plano-a/` como working root — nunca a partir da raiz `Freelancer/`.
-- Gaps de infra que Mural dos Sonhos, Cápsula do Tempo e Afirmações vão exigir do zero: Supabase Storage (bucket + policies, hoje inexistente) e um mecanismo de cron/agendamento (necessário tanto para Cápsula do Tempo quanto para Afirmações — vale decidir uma solução única e reutilizável para as duas).
+- Supabase Storage agora existe (bucket privado `dream-board`, policies por pasta `<user_id>/` na migration 0007) e pode ser reutilizado. Gaps de infra que Cápsula do Tempo e Afirmações ainda vão exigir do zero: um mecanismo de cron/agendamento (necessário tanto para Cápsula do Tempo quanto para Afirmações — vale decidir uma solução única e reutilizável para as duas).
 - Preocupação de posicionamento de produto: hoje o app está parecendo mais um app de planejamento do que algo que guia a pessoa a se desenvolver. Não está claro se completar o restante do backlog (mural, cápsula, afirmações, mentalização) resolve isso — tratar como questão de posicionamento de produto, não só de features faltando.

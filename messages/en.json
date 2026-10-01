@@ -56,7 +56,27 @@
     "realizedOn": "Realized",
     "empty": "Your dreams haven't been written here yet. Start now.",
     "realizedMessage": "You made this dream happen. ✨",
-    "confirmDelete": "Delete this dream?"
+    "confirmDelete": "Delete this dream?",
+    "tabList": "List",
+    "tabBoard": "Board"
+  },
+  "mural": {
+    "placeholder": "Write a phrase, affirmation or caption...",
+    "addImage": "Add image",
+    "changeImage": "Change image",
+    "add": "Add to board",
+    "saving": "Uploading...",
+    "empty": "Your board is empty. Gather images and phrases that represent what you want to live.",
+    "imageAlt": "Board image",
+    "confirmDelete": "Delete this board item?",
+    "commentsCount": "{count, plural, =0 {Comment} one {# comment} other {# comments}}",
+    "commentPlaceholder": "Write a comment...",
+    "comment": "Comment",
+    "confirmDeleteComment": "Delete this comment?",
+    "errorEmpty": "Write something or choose an image.",
+    "errorInvalid": "Choose an image file.",
+    "errorTooBig": "The image is too large (max 15 MB).",
+    "errorUpload": "Couldn't upload. Please try again."
   },
   "objetivos": {
     "title": "My Goals",

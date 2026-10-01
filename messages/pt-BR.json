@@ -56,7 +56,27 @@
     "realizedOn": "Realizado",
     "empty": "Seus sonhos ainda não foram escritos aqui. Comece agora.",
     "realizedMessage": "Você realizou esse sonho. ✨",
-    "confirmDelete": "Excluir este sonho?"
+    "confirmDelete": "Excluir este sonho?",
+    "tabList": "Lista",
+    "tabBoard": "Mural"
+  },
+  "mural": {
+    "placeholder": "Escreva uma frase, afirmação ou legenda...",
+    "addImage": "Adicionar imagem",
+    "changeImage": "Trocar imagem",
+    "add": "Adicionar ao mural",
+    "saving": "Enviando...",
+    "empty": "Seu mural está vazio. Reúna imagens e frases que representam o que você quer viver.",
+    "imageAlt": "Imagem do mural",
+    "confirmDelete": "Excluir este item do mural?",
+    "commentsCount": "{count, plural, =0 {Comentar} one {# comentário} other {# comentários}}",
+    "commentPlaceholder": "Escreva um comentário...",
+    "comment": "Comentar",
+    "confirmDeleteComment": "Excluir este comentário?",
+    "errorEmpty": "Escreva algo ou escolha uma imagem.",
+    "errorInvalid": "Escolha um arquivo de imagem.",
+    "errorTooBig": "A imagem é muito grande (máx. 15 MB).",
+    "errorUpload": "Não foi possível enviar. Tente novamente."
   },
   "objetivos": {
     "title": "Meus Objetivos",

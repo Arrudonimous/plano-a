@@ -49,6 +49,68 @@ export type Database = {
         }
         Relationships: []
       }
+      dream_board_comments: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          item_id: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          item_id: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          item_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dream_board_comments_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "dream_board_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dream_board_items: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          image_path: string | null
+          kind: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content?: string
+          created_at?: string
+          id?: string
+          image_path?: string | null
+          kind: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          image_path?: string | null
+          kind?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       dreams: {
         Row: {
           created_at: string
