@@ -2,11 +2,10 @@ import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { sendEmail } from "@/lib/email/resend";
 import { buildCapsuleEmail } from "@/lib/email/capsuleEmail";
-import { todayInTimeZone } from "@/lib/utils/dates";
+import { addDaysISO, todayInTimeZone } from "@/lib/utils/dates";
 import {
   CAPSULE_CLAIM_TIMEOUT_MS,
   CAPSULE_MAX_DELIVERY_ATTEMPTS,
-  addDaysISO,
 } from "@/lib/capsules/config";
 
 const BATCH_SIZE = 100;

@@ -21,7 +21,8 @@ Plataforma de desenvolvimento pessoal e planejamento de vida, instalável como P
    - `SUPABASE_SERVICE_ROLE_KEY` (uso restrito a `src/lib/supabase/admin.ts`, nunca exposto ao client)
    - `NEXT_PUBLIC_SITE_URL` (usado no redirect de confirmação de e-mail)
 3. **Cápsula do Tempo** (e-mail agendado) — veja a seção abaixo para `RESEND_API_KEY`, `RESEND_FROM_EMAIL` e `CRON_SECRET`.
-4. Gere os tipos reais do banco (substitui o arquivo hand-authored):
+4. **Afirmações diárias (IA)** — veja a seção abaixo para `ANTHROPIC_API_KEY`.
+5. Gere os tipos reais do banco (substitui o arquivo hand-authored):
    ```bash
    supabase gen types typescript --linked > src/lib/types/database.types.ts
    ```
@@ -40,6 +41,14 @@ As cápsulas são enviadas por um job diário que chama `GET /api/cron/deliver-c
    - **Outro host**: agende `curl -H "Authorization: Bearer $CRON_SECRET" https://SEU-DOMINIO/api/cron/deliver-capsules` uma vez por dia.
 
 A entrega é idempotente (cada cápsula é "reivindicada" antes do envio) e falhas são tentadas de novo nas execuções seguintes, até 5 vezes. A data de envio vale no fuso horário do usuário (Configurações).
+
+## Afirmações diárias (IA)
+
+A página `/afirmacoes` mostra 3 afirmações novas por dia, geradas pela API do Claude a partir dos sonhos em aberto e dos objetivos da pessoa (evitando repetir as dos últimos 14 dias). A geração acontece na primeira vez que a pessoa abre a página no dia (no fuso dela) e é limitada a uma por usuário por dia.
+
+- Defina `ANTHROPIC_API_KEY` (Anthropic Console) no ambiente.
+- Modelo: `claude-opus-5-5` por padrão. Para custo menor, defina `AFFIRMATIONS_MODEL=claude-sonnet-5-5` (metade do preço por token). Valores aceitos: `claude-opus-5-5`, `claude-opus-5`, `claude-sonnet-5-5`, `claude-fable-5-1`.
+- **Privacidade:** para gerar as afirmações, os textos de sonhos e objetivos são enviados à Anthropic. A página avisa isso ao usuário; vale refletir na política de privacidade do produto.
 
 ## Rodando localmente
 

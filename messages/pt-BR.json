@@ -41,10 +41,14 @@
     "progressComplete": "Dia completo. Orgulhe-se do caminho.",
     "dreamsEmpty": "Comece escrevendo um sonho",
     "dreamsSummary": "{realized} de {total} realizados",
-    "actionSummary": "{actions, plural, one {# ação} other {# ações}} · {habits, plural, one {# hábito} other {# hábitos}}",
+    "actionSummary": "{actions, plural, =0 {nenhuma ação} one {# ação} other {# ações}} · {habits, plural, =0 {nenhum hábito} one {# hábito} other {# hábitos}}",
     "objectivesSummary": "{count} de 4 horizontes definidos",
     "emptyToday": "Nada marcado para hoje. Que tal dar um passo pequeno?",
-    "viewActions": "Ver Minha Ação"
+    "viewActions": "Ver Minha Ação",
+    "affirmationTitle": "Afirmação do dia",
+    "affirmationEmpty": "Receba afirmações novas, feitas para você, todos os dias.",
+    "affirmationCta": "Receber minhas afirmações de hoje",
+    "affirmationMore": "Ver as afirmações de hoje"
   },
   "sonhos": {
     "title": "Lista dos Sonhos",
@@ -145,5 +149,15 @@
     "errorDatePast": "A data de envio precisa ser a partir de amanhã.",
     "errorDateTooFar": "No plano gratuito o prazo máximo é de 1 ano.",
     "errorGeneric": "Não foi possível selar a cápsula. Tente novamente."
+  },
+  "afirmacoes": {
+    "title": "Afirmações",
+    "subtitle": "Frases para lembrar quem você está se tornando. Novas todos os dias.",
+    "today": "Hoje",
+    "generating": "Preparando suas afirmações de hoje...",
+    "errorGeneric": "Não foi possível preparar suas afirmações agora. Tente novamente.",
+    "retry": "Tentar de novo",
+    "previous": "Dias anteriores",
+    "aiNote": "Geradas por IA a partir dos seus sonhos e objetivos. Para isso, esses textos são enviados à Anthropic (Claude) no momento da geração."
   }
 }

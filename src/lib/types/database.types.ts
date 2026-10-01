@@ -22,6 +22,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      affirmations: {
+        Row: {
+          created_at: string
+          for_date: string
+          id: string
+          position: number
+          text: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          for_date: string
+          id?: string
+          position: number
+          text: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          for_date?: string
+          id?: string
+          position?: number
+          text?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       daily_actions: {
         Row: {
           created_at: string

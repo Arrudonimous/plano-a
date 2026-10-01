@@ -29,7 +29,8 @@
 
 ## Backlog — Minha Evolução (grupo)
 
-- [ ] Afirmações (IA via API da Anthropic/Claude gera afirmações novas todo dia) / Mentalizações (vídeos guiados) / Programas (conteúdo guiado)
+- [x] Afirmações: página `/afirmacoes` com 3 afirmações novas por dia geradas pela API do Claude (personalizadas por sonhos/objetivos, sem repetir as recentes), com histórico e cartão "Afirmação do dia" em Meu Dia. Pendente para entrar no ar: aplicar `0009_affirmations.sql` e definir `ANTHROPIC_API_KEY`
+- [ ] Mentalizações (vídeos guiados) / Programas (conteúdo guiado)
 - [ ] Espiritualidade (Meu Espaço de Fé)
 - [ ] Progresso / Conquistas (mapa, badges — manter tom não-punitivo)
 

@@ -35,6 +35,7 @@ export default async function HojePage() {
     { data: checkins },
     { data: dreams },
     { data: objectives },
+    { data: todayAffirmation },
   ] = await Promise.all([
     supabase
       .from("daily_actions")
@@ -56,6 +57,13 @@ export default async function HojePage() {
       .from("objectives")
       .select("period, declaration")
       .eq("user_id", user!.id),
+    supabase
+      .from("affirmations")
+      .select("text")
+      .eq("user_id", user!.id)
+      .eq("for_date", today)
+      .order("position", { ascending: true })
+      .limit(1),
   ]);
 
   const activeHabits = habits ?? [];
@@ -111,6 +119,22 @@ export default async function HojePage() {
         </h1>
         <p className="mt-2 text-sm text-white/75">{t("dailyMessage")}</p>
       </section>
+
+      <Link href="/afirmacoes" className="block">
+        <Card className="transition-colors hover:bg-surface-muted">
+          <p className="text-xs font-medium text-accent">{t("affirmationTitle")}</p>
+          {todayAffirmation?.[0] ? (
+            <p className="mt-2 text-base leading-relaxed">
+              “{todayAffirmation[0].text}”
+            </p>
+          ) : (
+            <p className="mt-2 text-sm text-muted-foreground">{t("affirmationEmpty")}</p>
+          )}
+          <p className="mt-3 text-xs font-medium text-primary">
+            {todayAffirmation?.[0] ? t("affirmationMore") : t("affirmationCta")} →
+          </p>
+        </Card>
+      </Link>
 
       <Card>
         <div className="flex items-baseline justify-between">

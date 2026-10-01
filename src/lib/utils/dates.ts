@@ -8,6 +8,14 @@ export function todayInTimeZone(timeZone: string): string {
   }).format(new Date());
 }
 
+/** Adds days to a YYYY-MM-DD string, returning YYYY-MM-DD. */
+export function addDaysISO(isoDate: string, days: number): string {
+  const [year, month, day] = isoDate.split("-").map(Number);
+  return new Date(Date.UTC(year, month - 1, day + days))
+    .toISOString()
+    .slice(0, 10);
+}
+
 export type GreetingPeriod = "morning" | "afternoon" | "evening";
 
 export function greetingPeriod(timeZone: string): GreetingPeriod {
