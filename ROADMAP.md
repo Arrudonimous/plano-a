@@ -23,7 +23,7 @@
 
 ## Backlog — Minha Ação (grupo, estendido)
 
-- [ ] Planejamento / Projetos (múltiplas etapas, distinto de tarefas simples)
+- [x] Planejamento / Projetos: terceira aba de Minha Ação (`/acao` → Projetos) e detalhe em `/acao/projetos/[id]`: passos ordenáveis (mover, editar, excluir), progresso, meta e sonho ligado opcionais, concluir/reabrir, e "Enviar para hoje" transforma um passo em ação do dia. Conta nas conquistas de Progresso (primeiro projeto, projeto concluído). Pendente para entrar no ar: aplicar `0011_projects.sql`
 - [ ] Plano Financeiro (receitas, despesas, dívidas, reserva, metas)
 - [ ] CLT → Negócio (jornada de transição de carreira)
 

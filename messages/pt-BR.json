@@ -115,7 +115,8 @@
     "missedDayMessage": "Sem problema, retome quando estiver pronto.",
     "emptyActions": "Nenhuma ação para hoje ainda.",
     "emptyHabits": "Nenhum hábito cadastrado ainda.",
-    "archiveHabit": "Arquivar"
+    "archiveHabit": "Arquivar",
+    "tabProjetos": "Projetos"
   },
   "settings": {
     "title": "Configurações",
@@ -246,6 +247,14 @@
       "weekOfGratitude": {
         "title": "Sete dias de gratidão",
         "description": "Você registrou gratidão em 7 dias."
+      },
+      "firstProject": {
+        "title": "Primeiro projeto",
+        "description": "Você começou o seu primeiro projeto."
+      },
+      "projectCompleted": {
+        "title": "Projeto concluído",
+        "description": "Você concluiu um projeto inteiro."
       }
     }
   },
@@ -257,5 +266,31 @@
     "empty": "Nada registrado ainda. Comece com uma coisa boa de hoje.",
     "today": "Hoje",
     "confirmDelete": "Excluir este registro?"
+  },
+  "projetos": {
+    "newPlaceholder": "Nome do projeto...",
+    "create": "Criar projeto",
+    "empty": "Nenhum projeto ainda. Projetos reúnem vários passos para algo maior que uma tarefa do dia.",
+    "completed": "Concluído",
+    "noSteps": "Sem passos ainda",
+    "progressOf": "{done} de {total} passos",
+    "targetOn": "Meta: {date}",
+    "descriptionPlaceholder": "Para que serve este projeto? (opcional)",
+    "targetDateLabel": "Data-alvo (opcional)",
+    "linkedDream": "Sonho que ele ajuda a realizar",
+    "noDream": "Nenhum",
+    "forDream": "Para realizar: {dream}",
+    "complete": "Concluir projeto",
+    "reopen": "Reabrir projeto",
+    "confirmDeleteProject": "Excluir este projeto e todos os seus passos?",
+    "stepPlaceholder": "Adicionar um passo...",
+    "addStep": "Adicionar",
+    "stepsEmpty": "Divida o projeto em passos pequenos e comece pelo primeiro.",
+    "allDone": "Todos os passos concluídos. Que tal concluir o projeto?",
+    "sendToToday": "Enviar para hoje",
+    "sentToToday": "Enviado para hoje",
+    "moveUp": "Mover para cima",
+    "moveDown": "Mover para baixo",
+    "confirmDeleteStep": "Excluir este passo?"
   }
 }

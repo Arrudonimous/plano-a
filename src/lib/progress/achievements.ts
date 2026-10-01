@@ -9,6 +9,8 @@ export interface ProgressCounts {
   capsulesSealed: number;
   affirmationDays: number;
   gratitudeDays: number;
+  projectsStarted: number;
+  projectsCompleted: number;
 }
 
 export interface AchievementDefinition {
@@ -40,6 +42,8 @@ export const ACHIEVEMENTS: AchievementDefinition[] = [
   { id: "firstCapsule", target: 1, value: (c) => c.capsulesSealed },
   { id: "weekOfAffirmations", target: 7, value: (c) => c.affirmationDays },
   { id: "weekOfGratitude", target: 7, value: (c) => c.gratitudeDays },
+  { id: "firstProject", target: 1, value: (c) => c.projectsStarted },
+  { id: "projectCompleted", target: 1, value: (c) => c.projectsCompleted },
 ];
 
 /**

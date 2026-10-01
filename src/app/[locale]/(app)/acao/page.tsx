@@ -6,6 +6,8 @@ import { QuickAddAction } from "@/components/actions/QuickAddAction";
 import { TodayActionList } from "@/components/actions/TodayActionList";
 import { NewHabitForm } from "@/components/habits/NewHabitForm";
 import { HabitList } from "@/components/habits/HabitList";
+import { NewProjectForm } from "@/components/projects/NewProjectForm";
+import { ProjectList } from "@/components/projects/ProjectList";
 
 export default async function AcaoPage() {
   const supabase = await createClient();
@@ -23,8 +25,13 @@ export default async function AcaoPage() {
   const timezone = profile?.timezone ?? "America/Sao_Paulo";
   const today = todayInTimeZone(timezone);
 
-  const [{ data: actions }, { data: habits }, { data: checkins }] =
-    await Promise.all([
+  const [
+    { data: actions },
+    { data: habits },
+    { data: checkins },
+    { data: projects },
+    { data: projectSteps },
+  ] = await Promise.all([
       supabase
         .from("daily_actions")
         .select("*")
@@ -41,6 +48,12 @@ export default async function AcaoPage() {
         .from("habit_checkins")
         .select("habit_id, checkin_date")
         .eq("user_id", user!.id),
+      supabase
+        .from("projects")
+        .select("*")
+        .eq("user_id", user!.id)
+        .order("created_at", { ascending: false }),
+      supabase.from("project_steps").select("project_id, done_at").eq("user_id", user!.id),
     ]);
 
   const checkinsByHabit = new Map<string, string[]>();
@@ -54,6 +67,17 @@ export default async function AcaoPage() {
     habit,
     checkinDates: checkinsByHabit.get(habit.id) ?? [],
   }));
+
+  const stepsByProject = new Map<string, { total: number; done: number }>();
+  for (const step of projectSteps ?? []) {
+    const entry = stepsByProject.get(step.project_id) ?? { total: 0, done: 0 };
+    entry.total++;
+    if (step.done_at) entry.done++;
+    stepsByProject.set(step.project_id, entry);
+  }
+  const projectSummaries = (projects ?? [])
+    .map((project) => ({ project, ...(stepsByProject.get(project.id) ?? { total: 0, done: 0 }) }))
+    .sort((a, b) => Number(Boolean(a.project.completed_at)) - Number(Boolean(b.project.completed_at)));
 
   return (
     <div className="mx-auto max-w-2xl space-y-4 px-4 py-6">
@@ -69,6 +93,12 @@ export default async function AcaoPage() {
           <div className="space-y-4">
             <NewHabitForm />
             <HabitList habits={habitsWithCheckins} today={today} />
+          </div>
+        }
+        projectsContent={
+          <div className="space-y-4">
+            <NewProjectForm />
+            <ProjectList projects={projectSummaries} />
           </div>
         }
       />

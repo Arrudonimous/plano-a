@@ -19,6 +19,8 @@ const empty: ProgressCounts = {
   capsulesSealed: 0,
   affirmationDays: 0,
   gratitudeDays: 0,
+  projectsStarted: 0,
+  projectsCompleted: 0,
 };
 
 test("longestStreak: vazio, único, quebras e duplicatas", () => {
@@ -89,4 +91,15 @@ test("mapa de atividade: 84 dias terminando hoje, em ordem, sem marcar falhas", 
   assert.equal(map[0].date, "2026-07-10");
   assert.deepEqual(map.filter((d) => d.active).map((d) => d.date), ["2026-09-30", "2026-10-01"]);
   assert.deepEqual(map.map((d) => d.date), [...map.map((d) => d.date)].sort());
+});
+
+test("conquistas de projeto: começar e concluir são independentes", () => {
+  const byId = (c: ProgressCounts) => Object.fromEntries(evaluateAchievements(c).map((a) => [a.id, a]));
+
+  let a = byId({ ...empty, projectsStarted: 1 });
+  assert.equal(a.firstProject.unlocked, true);
+  assert.equal(a.projectCompleted.unlocked, false);
+
+  a = byId({ ...empty, projectsStarted: 2, projectsCompleted: 1 });
+  assert.equal(a.projectCompleted.unlocked, true);
 });

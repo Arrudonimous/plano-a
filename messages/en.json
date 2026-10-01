@@ -115,7 +115,8 @@
     "missedDayMessage": "No worries, pick it back up whenever you're ready.",
     "emptyActions": "No actions for today yet.",
     "emptyHabits": "No habits added yet.",
-    "archiveHabit": "Archive"
+    "archiveHabit": "Archive",
+    "tabProjetos": "Projects"
   },
   "settings": {
     "title": "Settings",
@@ -246,6 +247,14 @@
       "weekOfGratitude": {
         "title": "Seven days of gratitude",
         "description": "You logged gratitude on 7 days."
+      },
+      "firstProject": {
+        "title": "First project",
+        "description": "You started your first project."
+      },
+      "projectCompleted": {
+        "title": "Project completed",
+        "description": "You completed a whole project."
       }
     }
   },
@@ -257,5 +266,31 @@
     "empty": "Nothing logged yet. Start with one good thing from today.",
     "today": "Today",
     "confirmDelete": "Delete this entry?"
+  },
+  "projetos": {
+    "newPlaceholder": "Project name...",
+    "create": "Create project",
+    "empty": "No projects yet. Projects gather several steps toward something bigger than a daily task.",
+    "completed": "Completed",
+    "noSteps": "No steps yet",
+    "progressOf": "{done} of {total} steps",
+    "targetOn": "Target: {date}",
+    "descriptionPlaceholder": "What is this project for? (optional)",
+    "targetDateLabel": "Target date (optional)",
+    "linkedDream": "Dream it helps realize",
+    "noDream": "None",
+    "forDream": "Toward: {dream}",
+    "complete": "Complete project",
+    "reopen": "Reopen project",
+    "confirmDeleteProject": "Delete this project and all its steps?",
+    "stepPlaceholder": "Add a step...",
+    "addStep": "Add",
+    "stepsEmpty": "Break the project into small steps and start with the first one.",
+    "allDone": "All steps done. How about completing the project?",
+    "sendToToday": "Send to today",
+    "sentToToday": "Sent to today",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "confirmDeleteStep": "Delete this step?"
   }
 }

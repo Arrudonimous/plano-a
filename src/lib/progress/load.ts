@@ -43,6 +43,7 @@ export async function loadProgress(
     { count: capsulesSealed },
     affirmationRows,
     gratitudeRows,
+    { data: projects },
   ] = await Promise.all([
     supabase.from("dreams").select("realized_at").eq("user_id", userId),
     supabase.from("objectives").select("period, declaration").eq("user_id", userId),
@@ -91,6 +92,7 @@ export async function loadProgress(
         .order("id")
         .range(from, to),
     ),
+    supabase.from("projects").select("completed_at").eq("user_id", userId),
   ]);
 
   const checkinsByHabit = new Map<string, string[]>();
@@ -126,6 +128,8 @@ export async function loadProgress(
     capsulesSealed: capsulesSealed ?? 0,
     affirmationDays: new Set(affirmationRows.map((r) => r.for_date)).size,
     gratitudeDays: new Set(gratitudeDates).size,
+    projectsStarted: projects?.length ?? 0,
+    projectsCompleted: (projects ?? []).filter((p) => p.completed_at).length,
   };
 
   const activity = buildActivityMap(activeDates, today);
