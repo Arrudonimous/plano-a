@@ -35,6 +35,7 @@ export default async function HojePage() {
     { data: checkins },
     { data: dreams },
     { data: objectives },
+    { data: todayAffirmation },
   ] = await Promise.all([
     supabase
       .from("daily_actions")
@@ -56,6 +57,13 @@ export default async function HojePage() {
       .from("objectives")
       .select("period, declaration")
       .eq("user_id", user!.id),
+    supabase
+      .from("affirmations")
+      .select("text")
+      .eq("user_id", user!.id)
+      .eq("for_date", today)
+      .order("position", { ascending: true })
+      .limit(1),
   ]);
 
   const activeHabits = habits ?? [];
@@ -112,6 +120,22 @@ export default async function HojePage() {
         <p className="mt-2 text-sm text-white/75">{t("dailyMessage")}</p>
       </section>
 
+      <Link href="/afirmacoes" className="block">
+        <Card className="transition-colors hover:bg-surface-muted">
+          <p className="text-xs font-medium text-accent">{t("affirmationTitle")}</p>
+          {todayAffirmation?.[0] ? (
+            <p className="mt-2 text-base leading-relaxed">
+              “{todayAffirmation[0].text}”
+            </p>
+          ) : (
+            <p className="mt-2 text-sm text-muted-foreground">{t("affirmationEmpty")}</p>
+          )}
+          <p className="mt-3 text-xs font-medium text-primary">
+            {todayAffirmation?.[0] ? t("affirmationMore") : t("affirmationCta")} →
+          </p>
+        </Card>
+      </Link>
+
       <Card>
         <div className="flex items-baseline justify-between">
           <h2 className="text-sm font-semibold">{t("progressTitle")}</h2>
@@ -167,6 +191,22 @@ export default async function HojePage() {
                 <span aria-hidden="true" className="text-muted-foreground">
                   →
                 </span>
+              </Card>
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <ul className="grid grid-cols-2 gap-3">
+        {[
+          { href: "/gratidao", title: t("gratitudeTile"), hint: t("gratitudeHint") },
+          { href: "/progresso", title: t("progressTile"), hint: t("progressHint") },
+        ].map(({ href, title, hint }) => (
+          <li key={href}>
+            <Link href={href} className="block h-full">
+              <Card className="h-full p-4 transition-colors hover:bg-surface-muted">
+                <span className="block text-sm font-semibold">{title}</span>
+                <span className="mt-0.5 block text-xs text-muted-foreground">{hint}</span>
               </Card>
             </Link>
           </li>

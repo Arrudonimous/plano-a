@@ -22,6 +22,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      affirmations: {
+        Row: {
+          created_at: string
+          for_date: string
+          id: string
+          position: number
+          text: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          for_date: string
+          id?: string
+          position: number
+          text: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          for_date?: string
+          id?: string
+          position?: number
+          text?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       daily_actions: {
         Row: {
           created_at: string
@@ -45,6 +72,68 @@ export type Database = {
           due_date?: string
           id?: string
           title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      dream_board_comments: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          item_id: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          item_id: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          item_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dream_board_comments_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "dream_board_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dream_board_items: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          image_path: string | null
+          kind: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content?: string
+          created_at?: string
+          id?: string
+          image_path?: string | null
+          kind: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          image_path?: string | null
+          kind?: string
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
@@ -75,6 +164,30 @@ export type Database = {
           realized_at?: string | null
           target_date?: string | null
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      gratitude_entries: {
+        Row: {
+          created_at: string
+          entry_date: string
+          id: string
+          text: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          entry_date: string
+          id?: string
+          text: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          entry_date?: string
+          id?: string
+          text?: string
           user_id?: string
         }
         Relationships: []
@@ -186,6 +299,127 @@ export type Database = {
           preferred_language?: string
           timezone?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      project_steps: {
+        Row: {
+          created_at: string
+          done_at: string | null
+          id: string
+          position: number
+          project_id: string
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          done_at?: string | null
+          id?: string
+          position?: number
+          project_id: string
+          title: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          done_at?: string | null
+          id?: string
+          position?: number
+          project_id?: string
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_steps_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          description: string
+          dream_id: string | null
+          id: string
+          target_date: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          description?: string
+          dream_id?: string | null
+          id?: string
+          target_date?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          description?: string
+          dream_id?: string | null
+          id?: string
+          target_date?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_dream_id_fkey"
+            columns: ["dream_id"]
+            isOneToOne: false
+            referencedRelation: "dreams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      time_capsules: {
+        Row: {
+          claimed_at: string | null
+          created_at: string
+          deliver_on: string
+          delivered_at: string | null
+          delivery_attempts: number
+          delivery_error: string | null
+          id: string
+          message: string
+          retention_tier: string
+          user_id: string
+        }
+        Insert: {
+          claimed_at?: string | null
+          created_at?: string
+          deliver_on: string
+          delivered_at?: string | null
+          delivery_attempts?: number
+          delivery_error?: string | null
+          id?: string
+          message: string
+          retention_tier?: string
+          user_id: string
+        }
+        Update: {
+          claimed_at?: string | null
+          created_at?: string
+          deliver_on?: string
+          delivered_at?: string | null
+          delivery_attempts?: number
+          delivery_error?: string | null
+          id?: string
+          message?: string
+          retention_tier?: string
+          user_id?: string
         }
         Relationships: []
       }

@@ -41,10 +41,18 @@
     "progressComplete": "Dia completo. Orgulhe-se do caminho.",
     "dreamsEmpty": "Comece escrevendo um sonho",
     "dreamsSummary": "{realized} de {total} realizados",
-    "actionSummary": "{actions, plural, one {# ação} other {# ações}} · {habits, plural, one {# hábito} other {# hábitos}}",
+    "actionSummary": "{actions, plural, =0 {nenhuma ação} one {# ação} other {# ações}} · {habits, plural, =0 {nenhum hábito} one {# hábito} other {# hábitos}}",
     "objectivesSummary": "{count} de 4 horizontes definidos",
     "emptyToday": "Nada marcado para hoje. Que tal dar um passo pequeno?",
-    "viewActions": "Ver Minha Ação"
+    "viewActions": "Ver Minha Ação",
+    "affirmationTitle": "Afirmação do dia",
+    "affirmationEmpty": "Receba afirmações novas, feitas para você, todos os dias.",
+    "affirmationCta": "Receber minhas afirmações de hoje",
+    "affirmationMore": "Ver as afirmações de hoje",
+    "gratitudeTile": "Gratidão",
+    "gratitudeHint": "Registre o que foi bom",
+    "progressTile": "Progresso",
+    "progressHint": "Jornada e conquistas"
   },
   "sonhos": {
     "title": "Lista dos Sonhos",
@@ -56,7 +64,28 @@
     "realizedOn": "Realizado",
     "empty": "Seus sonhos ainda não foram escritos aqui. Comece agora.",
     "realizedMessage": "Você realizou esse sonho. ✨",
-    "confirmDelete": "Excluir este sonho?"
+    "confirmDelete": "Excluir este sonho?",
+    "tabList": "Lista",
+    "tabBoard": "Mural",
+    "tabCapsule": "Cápsula"
+  },
+  "mural": {
+    "placeholder": "Escreva uma frase, afirmação ou legenda...",
+    "addImage": "Adicionar imagem",
+    "changeImage": "Trocar imagem",
+    "add": "Adicionar ao mural",
+    "saving": "Enviando...",
+    "empty": "Seu mural está vazio. Reúna imagens e frases que representam o que você quer viver.",
+    "imageAlt": "Imagem do mural",
+    "confirmDelete": "Excluir este item do mural?",
+    "commentsCount": "{count, plural, =0 {Comentar} one {# comentário} other {# comentários}}",
+    "commentPlaceholder": "Escreva um comentário...",
+    "comment": "Comentar",
+    "confirmDeleteComment": "Excluir este comentário?",
+    "errorEmpty": "Escreva algo ou escolha uma imagem.",
+    "errorInvalid": "Escolha um arquivo de imagem.",
+    "errorTooBig": "A imagem é muito grande (máx. 15 MB).",
+    "errorUpload": "Não foi possível enviar. Tente novamente."
   },
   "objetivos": {
     "title": "Meus Objetivos",
@@ -86,7 +115,8 @@
     "missedDayMessage": "Sem problema, retome quando estiver pronto.",
     "emptyActions": "Nenhuma ação para hoje ainda.",
     "emptyHabits": "Nenhum hábito cadastrado ainda.",
-    "archiveHabit": "Arquivar"
+    "archiveHabit": "Arquivar",
+    "tabProjetos": "Projetos"
   },
   "settings": {
     "title": "Configurações",
@@ -101,5 +131,166 @@
     "installBody": "Instale o app para acessar mais rápido, direto da tela inicial.",
     "iosInstallHint": "Toque em Compartilhar e depois em \"Adicionar à Tela de Início\" para instalar o Plano A.",
     "dismiss": "Agora não"
+  },
+  "capsula": {
+    "intro": "Escreva uma mensagem para o seu eu do futuro: o que você quer ter conquistado? Escolha uma data e enviaremos por e-mail nesse dia.",
+    "messagePlaceholder": "Daqui a um tempo eu quero ter...",
+    "deliverOn": "Enviar em",
+    "seal": "Selar cápsula",
+    "sealing": "Selando...",
+    "limitHint": "Prazo de até 1 ano. Prazos maiores virão com um plano de retenção estendida (em breve).",
+    "sealed": "Cápsula selada. Ela chegará no seu e-mail na data escolhida.",
+    "empty": "Nenhuma cápsula ainda. Que tal escrever a primeira para o seu eu do futuro?",
+    "sealedUntil": "Selada · será enviada em {date}",
+    "sealedNote": "Escrita em {date}. O conteúdo fica selado até a data de envio.",
+    "deliveredOn": "Enviada em {date}",
+    "deliveryFailed": "Não foi possível enviar esta cápsula",
+    "cancelCapsule": "Cancelar cápsula",
+    "confirmDeletePending": "Cancelar esta cápsula? A mensagem será apagada e não será enviada.",
+    "confirmDeleteDelivered": "Excluir esta cápsula?",
+    "errorMessage": "Escreva uma mensagem.",
+    "errorTooLong": "A mensagem é longa demais (máx. 5.000 caracteres).",
+    "errorDate": "Escolha uma data de envio.",
+    "errorDatePast": "A data de envio precisa ser a partir de amanhã.",
+    "errorDateTooFar": "No plano gratuito o prazo máximo é de 1 ano.",
+    "errorGeneric": "Não foi possível selar a cápsula. Tente novamente."
+  },
+  "afirmacoes": {
+    "title": "Afirmações",
+    "subtitle": "Frases para lembrar quem você está se tornando. Novas todos os dias.",
+    "today": "Hoje",
+    "generating": "Preparando suas afirmações de hoje...",
+    "errorGeneric": "Não foi possível preparar suas afirmações agora. Tente novamente.",
+    "retry": "Tentar de novo",
+    "previous": "Dias anteriores",
+    "aiNote": "Geradas por IA a partir dos seus sonhos e objetivos. Para isso, esses textos são enviados à Anthropic (Claude) no momento da geração."
+  },
+  "progresso": {
+    "title": "Progresso",
+    "summaryActive": "{count, plural, one {Você deu passos em # dia} other {Você deu passos em # dias}} nos últimos 30 dias. Isso é construir.",
+    "summaryStart": "Cada começo conta. Que tal dar um passo pequeno hoje?",
+    "statDreams": "Sonhos realizados",
+    "statDreamsValue": "{realized} de {total}",
+    "statSteps": "Ações concluídas",
+    "statActiveDays": "Dias com passos (30 dias)",
+    "statStreak": "Maior sequência de hábito",
+    "statStreakValue": "{count, plural, =0 {começando} one {# dia} other {# dias}}",
+    "mapTitle": "Mapa da jornada",
+    "horizonDefined": "definido",
+    "horizonOpen": "ainda em aberto",
+    "activityTitle": "Constância",
+    "activityLegend": "Dia em que você deu um passo",
+    "activityAria": "{count, plural, one {# dia} other {# dias}} com passos nas últimas {weeks} semanas",
+    "achievementsTitle": "Conquistas",
+    "unlockedCount": "{unlocked} de {total}",
+    "noneYet": "Suas primeiras conquistas aparecem aqui conforme você avança.",
+    "inProgress": "Em caminho",
+    "toDiscover": "Para descobrir",
+    "progressOf": "{current}/{target}",
+    "achievements": {
+      "firstDream": {
+        "title": "Primeiro sonho",
+        "description": "Você escreveu o seu primeiro sonho."
+      },
+      "dreamRealized": {
+        "title": "Sonho realizado",
+        "description": "Você realizou um sonho."
+      },
+      "fourHorizons": {
+        "title": "Quatro horizontes",
+        "description": "Você definiu objetivos de 6 meses a 10 anos."
+      },
+      "firstStep": {
+        "title": "Primeiro passo",
+        "description": "Você concluiu a sua primeira ação."
+      },
+      "tenSteps": {
+        "title": "Dez passos",
+        "description": "Você concluiu 10 ações."
+      },
+      "fiftySteps": {
+        "title": "Cinquenta passos",
+        "description": "Você concluiu 50 ações."
+      },
+      "habitWeek": {
+        "title": "Uma semana de constância",
+        "description": "7 dias seguidos em um hábito."
+      },
+      "habitMonth": {
+        "title": "Um mês de constância",
+        "description": "30 dias seguidos em um hábito."
+      },
+      "tenActiveDays": {
+        "title": "Dez dias de presença",
+        "description": "Você deu um passo em 10 dias diferentes."
+      },
+      "thirtyActiveDays": {
+        "title": "Trinta dias de presença",
+        "description": "Você deu um passo em 30 dias diferentes."
+      },
+      "firstBoardItem": {
+        "title": "Primeira visão",
+        "description": "Você adicionou o primeiro item ao seu mural."
+      },
+      "tenBoardItems": {
+        "title": "Mural em construção",
+        "description": "Você já tem 10 itens no seu mural."
+      },
+      "firstCapsule": {
+        "title": "Mensagem ao futuro",
+        "description": "Você selou a sua primeira cápsula do tempo."
+      },
+      "weekOfAffirmations": {
+        "title": "Sete dias de afirmações",
+        "description": "Você recebeu afirmações em 7 dias."
+      },
+      "weekOfGratitude": {
+        "title": "Sete dias de gratidão",
+        "description": "Você registrou gratidão em 7 dias."
+      },
+      "firstProject": {
+        "title": "Primeiro projeto",
+        "description": "Você começou o seu primeiro projeto."
+      },
+      "projectCompleted": {
+        "title": "Projeto concluído",
+        "description": "Você concluiu um projeto inteiro."
+      }
+    }
+  },
+  "gratidao": {
+    "title": "Gratidão",
+    "subtitle": "Pequenos registros do que foi bom. Eles mudam o jeito de olhar para o dia.",
+    "placeholder": "Hoje sou grato(a) por...",
+    "add": "Registrar",
+    "empty": "Nada registrado ainda. Comece com uma coisa boa de hoje.",
+    "today": "Hoje",
+    "confirmDelete": "Excluir este registro?"
+  },
+  "projetos": {
+    "newPlaceholder": "Nome do projeto...",
+    "create": "Criar projeto",
+    "empty": "Nenhum projeto ainda. Projetos reúnem vários passos para algo maior que uma tarefa do dia.",
+    "completed": "Concluído",
+    "noSteps": "Sem passos ainda",
+    "progressOf": "{done} de {total} passos",
+    "targetOn": "Meta: {date}",
+    "descriptionPlaceholder": "Para que serve este projeto? (opcional)",
+    "targetDateLabel": "Data-alvo (opcional)",
+    "linkedDream": "Sonho que ele ajuda a realizar",
+    "noDream": "Nenhum",
+    "forDream": "Para realizar: {dream}",
+    "complete": "Concluir projeto",
+    "reopen": "Reabrir projeto",
+    "confirmDeleteProject": "Excluir este projeto e todos os seus passos?",
+    "stepPlaceholder": "Adicionar um passo...",
+    "addStep": "Adicionar",
+    "stepsEmpty": "Divida o projeto em passos pequenos e comece pelo primeiro.",
+    "allDone": "Todos os passos concluídos. Que tal concluir o projeto?",
+    "sendToToday": "Enviar para hoje",
+    "sentToToday": "Enviado para hoje",
+    "moveUp": "Mover para cima",
+    "moveDown": "Mover para baixo",
+    "confirmDeleteStep": "Excluir este passo?"
   }
 }

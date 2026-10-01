@@ -31,3 +31,20 @@ export function calculateStreak(checkinDates: string[], today: string): number {
 
   return streak;
 }
+
+/** Longest run of consecutive days in `dates` (YYYY-MM-DD) across all history. */
+export function longestStreak(dates: string[]): number {
+  const sorted = [...new Set(dates)].sort();
+  let best = 0;
+  let run = 0;
+  let previous: number | null = null;
+
+  for (const date of sorted) {
+    const day = Date.parse(`${date}T00:00:00.000Z`) / 86_400_000;
+    run = previous !== null && day - previous === 1 ? run + 1 : 1;
+    best = Math.max(best, run);
+    previous = day;
+  }
+
+  return best;
+}
