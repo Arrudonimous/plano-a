@@ -8,7 +8,7 @@ const variantClasses: Record<Variant, string> = {
   secondary:
     "bg-surface-muted text-foreground border border-border hover:bg-border/40",
   ghost: "text-foreground hover:bg-surface-muted",
-  danger: "text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30",
+  danger: "text-danger hover:bg-danger/10",
 };
 
 export const Button = forwardRef<

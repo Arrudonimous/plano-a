@@ -53,7 +53,7 @@ export function ObjectivePeriodEditor({
         {state.success && (
           <span className="text-xs text-emerald-600">{t("saved")} ✓</span>
         )}
-        {state.error && <span className="text-xs text-red-600">{state.error}</span>}
+        {state.error && <span className="text-xs text-danger">{state.error}</span>}
       </div>
     </form>
   );

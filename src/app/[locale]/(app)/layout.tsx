@@ -2,6 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { signOutAction } from "@/lib/actions/auth";
+import { Logo } from "@/components/brand/Logo";
 import { BottomNav } from "@/components/nav/BottomNav";
 import { InstallBanner } from "@/components/pwa/InstallBanner";
 
@@ -25,7 +26,7 @@ export default async function AppLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <header className="flex items-center justify-between border-b border-border px-4 py-3">
-        <span className="text-sm font-semibold text-primary">Plano A</span>
+        <Logo size={24} className="text-sm" />
         <form action={signOutAction}>
           <button
             type="submit"

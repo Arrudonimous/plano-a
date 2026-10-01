@@ -1,6 +1,6 @@
 # Plano A — Roadmap
 
-## Status: Núcleo Essencial (v1)
+## Status: Núcleo Essencial (v1) — concluído
 
 - [x] Scaffold Next.js (App Router) + PWA (Serwist) + i18n (next-intl) + Supabase
 - [x] Autenticação (cadastro/login/logout) via Supabase Auth
@@ -10,8 +10,8 @@
 - [x] Minha Ação — Hoje + Hábitos
 - [x] Aplicar as migrations em um projeto Supabase real e configurar `.env.local`
 - [x] Gerar `src/lib/types/database.types.ts` a partir do projeto real (`supabase gen types typescript`)
-- [ ] Identidade visual final (a paleta atual é um placeholder premium neutro) — inclui repensar a Página Inicial, hoje visualmente fraca (direção ainda não decidida)
-- [ ] Ícones finais do PWA (os atuais em `public/icons/` são placeholders gerados por script)
+- [x] Identidade visual final: acento âmbar sobre base creme/marinho, logo, ícones SVG na navegação e nova Página Inicial (hero, progresso do dia, atalhos). Ajustável via tokens em `globals.css`
+- [x] Ícones finais do PWA (gerados por `node scripts/generate-icons.mjs` a partir da marca)
 - [x] Corrigir tradução (i18n): mensagens de erro de login/cadastro traduzidas e seletor de idioma funcional adicionado em Configurações
 - [x] Meus Objetivos: onboarding via placeholders de exemplo por período + feedback de "Salvo"
 

@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { Logo } from "@/components/brand/Logo";
 import { signUpAction, type AuthActionState } from "@/lib/actions/auth";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
@@ -19,7 +20,9 @@ export default function SignupPage() {
   return (
     <div className="w-full max-w-sm space-y-8 py-16">
       <div className="text-center">
-        <h1 className="text-2xl font-semibold text-primary">Plano A</h1>
+        <h1 className="flex justify-center">
+          <Logo size={44} className="gap-3 text-2xl" />
+        </h1>
         <p className="mt-1 text-sm text-muted-foreground">{t("tagline")}</p>
       </div>
 
@@ -43,7 +46,7 @@ export default function SignupPage() {
             minLength={6}
           />
         </div>
-        {state.error && <p className="text-sm text-red-600">{state.error}</p>}
+        {state.error && <p className="text-sm text-danger">{state.error}</p>}
         <Button type="submit" disabled={pending} className="w-full">
           {t("signupButton")}
         </Button>
