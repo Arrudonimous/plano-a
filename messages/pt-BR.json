@@ -58,7 +58,8 @@
     "realizedMessage": "Você realizou esse sonho. ✨",
     "confirmDelete": "Excluir este sonho?",
     "tabList": "Lista",
-    "tabBoard": "Mural"
+    "tabBoard": "Mural",
+    "tabCapsule": "Cápsula"
   },
   "mural": {
     "placeholder": "Escreva uma frase, afirmação ou legenda...",
@@ -121,5 +122,28 @@
     "installBody": "Instale o app para acessar mais rápido, direto da tela inicial.",
     "iosInstallHint": "Toque em Compartilhar e depois em \"Adicionar à Tela de Início\" para instalar o Plano A.",
     "dismiss": "Agora não"
+  },
+  "capsula": {
+    "intro": "Escreva uma mensagem para o seu eu do futuro: o que você quer ter conquistado? Escolha uma data e enviaremos por e-mail nesse dia.",
+    "messagePlaceholder": "Daqui a um tempo eu quero ter...",
+    "deliverOn": "Enviar em",
+    "seal": "Selar cápsula",
+    "sealing": "Selando...",
+    "limitHint": "Prazo de até 1 ano. Prazos maiores virão com um plano de retenção estendida (em breve).",
+    "sealed": "Cápsula selada. Ela chegará no seu e-mail na data escolhida.",
+    "empty": "Nenhuma cápsula ainda. Que tal escrever a primeira para o seu eu do futuro?",
+    "sealedUntil": "Selada · será enviada em {date}",
+    "sealedNote": "Escrita em {date}. O conteúdo fica selado até a data de envio.",
+    "deliveredOn": "Enviada em {date}",
+    "deliveryFailed": "Não foi possível enviar esta cápsula",
+    "cancelCapsule": "Cancelar cápsula",
+    "confirmDeletePending": "Cancelar esta cápsula? A mensagem será apagada e não será enviada.",
+    "confirmDeleteDelivered": "Excluir esta cápsula?",
+    "errorMessage": "Escreva uma mensagem.",
+    "errorTooLong": "A mensagem é longa demais (máx. 5.000 caracteres).",
+    "errorDate": "Escolha uma data de envio.",
+    "errorDatePast": "A data de envio precisa ser a partir de amanhã.",
+    "errorDateTooFar": "No plano gratuito o prazo máximo é de 1 ano.",
+    "errorGeneric": "Não foi possível selar a cápsula. Tente novamente."
   }
 }

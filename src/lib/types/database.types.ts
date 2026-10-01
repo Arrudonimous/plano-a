@@ -251,6 +251,45 @@ export type Database = {
         }
         Relationships: []
       }
+      time_capsules: {
+        Row: {
+          claimed_at: string | null
+          created_at: string
+          deliver_on: string
+          delivered_at: string | null
+          delivery_attempts: number
+          delivery_error: string | null
+          id: string
+          message: string
+          retention_tier: string
+          user_id: string
+        }
+        Insert: {
+          claimed_at?: string | null
+          created_at?: string
+          deliver_on: string
+          delivered_at?: string | null
+          delivery_attempts?: number
+          delivery_error?: string | null
+          id?: string
+          message: string
+          retention_tier?: string
+          user_id: string
+        }
+        Update: {
+          claimed_at?: string | null
+          created_at?: string
+          deliver_on?: string
+          delivered_at?: string | null
+          delivery_attempts?: number
+          delivery_error?: string | null
+          id?: string
+          message?: string
+          retention_tier?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

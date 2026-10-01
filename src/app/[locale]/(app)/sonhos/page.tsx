@@ -5,6 +5,9 @@ import { DreamForm } from "@/components/dreams/DreamForm";
 import { DreamCard } from "@/components/dreams/DreamCard";
 import { SonhosTabs } from "@/components/dreams/SonhosTabs";
 import { DreamBoard } from "@/components/dreams/board/DreamBoard";
+import { TimeCapsule } from "@/components/dreams/capsule/TimeCapsule";
+import { capsuleDateBounds } from "@/lib/capsules/config";
+import { todayInTimeZone } from "@/lib/utils/dates";
 import type { BoardItem } from "@/components/dreams/board/types";
 
 const SIGNED_URL_TTL_SECONDS = 60 * 60;
@@ -16,7 +19,13 @@ export default async function SonhosPage() {
   } = await supabase.auth.getUser();
   const t = await getTranslations("sonhos");
 
-  const [{ data: dreams }, { data: boardItems }, { data: boardComments }] =
+  const [
+    { data: dreams },
+    { data: boardItems },
+    { data: boardComments },
+    { data: capsules },
+    { data: profile },
+  ] =
     await Promise.all([
       supabase
         .from("dreams")
@@ -33,6 +42,12 @@ export default async function SonhosPage() {
         .select("*")
         .eq("user_id", user!.id)
         .order("created_at", { ascending: true }),
+      supabase
+        .from("time_capsules")
+        .select("*")
+        .eq("user_id", user!.id)
+        .order("deliver_on", { ascending: true }),
+      supabase.from("profiles").select("timezone").eq("id", user!.id).single(),
     ]);
 
   const imagePaths = (boardItems ?? [])
@@ -58,6 +73,10 @@ export default async function SonhosPage() {
     comments: (boardComments ?? []).filter((c) => c.item_id === item.id),
   }));
 
+  const { min: capsuleMin, max: capsuleMax } = capsuleDateBounds(
+    todayInTimeZone(profile?.timezone ?? "America/Sao_Paulo"),
+  );
+
   const list = (
     <div className="space-y-6">
       <DreamForm />
@@ -76,7 +95,17 @@ export default async function SonhosPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6 px-4 py-6">
       <h1 className="text-xl font-semibold">{t("title")}</h1>
-      <SonhosTabs listContent={list} boardContent={<DreamBoard items={items} />} />
+      <SonhosTabs
+        listContent={list}
+        boardContent={<DreamBoard items={items} />}
+        capsuleContent={
+          <TimeCapsule
+            capsules={capsules ?? []}
+            minDate={capsuleMin}
+            maxDate={capsuleMax}
+          />
+        }
+      />
     </div>
   );
 }

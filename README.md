@@ -20,10 +20,26 @@ Plataforma de desenvolvimento pessoal e planejamento de vida, instalável como P
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY` (uso restrito a `src/lib/supabase/admin.ts`, nunca exposto ao client)
    - `NEXT_PUBLIC_SITE_URL` (usado no redirect de confirmação de e-mail)
-3. Gere os tipos reais do banco (substitui o arquivo hand-authored):
+3. **Cápsula do Tempo** (e-mail agendado) — veja a seção abaixo para `RESEND_API_KEY`, `RESEND_FROM_EMAIL` e `CRON_SECRET`.
+4. Gere os tipos reais do banco (substitui o arquivo hand-authored):
    ```bash
    supabase gen types typescript --linked > src/lib/types/database.types.ts
    ```
+
+## Cápsula do Tempo (e-mail agendado)
+
+As cápsulas são enviadas por um job diário que chama `GET /api/cron/deliver-capsules`. Para ativar:
+
+1. Crie uma conta no [Resend](https://resend.com), verifique o domínio de envio e gere uma API key.
+2. Defina no ambiente (`.env.local` e no provedor de hospedagem):
+   - `RESEND_API_KEY`
+   - `RESEND_FROM_EMAIL` — ex.: `Plano A <capsula@seu-dominio.com>` (precisa ser de um domínio verificado)
+   - `CRON_SECRET` — um segredo longo e aleatório; a rota responde `401` sem `Authorization: Bearer <CRON_SECRET>`
+3. Agende a chamada:
+   - **Vercel**: o `vercel.json` já agenda o job todo dia às 12:00 UTC (09:00 em Brasília). Com `CRON_SECRET` definido no projeto, a Vercel envia o header `Authorization` automaticamente. No plano Hobby, crons só podem rodar uma vez por dia.
+   - **Outro host**: agende `curl -H "Authorization: Bearer $CRON_SECRET" https://SEU-DOMINIO/api/cron/deliver-capsules` uma vez por dia.
+
+A entrega é idempotente (cada cápsula é "reivindicada" antes do envio) e falhas são tentadas de novo nas execuções seguintes, até 5 vezes. A data de envio vale no fuso horário do usuário (Configurações).
 
 ## Rodando localmente
 

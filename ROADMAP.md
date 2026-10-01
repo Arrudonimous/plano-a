@@ -18,7 +18,7 @@
 ## Backlog — Minha Visão (grupo)
 
 - [x] Mural dos Sonhos / Vision Board: aba "Mural" em Sonhos com imagens (upload direto ao Supabase Storage, redimensionadas no navegador) e textos, comentários e editar/excluir. Pendente: export/compartilhamento (ver Share Cards) e aplicar a migration `0007_dream_board.sql` no projeto Supabase real
-- [ ] Cápsula do Tempo (a pessoa escreve o que quer conquistar, escolhe um prazo, e o app envia por e-mail nessa data via Resend; mensagens seladas para o futuro, abertura agendada; design deve contemplar desde já a cobrança por período de retenção estendida — feature paga, ainda que a implementação de billing venha depois)
+- [x] Cápsula do Tempo: aba "Cápsula" em Sonhos (mensagem + data de envio, até 1 ano), e-mail via Resend por job diário (`/api/cron/deliver-capsules`, idempotente, com retentativas). O design já prevê a retenção estendida paga (`retention_tier = 'extended'`, hoje bloqueada por RLS); a cobrança em si depende do item "Pagamentos e assinaturas". Pendente para entrar no ar: aplicar `0008_time_capsules.sql`, configurar Resend/`CRON_SECRET` (ver README). Observação: o conteúdo de cápsulas pendentes fica oculto na interface, mas o próprio dono ainda consegue lê-lo via API
 - [ ] Gratidão (registro de gratidão)
 
 ## Backlog — Minha Ação (grupo, estendido)
@@ -47,5 +47,5 @@
 
 - Cada item acima deve virar uma issue própria quando entrar em planejamento; ao iniciar o trabalho, mover para "Em progresso" nesta seção e linkar o PR.
 - O grafo do `graphify` deste projeto deve ser gerado/atualizado com `plano-a/` como working root — nunca a partir da raiz `Freelancer/`.
-- Supabase Storage agora existe (bucket privado `dream-board`, policies por pasta `<user_id>/` na migration 0007) e pode ser reutilizado. Gaps de infra que Cápsula do Tempo e Afirmações ainda vão exigir do zero: um mecanismo de cron/agendamento (necessário tanto para Cápsula do Tempo quanto para Afirmações — vale decidir uma solução única e reutilizável para as duas).
+- Supabase Storage agora existe (bucket privado `dream-board`, policies por pasta `<user_id>/` na migration 0007) e pode ser reutilizado. Cron/agendamento agora existe (rota protegida por `CRON_SECRET` + `vercel.json`) e e-mail transacional via Resend (`src/lib/email/resend.ts`); ambos são reutilizáveis para as Afirmações.
 - Preocupação de posicionamento de produto: hoje o app está parecendo mais um app de planejamento do que algo que guia a pessoa a se desenvolver. Não está claro se completar o restante do backlog (mural, cápsula, afirmações, mentalização) resolve isso — tratar como questão de posicionamento de produto, não só de features faltando.

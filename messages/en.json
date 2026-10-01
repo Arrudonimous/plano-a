@@ -58,7 +58,8 @@
     "realizedMessage": "You made this dream happen. ✨",
     "confirmDelete": "Delete this dream?",
     "tabList": "List",
-    "tabBoard": "Board"
+    "tabBoard": "Board",
+    "tabCapsule": "Capsule"
   },
   "mural": {
     "placeholder": "Write a phrase, affirmation or caption...",
@@ -121,5 +122,28 @@
     "installBody": "Install the app for faster access, right from your home screen.",
     "iosInstallHint": "Tap Share, then \"Add to Home Screen\" to install Plano A.",
     "dismiss": "Not now"
+  },
+  "capsula": {
+    "intro": "Write a message to your future self: what do you want to have achieved? Pick a date and we'll email it to you that day.",
+    "messagePlaceholder": "A while from now I want to have...",
+    "deliverOn": "Send on",
+    "seal": "Seal capsule",
+    "sealing": "Sealing...",
+    "limitHint": "Up to 1 year ahead. Longer periods will come with an extended retention plan (coming soon).",
+    "sealed": "Capsule sealed. It will reach your inbox on the chosen date.",
+    "empty": "No capsules yet. Why not write the first one to your future self?",
+    "sealedUntil": "Sealed · will be sent on {date}",
+    "sealedNote": "Written on {date}. The content stays sealed until the delivery date.",
+    "deliveredOn": "Sent on {date}",
+    "deliveryFailed": "This capsule could not be sent",
+    "cancelCapsule": "Cancel capsule",
+    "confirmDeletePending": "Cancel this capsule? The message will be deleted and won't be sent.",
+    "confirmDeleteDelivered": "Delete this capsule?",
+    "errorMessage": "Write a message.",
+    "errorTooLong": "The message is too long (max 5,000 characters).",
+    "errorDate": "Choose a delivery date.",
+    "errorDatePast": "The delivery date must be tomorrow or later.",
+    "errorDateTooFar": "On the free plan the maximum is 1 year.",
+    "errorGeneric": "Couldn't seal the capsule. Please try again."
   }
 }
