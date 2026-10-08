@@ -8,8 +8,10 @@ export interface TabItem {
   content: ReactNode;
 }
 
-export function Tabs({ tabs }: { tabs: TabItem[] }) {
-  const [active, setActive] = useState(tabs[0]?.id);
+export function Tabs({ tabs, initial }: { tabs: TabItem[]; initial?: string }) {
+  const [active, setActive] = useState(
+    tabs.some((tab) => tab.id === initial) ? initial : tabs[0]?.id,
+  );
 
   return (
     <div>

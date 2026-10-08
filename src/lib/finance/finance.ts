@@ -122,3 +122,140 @@ export function parseMoneyToCents(input: string): number | null {
   const cents = Number(integerPart || "0") * 100 + Number(decimalPart.padEnd(2, "0") || "0");
   return Number.isSafeInteger(cents) && cents <= 100_000_000_000 ? cents : null;
 }
+
+// ------------------------------------------------------------------ moedas
+
+export const SUPPORTED_CURRENCIES = [
+  "BRL", "USD", "EUR", "GBP", "ARS", "MXN", "CLP", "COP", "PEN", "UYU", "CAD", "AUD", "JPY", "CHF",
+] as const;
+
+export function isSupportedCurrency(value: string): boolean {
+  return (SUPPORTED_CURRENCIES as readonly string[]).includes(value);
+}
+
+/** Cotações: unidades de cada moeda por 1 USD (USD = 1). */
+export type Rates = Record<string, number>;
+
+/**
+ * Converte centavos entre moedas pela cotação em USD. Devolve null quando falta
+ * a cotação de uma das moedas (o chamador decide o que mostrar).
+ */
+export function convertCents(cents: number, from: string, to: string, rates: Rates): number | null {
+  if (from === to) return cents;
+  const rateFrom = from === "USD" ? 1 : rates[from];
+  const rateTo = to === "USD" ? 1 : rates[to];
+  if (!rateFrom || !rateTo || rateFrom <= 0 || rateTo <= 0) return null;
+  return Math.round((cents / rateFrom) * rateTo);
+}
+
+export interface Converted {
+  /** Valor na moeda alvo; sem cotação, mantém o valor original e marca `missing`. */
+  cents: number;
+  missing: boolean;
+}
+
+export function makeConverter(rates: Rates, target: string) {
+  return (cents: number, currency: string): Converted => {
+    const converted = convertCents(cents, currency, target, rates);
+    return converted === null ? { cents, missing: true } : { cents: converted, missing: false };
+  };
+}
+
+// ------------------------------------------------------------------- dívidas
+
+export interface PayoffEstimate {
+  months: number;
+  totalInterestCents: number;
+}
+
+const MAX_PAYOFF_MONTHS = 600;
+
+/**
+ * Simula a quitação pagando a parcela todo mês, com juros compostos mensais
+ * (`ratePct` em % ao mês). null quando a parcela não cobre os juros (a dívida
+ * nunca zera) ou passa de 50 anos; sem juros usa a divisão simples.
+ */
+export function payoffWithInterest(
+  balanceCents: number,
+  paymentCents: number,
+  ratePct: number,
+): PayoffEstimate | null {
+  if (balanceCents <= 0) return { months: 0, totalInterestCents: 0 };
+  if (paymentCents <= 0) return null;
+
+  let balance = balanceCents;
+  let interestTotal = 0;
+  for (let months = 1; months <= MAX_PAYOFF_MONTHS; months++) {
+    const interest = Math.round(balance * (ratePct / 100));
+    balance += interest;
+    interestTotal += interest;
+    if (paymentCents >= balance) return { months, totalInterestCents: interestTotal };
+    balance -= paymentCents;
+    if (interest >= paymentCents) return null; // só cresce
+  }
+  return null;
+}
+
+// ---------------------------------------------------------------- lançamentos
+
+export const EXPENSE_CATEGORIES = [
+  "housing", "food", "transport", "health", "education", "leisure", "family", "debts", "other",
+] as const;
+export const INCOME_CATEGORIES = ["salary", "freelance", "investments", "other"] as const;
+
+export interface TxLike {
+  kind: string;
+  category: string;
+  amount_cents: number;
+}
+
+export interface MonthStats {
+  income: number;
+  expenses: number;
+  balance: number;
+  /** Despesas por categoria, da maior para a menor. */
+  byCategory: { category: string; cents: number }[];
+}
+
+export function monthStats(transactions: TxLike[]): MonthStats {
+  let income = 0;
+  let expenses = 0;
+  const byCategory = new Map<string, number>();
+  for (const tx of transactions) {
+    if (tx.kind === "income") income += tx.amount_cents;
+    else {
+      expenses += tx.amount_cents;
+      byCategory.set(tx.category, (byCategory.get(tx.category) ?? 0) + tx.amount_cents);
+    }
+  }
+  return {
+    income,
+    expenses,
+    balance: income - expenses,
+    byCategory: [...byCategory.entries()]
+      .map(([category, cents]) => ({ category, cents }))
+      .sort((a, b) => b.cents - a.cents),
+  };
+}
+
+/** YYYY-MM de uma data YYYY-MM-DD. */
+export function monthOf(isoDate: string): string {
+  return isoDate.slice(0, 7);
+}
+
+export function isValidMonth(value: string): boolean {
+  return /^\d{4}-(0[1-9]|1[0-2])$/.test(value);
+}
+
+export function shiftMonth(month: string, delta: number): string {
+  const [y, m] = month.split("-").map(Number);
+  const index = y * 12 + (m - 1) + delta;
+  return `${Math.floor(index / 12)}-${String((index % 12) + 1).padStart(2, "0")}`;
+}
+
+/** Primeiro e último dia (YYYY-MM-DD) de um mês YYYY-MM. */
+export function monthBounds(month: string): { start: string; end: string } {
+  const [y, m] = month.split("-").map(Number);
+  const last = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  return { start: `${month}-01`, end: `${month}-${String(last).padStart(2, "0")}` };
+}

@@ -2,7 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { parseMoneyToCents } from "@/lib/finance/finance";
+import {
+  EXPENSE_CATEGORIES,
+  INCOME_CATEGORIES,
+  isSupportedCurrency,
+  isValidMonth,
+  parseMoneyToCents,
+} from "@/lib/finance/finance";
 
 const MAX_NAME = 80;
 const MAX_CENTS = 100_000_000_000;
@@ -28,6 +34,19 @@ function readName(formData: FormData) {
   return String(formData.get("name") ?? "").trim().slice(0, MAX_NAME);
 }
 
+function readCurrency(formData: FormData): string | null {
+  const value = String(formData.get("currency") ?? "").trim().toUpperCase();
+  return isSupportedCurrency(value) ? value : null;
+}
+
+function readRate(formData: FormData): number | null {
+  const raw = String(formData.get("rate") ?? "").trim().replace(",", ".");
+  if (!raw) return 0;
+  if (!/^\d{1,3}(\.\d{1,3})?$/.test(raw)) return null;
+  const rate = Number(raw);
+  return rate >= 0 && rate <= 100 ? rate : null;
+}
+
 function readMoney(formData: FormData, field: string) {
   return parseMoneyToCents(String(formData.get(field) ?? ""));
 }
@@ -39,14 +58,15 @@ export async function addFinanceItem(
 ): Promise<FinanceFormState> {
   const name = readName(formData);
   const amount = readMoney(formData, "amount");
-  if (!name || !amount) return invalid();
+  const currency = readCurrency(formData);
+  if (!name || !amount || !currency) return invalid();
 
   const { supabase, user } = await getUserClient();
   if (!user) return invalid();
 
   const { error } = await supabase
     .from("finance_items")
-    .insert({ user_id: user.id, kind, name, amount_cents: amount });
+    .insert({ user_id: user.id, kind, name, amount_cents: amount, currency });
   if (error) return invalid();
 
   revalidateFinance();
@@ -68,7 +88,9 @@ export async function addDebt(
   const balance = readMoney(formData, "balance");
   const rawPayment = String(formData.get("payment") ?? "").trim();
   const payment = rawPayment ? readMoney(formData, "payment") : 0;
-  if (!name || balance === null || payment === null) return invalid();
+  const currency = readCurrency(formData);
+  const rate = readRate(formData);
+  if (!name || balance === null || payment === null || !currency || rate === null) return invalid();
 
   const { supabase, user } = await getUserClient();
   if (!user) return invalid();
@@ -78,6 +100,8 @@ export async function addDebt(
     name,
     balance_cents: balance,
     monthly_payment_cents: payment,
+    monthly_rate_pct: rate,
+    currency,
   });
   if (error) return invalid();
 
@@ -85,20 +109,23 @@ export async function addDebt(
   return saved();
 }
 
-export async function updateDebtBalance(
+export async function updateDebt(
   id: string,
   _prev: FinanceFormState,
   formData: FormData,
 ): Promise<FinanceFormState> {
   const balance = readMoney(formData, "balance");
-  if (balance === null) return invalid();
+  const rawPayment = String(formData.get("payment") ?? "").trim();
+  const payment = rawPayment ? readMoney(formData, "payment") : 0;
+  const rate = readRate(formData);
+  if (balance === null || payment === null || rate === null) return invalid();
 
   const { supabase, user } = await getUserClient();
   if (!user) return invalid();
 
   const { error } = await supabase
     .from("finance_debts")
-    .update({ balance_cents: balance })
+    .update({ balance_cents: balance, monthly_payment_cents: payment, monthly_rate_pct: rate })
     .eq("id", id);
   if (error) return invalid();
 
@@ -143,7 +170,9 @@ export async function addGoal(
   const name = readName(formData);
   const target = readMoney(formData, "target");
   const targetDate = String(formData.get("targetDate") ?? "").trim();
-  if (!name || !target) return invalid();
+  const dreamId = String(formData.get("dreamId") ?? "").trim();
+  const currency = readCurrency(formData);
+  if (!name || !target || !currency) return invalid();
 
   const { supabase, user } = await getUserClient();
   if (!user) return invalid();
@@ -153,6 +182,8 @@ export async function addGoal(
     name,
     target_cents: target,
     target_date: /^\d{4}-\d{2}-\d{2}$/.test(targetDate) ? targetDate : null,
+    dream_id: dreamId || null,
+    currency,
   });
   if (error) return invalid();
 
@@ -193,5 +224,53 @@ export async function deleteGoal(id: string) {
   const { supabase, user } = await getUserClient();
   if (!user) return;
   await supabase.from("finance_goals").delete().eq("id", id);
+  revalidateFinance();
+}
+
+export async function addTransaction(
+  _prev: FinanceFormState,
+  formData: FormData,
+): Promise<FinanceFormState> {
+  // "type" = "<kind>:<categoria>", ex.: "expense:food".
+  const [kind = "", category = ""] = String(formData.get("type") ?? "").split(":");
+  const date = String(formData.get("date") ?? "").trim();
+  const amount = readMoney(formData, "amount");
+  const currency = readCurrency(formData);
+  const description = String(formData.get("description") ?? "").trim().slice(0, 120);
+
+  const categories: readonly string[] =
+    kind === "income" ? INCOME_CATEGORIES : kind === "expense" ? EXPENSE_CATEGORIES : [];
+  if (
+    !categories.includes(category) ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(date) ||
+    !isValidMonth(date.slice(0, 7)) ||
+    !amount ||
+    !currency
+  ) {
+    return invalid();
+  }
+
+  const { supabase, user } = await getUserClient();
+  if (!user) return invalid();
+
+  const { error } = await supabase.from("finance_transactions").insert({
+    user_id: user.id,
+    occurred_on: date,
+    kind,
+    category,
+    description,
+    amount_cents: amount,
+    currency,
+  });
+  if (error) return invalid();
+
+  revalidateFinance();
+  return saved();
+}
+
+export async function deleteTransaction(id: string) {
+  const { supabase, user } = await getUserClient();
+  if (!user) return;
+  await supabase.from("finance_transactions").delete().eq("id", id);
   revalidateFinance();
 }

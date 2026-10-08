@@ -8,10 +8,12 @@ export function SummaryTab({
   summary,
   currency,
   hasData,
+  missingRates,
 }: {
   summary: FinanceSummary;
   currency: string;
   hasData: boolean;
+  missingRates: boolean;
 }) {
   const t = useTranslations("financeiro");
   const money = useMoney(currency);
@@ -28,6 +30,11 @@ export function SummaryTab({
 
   return (
     <div className="space-y-4">
+      {missingRates && (
+        <p role="status" className="rounded-xl bg-surface-muted p-3 text-xs text-muted-foreground">
+          {t("missingRates")}
+        </p>
+      )}
       <Card>
         <p className="text-xs font-medium text-accent">{t("monthlyBalance")}</p>
         <p className="mt-1 text-3xl font-semibold tracking-tight">{money(summary.surplus)}</p>
@@ -46,6 +53,7 @@ export function SummaryTab({
             </div>
           ))}
         </dl>
+        <p className="mt-3 text-xs text-muted-foreground">{t("convertedNote", { currency })}</p>
       </Card>
 
       <Card>

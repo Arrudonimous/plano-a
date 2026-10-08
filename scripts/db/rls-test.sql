@@ -112,6 +112,22 @@ select t.check(t.fails($q$insert into public.spirit_entries (user_id, entry_date
 select t.as_user('bbbbbbbb-0000-0000-0000-000000000002');
 select t.check(t.count('select 1 from public.spirit_entries') = 0, 'B não vê o espaço de A');
 
+-- ===== finanças v2 =====
+select t.as_user('aaaaaaaa-0000-0000-0000-000000000001');
+insert into public.dreams (id, user_id, description) values ('44444444-0000-0000-0000-000000000001', 'aaaaaaaa-0000-0000-0000-000000000001', 'sonho A2');
+insert into public.finance_goals (user_id, name, target_cents, dream_id) values ('aaaaaaaa-0000-0000-0000-000000000001', 'meta', 1000, '44444444-0000-0000-0000-000000000001');
+insert into public.finance_transactions (user_id, occurred_on, kind, category, amount_cents) values ('aaaaaaaa-0000-0000-0000-000000000001', current_date, 'expense', 'food', 500);
+select t.check(t.fails($q$insert into public.finance_transactions (user_id, occurred_on, kind, category, amount_cents) values ('aaaaaaaa-0000-0000-0000-000000000001', current_date, 'income', 'inexistente', 500)$q$), 'categoria inválida é recusada');
+select t.check(t.fails($q$insert into public.finance_items (user_id, kind, name, amount_cents, currency) values ('aaaaaaaa-0000-0000-0000-000000000001', 'income', 'x', 5, 'real')$q$), 'moeda fora do padrão ISO é recusada');
+select t.as_user('bbbbbbbb-0000-0000-0000-000000000002');
+select t.check(t.fails($q$insert into public.finance_goals (user_id, name, target_cents, dream_id) values ('bbbbbbbb-0000-0000-0000-000000000002', 'roubo', 1000, '44444444-0000-0000-0000-000000000001')$q$), 'B não liga meta ao sonho de A');
+select t.check(t.count('select 1 from public.finance_transactions') = 0, 'B não vê lançamentos de A');
+select t.check(t.fails($q$insert into public.exchange_rates values ('BRL', 5, now())$q$), 'usuário não escreve cotações');
+select t.as_service();
+insert into public.exchange_rates values ('BRL', 5, now());
+select t.as_user('bbbbbbbb-0000-0000-0000-000000000002');
+select t.check(t.count('select 1 from public.exchange_rates') = 1, 'usuário lê cotações');
+
 select t.as_super();
 rollback;
 \echo 'RLS: tudo certo.'

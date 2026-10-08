@@ -168,90 +168,6 @@ export type Database = {
         }
         Relationships: []
       }
-      finance_debts: {
-        Row: {
-          balance_cents: number
-          created_at: string
-          id: string
-          monthly_payment_cents: number
-          name: string
-          user_id: string
-        }
-        Insert: {
-          balance_cents: number
-          created_at?: string
-          id?: string
-          monthly_payment_cents?: number
-          name: string
-          user_id: string
-        }
-        Update: {
-          balance_cents?: number
-          created_at?: string
-          id?: string
-          monthly_payment_cents?: number
-          name?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
-      finance_goals: {
-        Row: {
-          created_at: string
-          id: string
-          name: string
-          saved_cents: number
-          target_cents: number
-          target_date: string | null
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          name: string
-          saved_cents?: number
-          target_cents: number
-          target_date?: string | null
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          name?: string
-          saved_cents?: number
-          target_cents?: number
-          target_date?: string | null
-          user_id?: string
-        }
-        Relationships: []
-      }
-      finance_items: {
-        Row: {
-          amount_cents: number
-          created_at: string
-          id: string
-          kind: string
-          name: string
-          user_id: string
-        }
-        Insert: {
-          amount_cents: number
-          created_at?: string
-          id?: string
-          kind: string
-          name: string
-          user_id: string
-        }
-        Update: {
-          amount_cents?: number
-          created_at?: string
-          id?: string
-          kind?: string
-          name?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
       finance_reserve: {
         Row: {
           balance_cents: number
@@ -480,6 +396,159 @@ export type Database = {
           kind?: string
           text?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      finance_items: {
+        Row: {
+          amount_cents: number
+          created_at: string
+          currency: string
+          id: string
+          kind: string
+          name: string
+          user_id: string
+        }
+        Insert: {
+          amount_cents: number
+          created_at?: string
+          currency?: string
+          id?: string
+          kind: string
+          name: string
+          user_id: string
+        }
+        Update: {
+          amount_cents?: number
+          created_at?: string
+          currency?: string
+          id?: string
+          kind?: string
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      finance_debts: {
+        Row: {
+          balance_cents: number
+          created_at: string
+          currency: string
+          id: string
+          monthly_payment_cents: number
+          monthly_rate_pct: number
+          name: string
+          user_id: string
+        }
+        Insert: {
+          balance_cents: number
+          created_at?: string
+          currency?: string
+          id?: string
+          monthly_payment_cents?: number
+          monthly_rate_pct?: number
+          name: string
+          user_id: string
+        }
+        Update: {
+          balance_cents?: number
+          created_at?: string
+          currency?: string
+          id?: string
+          monthly_payment_cents?: number
+          monthly_rate_pct?: number
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      finance_goals: {
+        Row: {
+          created_at: string
+          currency: string
+          dream_id: string | null
+          id: string
+          name: string
+          saved_cents: number
+          target_cents: number
+          target_date: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          dream_id?: string | null
+          id?: string
+          name: string
+          saved_cents?: number
+          target_cents: number
+          target_date?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          dream_id?: string | null
+          id?: string
+          name?: string
+          saved_cents?: number
+          target_cents?: number
+          target_date?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      finance_transactions: {
+        Row: {
+          amount_cents: number
+          category: string
+          created_at: string
+          currency: string
+          description: string
+          id: string
+          kind: string
+          occurred_on: string
+          user_id: string
+        }
+        Insert: {
+          amount_cents: number
+          category: string
+          created_at?: string
+          currency?: string
+          description?: string
+          id?: string
+          kind: string
+          occurred_on: string
+          user_id: string
+        }
+        Update: {
+          amount_cents?: number
+          category?: string
+          created_at?: string
+          currency?: string
+          description?: string
+          id?: string
+          kind?: string
+          occurred_on?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      exchange_rates: {
+        Row: {
+          currency: string
+          fetched_at: string
+          per_usd: number
+        }
+        Insert: {
+          currency: string
+          fetched_at?: string
+          per_usd: number
+        }
+        Update: {
+          currency?: string
+          fetched_at?: string
+          per_usd?: number
         }
         Relationships: []
       }

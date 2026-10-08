@@ -73,3 +73,63 @@ test("goalPercent e monthlyForGoal", () => {
   assert.equal(monthlyForGoal(goal, null, "2026-01-15"), null);
   assert.equal(monthlyForGoal({ target_cents: 10, saved_cents: 10 }, "2027-01-01", "2026-01-01"), 0);
 });
+
+import {
+  convertCents,
+  isValidMonth,
+  makeConverter,
+  monthBounds,
+  monthStats,
+  payoffWithInterest,
+  shiftMonth,
+} from "./finance.ts";
+
+test("convertCents usa USD como ponte e devolve null sem cotação", () => {
+  const rates = { BRL: 5, EUR: 0.5 };
+  assert.equal(convertCents(1000, "BRL", "BRL", rates), 1000);
+  assert.equal(convertCents(500, "BRL", "USD", rates), 100);
+  assert.equal(convertCents(100, "USD", "BRL", rates), 500);
+  assert.equal(convertCents(500, "BRL", "EUR", rates), 50);
+  assert.equal(convertCents(100, "USD", "XYZ", rates), null);
+  assert.equal(convertCents(100, "XYZ", "USD", rates), null);
+});
+
+test("makeConverter marca valores sem cotação em vez de perdê-los", () => {
+  const convert = makeConverter({ BRL: 5 }, "BRL");
+  assert.deepEqual(convert(700, "BRL"), { cents: 700, missing: false });
+  assert.deepEqual(convert(700, "JPY"), { cents: 700, missing: true });
+  assert.deepEqual(convert(100, "USD"), { cents: 500, missing: false });
+});
+
+test("payoffWithInterest", () => {
+  assert.deepEqual(payoffWithInterest(0, 0, 5), { months: 0, totalInterestCents: 0 });
+  assert.equal(payoffWithInterest(1000, 0, 1), null);
+  assert.deepEqual(payoffWithInterest(1000, 250, 0), { months: 4, totalInterestCents: 0 });
+  const withInterest = payoffWithInterest(100000, 10000, 2);
+  assert.ok(withInterest && withInterest.months > 10 && withInterest.totalInterestCents > 0);
+  // parcela menor ou igual aos juros: nunca quita
+  assert.equal(payoffWithInterest(100000, 2000, 2), null);
+});
+
+test("monthStats separa receita, despesa e categorias", () => {
+  const s = monthStats([
+    { kind: "income", category: "salary", amount_cents: 1000 },
+    { kind: "expense", category: "food", amount_cents: 200 },
+    { kind: "expense", category: "housing", amount_cents: 500 },
+    { kind: "expense", category: "food", amount_cents: 100 },
+  ]);
+  assert.equal(s.balance, 200);
+  assert.deepEqual(s.byCategory, [
+    { category: "housing", cents: 500 },
+    { category: "food", cents: 300 },
+  ]);
+});
+
+test("meses: validação, deslocamento e limites", () => {
+  assert.equal(isValidMonth("2026-12"), true);
+  assert.equal(isValidMonth("2026-13"), false);
+  assert.equal(isValidMonth("26-01"), false);
+  assert.equal(shiftMonth("2026-01", -1), "2025-12");
+  assert.equal(shiftMonth("2026-12", 1), "2027-01");
+  assert.deepEqual(monthBounds("2028-02"), { start: "2028-02-01", end: "2028-02-29" });
+});
