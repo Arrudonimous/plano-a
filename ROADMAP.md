@@ -24,7 +24,7 @@
 ## Backlog — Minha Ação (grupo, estendido)
 
 - [x] Planejamento / Projetos: terceira aba de Minha Ação (`/acao` → Projetos) e detalhe em `/acao/projetos/[id]`: passos ordenáveis (mover, editar, excluir), progresso, meta e sonho ligado opcionais, concluir/reabrir, e "Enviar para hoje" transforma um passo em ação do dia. Conta nas conquistas de Progresso (primeiro projeto, projeto concluído). Pendente para entrar no ar: aplicar `0011_projects.sql`
-- [ ] Plano Financeiro (receitas, despesas, dívidas, reserva, metas)
+- [x] Plano Financeiro v1: página `/financeiro` (atalho em Meu Dia) com Resumo (sobra do mês, cobertura da reserva), Orçamento (rendas e despesas mensais), Dívidas (saldo, parcela e estimativa de quitação sem juros), Reserva de emergência (meta em meses de custo) e Metas (valor guardado, sugestão de quanto guardar por mês até a data). Valores em centavos, numa única moeda (a preferida do perfil; sem conversão). Tom não punitivo quando a sobra é negativa. Fora do v1: lançamentos/extrato por data, categorias, juros nas dívidas, várias moedas, ligar meta a um sonho. Pendente para entrar no ar: aplicar `0012_finance.sql`
 - [ ] CLT → Negócio (jornada de transição de carreira)
 
 ## Backlog — Minha Evolução (grupo)
@@ -32,7 +32,7 @@
 - [x] Afirmações: página `/afirmacoes` com 3 afirmações novas por dia geradas pela API do Claude (personalizadas por sonhos/objetivos, sem repetir as recentes), com histórico e cartão "Afirmação do dia" em Meu Dia. Pendente para entrar no ar: aplicar `0009_affirmations.sql` e definir `ANTHROPIC_API_KEY`
 - [ ] Mentalizações (vídeos guiados) / Programas (conteúdo guiado)
 - [ ] Espiritualidade (Meu Espaço de Fé)
-- [x] Progresso / Conquistas: página `/progresso` com mapa da jornada (4 horizontes), mapa de constância (12 semanas) e 15 conquistas derivadas do histórico (sem tabela nova; nunca se perdem, sem marcar falhas). Lógica pura testada com `npm test`
+- [x] Progresso / Conquistas: página `/progresso` com mapa da jornada (4 horizontes), mapa de constância (12 semanas) e 17 conquistas derivadas do histórico (sem tabela nova; nunca se perdem, sem marcar falhas). Lógica pura testada com `npm test`
 
 ## Backlog — Plataforma / Infra
 

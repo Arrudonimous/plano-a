@@ -168,6 +168,111 @@ export type Database = {
         }
         Relationships: []
       }
+      finance_debts: {
+        Row: {
+          balance_cents: number
+          created_at: string
+          id: string
+          monthly_payment_cents: number
+          name: string
+          user_id: string
+        }
+        Insert: {
+          balance_cents: number
+          created_at?: string
+          id?: string
+          monthly_payment_cents?: number
+          name: string
+          user_id: string
+        }
+        Update: {
+          balance_cents?: number
+          created_at?: string
+          id?: string
+          monthly_payment_cents?: number
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      finance_goals: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          saved_cents: number
+          target_cents: number
+          target_date: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          saved_cents?: number
+          target_cents: number
+          target_date?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          saved_cents?: number
+          target_cents?: number
+          target_date?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      finance_items: {
+        Row: {
+          amount_cents: number
+          created_at: string
+          id: string
+          kind: string
+          name: string
+          user_id: string
+        }
+        Insert: {
+          amount_cents: number
+          created_at?: string
+          id?: string
+          kind: string
+          name: string
+          user_id: string
+        }
+        Update: {
+          amount_cents?: number
+          created_at?: string
+          id?: string
+          kind?: string
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      finance_reserve: {
+        Row: {
+          balance_cents: number
+          target_months: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          balance_cents?: number
+          target_months?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          balance_cents?: number
+          target_months?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       gratitude_entries: {
         Row: {
           created_at: string

@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { greetingPeriod, todayInTimeZone } from "@/lib/utils/dates";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
-import { ActionIcon, StarIcon, TargetIcon } from "@/components/nav/NavIcons";
+import { ActionIcon, StarIcon, TargetIcon, WalletIcon } from "@/components/nav/NavIcons";
 
 const GREETING_KEY = {
   morning: "greetingMorning",
@@ -108,6 +108,12 @@ export default async function HojePage() {
         habits: activeHabits.length,
       }),
       Icon: ActionIcon,
+    },
+    {
+      href: "/financeiro",
+      title: t("financeTile"),
+      summary: t("financeHint"),
+      Icon: WalletIcon,
     },
   ] as const;
 
