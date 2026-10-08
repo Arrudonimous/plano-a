@@ -90,7 +90,11 @@
     "errorEmpty": "Escreva algo ou escolha uma imagem.",
     "errorInvalid": "Escolha um arquivo de imagem.",
     "errorTooBig": "A imagem é muito grande (máx. 15 MB).",
-    "errorUpload": "Não foi possível enviar. Tente novamente."
+    "errorUpload": "Não foi possível enviar. Tente novamente.",
+    "export": "Exportar como imagem",
+    "exporting": "Montando imagem...",
+    "exportError": "Não foi possível exportar o mural agora.",
+    "exportTitle": "Meu Mural dos Sonhos"
   },
   "objetivos": {
     "title": "Meus Objetivos",
@@ -703,5 +707,15 @@
         "body": "Você pode excluir sua conta a qualquer momento em Configurações. Podemos suspender contas que violem estes termos. Podemos atualizar os termos, avisando mudanças relevantes. Fica eleito o foro do domicílio do consumidor para dirimir conflitos, aplicando-se a lei brasileira. Contato: {email}."
       }
     }
+  },
+  "share": {
+    "share": "Compartilhar",
+    "preparing": "Preparando...",
+    "error": "Não foi possível gerar a imagem.",
+    "shareText": "Meu progresso no Plano A. Sonhe. Planeje. Aja. Avance.",
+    "achievement": "Conquista desbloqueada",
+    "dreamRealized": "Sonho realizado",
+    "dreamLine": "Um passo de cada vez, chegou o dia.",
+    "tagline": "Sonhe. Planeje. Aja. Avance."
   }
 }

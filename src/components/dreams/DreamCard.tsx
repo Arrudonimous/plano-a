@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { deleteDream, toggleDreamRealized } from "@/lib/actions/dreams";
+import { ShareButton } from "@/components/share/ShareButton";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import type { Database } from "@/lib/types/database.types";
@@ -37,6 +38,7 @@ export function DreamCard({ dream }: { dream: Dream }) {
         >
           {isRealized ? t("unmarkRealized") : t("markRealized")}
         </Button>
+        {isRealized && <ShareButton type="dream" id={dream.id} fileName="plano-a-sonho-realizado" />}
         <Link
           href={`/sonhos/${dream.id}`}
           className="inline-flex items-center rounded-full border border-border px-3 py-1.5 text-xs hover:bg-surface-muted"

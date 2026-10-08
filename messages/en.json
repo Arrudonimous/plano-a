@@ -90,7 +90,11 @@
     "errorEmpty": "Write something or choose an image.",
     "errorInvalid": "Choose an image file.",
     "errorTooBig": "The image is too large (max 15 MB).",
-    "errorUpload": "Couldn't upload. Please try again."
+    "errorUpload": "Couldn't upload. Please try again.",
+    "export": "Export as image",
+    "exporting": "Building image...",
+    "exportError": "Could not export the board right now.",
+    "exportTitle": "My Dream Board"
   },
   "objetivos": {
     "title": "My Goals",
@@ -703,5 +707,15 @@
         "body": "You can delete your account anytime in Settings. We may suspend accounts that violate these terms. We may update the terms and will announce relevant changes. Brazilian law applies, and the consumer's home forum is chosen to settle disputes. Contact: {email}."
       }
     }
+  },
+  "share": {
+    "share": "Share",
+    "preparing": "Preparing...",
+    "error": "Could not create the image.",
+    "shareText": "My progress on Plano A. Dream. Plan. Act. Advance.",
+    "achievement": "Achievement unlocked",
+    "dreamRealized": "Dream come true",
+    "dreamLine": "One step at a time, the day has come.",
+    "tagline": "Dream. Plan. Act. Advance."
   }
 }

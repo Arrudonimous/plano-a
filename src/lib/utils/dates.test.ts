@@ -19,3 +19,17 @@ test("addDaysISO atravessa mês e ano bissexto", () => {
   assert.equal(addDaysISO("2026-12-31", 1), "2027-01-01");
   assert.equal(addDaysISO("2026-03-01", -1), "2026-02-28");
 });
+
+import { masonryLayout } from "./masonry.ts";
+
+test("masonryLayout coloca cada bloco na coluna mais curta", () => {
+  const { placements, height } = masonryLayout([100, 50, 50, 80], 2, 10);
+  assert.deepEqual(placements, [
+    { column: 0, y: 0 },
+    { column: 1, y: 0 },
+    { column: 1, y: 60 },
+    { column: 0, y: 110 },
+  ]);
+  assert.equal(height, 190);
+  assert.deepEqual(masonryLayout([], 2, 10), { placements: [], height: 0 });
+});

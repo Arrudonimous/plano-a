@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import type { Achievement } from "@/lib/progress/achievements";
+import { ShareButton } from "@/components/share/ShareButton";
 
 export function AchievementList({
   achievements,
@@ -36,6 +37,7 @@ export function AchievementList({
                 <span className="block text-xs text-muted-foreground">
                   {t(`achievements.${a.id}.description`)}
                 </span>
+                <ShareButton type="achievement" id={a.id} fileName={`plano-a-${a.id}`} />
               </span>
             </li>
           ))}
