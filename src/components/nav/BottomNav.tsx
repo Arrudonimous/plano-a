@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { MORE_HREFS } from "@/components/nav/modules";
 import { Link, usePathname } from "@/i18n/navigation";
 import {
   ActionIcon,
   HomeIcon,
-  SettingsIcon,
+  MoreIcon,
   StarIcon,
   TargetIcon,
 } from "@/components/nav/NavIcons";
@@ -15,7 +16,7 @@ const ITEMS = [
   { href: "/sonhos", labelKey: "sonhos", Icon: StarIcon },
   { href: "/objetivos", labelKey: "objetivos", Icon: TargetIcon },
   { href: "/acao", labelKey: "acao", Icon: ActionIcon },
-  { href: "/configuracoes", labelKey: "configuracoes", Icon: SettingsIcon },
+  { href: "/mais", labelKey: "mais", Icon: MoreIcon },
 ] as const;
 
 export function BottomNav() {
@@ -26,8 +27,10 @@ export function BottomNav() {
     <nav className="sticky bottom-0 z-10 border-t border-border bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/80">
       <ul className="mx-auto flex max-w-2xl items-stretch justify-between px-2">
         {ITEMS.map((item) => {
-          const isActive =
-            pathname === item.href || pathname.startsWith(`${item.href}/`);
+          const hrefs = item.href === "/mais" ? MORE_HREFS : [item.href];
+          const isActive = hrefs.some(
+            (href) => pathname === href || pathname.startsWith(`${href}/`),
+          );
           return (
             <li key={item.href} className="flex-1">
               <Link

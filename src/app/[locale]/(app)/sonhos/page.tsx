@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { loadCapsules } from "@/lib/capsules/load";
 import { createClient } from "@/lib/supabase/server";
 import { DREAM_BOARD_BUCKET } from "@/lib/dreamBoard";
 import { DreamForm } from "@/components/dreams/DreamForm";
@@ -23,7 +24,7 @@ export default async function SonhosPage() {
     { data: dreams },
     { data: boardItems },
     { data: boardComments },
-    { data: capsules },
+    capsules,
     { data: profile },
   ] =
     await Promise.all([
@@ -42,11 +43,7 @@ export default async function SonhosPage() {
         .select("*")
         .eq("user_id", user!.id)
         .order("created_at", { ascending: true }),
-      supabase
-        .from("time_capsules")
-        .select("*")
-        .eq("user_id", user!.id)
-        .order("deliver_on", { ascending: true }),
+      loadCapsules(supabase, user!.id),
       supabase.from("profiles").select("timezone").eq("id", user!.id).single(),
     ]);
 
@@ -100,7 +97,7 @@ export default async function SonhosPage() {
         boardContent={<DreamBoard items={items} />}
         capsuleContent={
           <TimeCapsule
-            capsules={capsules ?? []}
+            capsules={capsules}
             minDate={capsuleMin}
             maxDate={capsuleMax}
           />

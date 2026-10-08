@@ -64,3 +64,11 @@ export const WalletIcon = () => (
     <circle cx="15.5" cy="13.5" r="1" />
   </Icon>
 );
+
+export const MoreIcon = () => (
+  <Icon>
+    <circle cx="6" cy="12" r="1.2" />
+    <circle cx="12" cy="12" r="1.2" />
+    <circle cx="18" cy="12" r="1.2" />
+  </Icon>
+);

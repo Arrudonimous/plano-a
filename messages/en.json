@@ -13,7 +13,8 @@
     "sonhos": "Dreams",
     "objetivos": "Goals",
     "acao": "My Action",
-    "configuracoes": "Settings"
+    "configuracoes": "Settings",
+    "mais": "More"
   },
   "auth": {
     "loginTitle": "Log in",
@@ -155,7 +156,8 @@
     "errorDate": "Choose a delivery date.",
     "errorDatePast": "The delivery date must be tomorrow or later.",
     "errorDateTooFar": "On the free plan the maximum is 1 year.",
-    "errorGeneric": "Couldn't seal the capsule. Please try again."
+    "errorGeneric": "Couldn't seal the capsule. Please try again.",
+    "deliveredNote": "This message was sent to your email."
   },
   "afirmacoes": {
     "title": "Affirmations",
@@ -357,5 +359,28 @@
     "savedPlaceholder": "How much did you set aside?",
     "addSaving": "Log amount saved",
     "privacy": "Your figures stay in your account only and are not sent to third parties."
+  },
+  "mais": {
+    "title": "More",
+    "afirmacoes": {
+      "title": "Affirmations",
+      "hint": "Three fresh sentences a day, made for you"
+    },
+    "gratidao": {
+      "title": "Gratitude",
+      "hint": "Note what went well today"
+    },
+    "progresso": {
+      "title": "Progress",
+      "hint": "Your journey and achievements"
+    },
+    "financeiro": {
+      "title": "Financial Plan",
+      "hint": "Income, debts, reserve and goals"
+    },
+    "configuracoes": {
+      "title": "Settings",
+      "hint": "Language, currency, time zone and account"
+    }
   }
 }

@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import { CapsuleForm } from "@/components/dreams/capsule/CapsuleForm";
 import { CapsuleCard } from "@/components/dreams/capsule/CapsuleCard";
-import type { Database } from "@/lib/types/database.types";
+import type { CapsuleView } from "@/lib/capsules/load";
 
-type Capsule = Database["public"]["Tables"]["time_capsules"]["Row"];
+type Capsule = CapsuleView;
 
 export function TimeCapsule({
   capsules,

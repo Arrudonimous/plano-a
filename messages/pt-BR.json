@@ -13,7 +13,8 @@
     "sonhos": "Sonhos",
     "objetivos": "Objetivos",
     "acao": "Minha Ação",
-    "configuracoes": "Configurações"
+    "configuracoes": "Configurações",
+    "mais": "Mais"
   },
   "auth": {
     "loginTitle": "Entrar",
@@ -155,7 +156,8 @@
     "errorDate": "Escolha uma data de envio.",
     "errorDatePast": "A data de envio precisa ser a partir de amanhã.",
     "errorDateTooFar": "No plano gratuito o prazo máximo é de 1 ano.",
-    "errorGeneric": "Não foi possível selar a cápsula. Tente novamente."
+    "errorGeneric": "Não foi possível selar a cápsula. Tente novamente.",
+    "deliveredNote": "Esta mensagem foi enviada para o seu e-mail."
   },
   "afirmacoes": {
     "title": "Afirmações",
@@ -357,5 +359,28 @@
     "savedPlaceholder": "Quanto guardou agora?",
     "addSaving": "Registrar valor guardado",
     "privacy": "Seus valores ficam apenas na sua conta e não são enviados a terceiros."
+  },
+  "mais": {
+    "title": "Mais",
+    "afirmacoes": {
+      "title": "Afirmações",
+      "hint": "Três frases novas por dia, feitas para você"
+    },
+    "gratidao": {
+      "title": "Gratidão",
+      "hint": "Registre o que foi bom hoje"
+    },
+    "progresso": {
+      "title": "Progresso",
+      "hint": "Sua jornada e suas conquistas"
+    },
+    "financeiro": {
+      "title": "Plano Financeiro",
+      "hint": "Renda, dívidas, reserva e metas"
+    },
+    "configuracoes": {
+      "title": "Configurações",
+      "hint": "Idioma, moeda, fuso e conta"
+    }
   }
 }

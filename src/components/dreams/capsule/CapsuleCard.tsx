@@ -4,9 +4,9 @@ import { useFormatter, useTranslations } from "next-intl";
 import { deleteCapsule } from "@/lib/actions/capsules";
 import { CAPSULE_MAX_DELIVERY_ATTEMPTS } from "@/lib/capsules/config";
 import { Card } from "@/components/ui/Card";
-import type { Database } from "@/lib/types/database.types";
+import type { CapsuleView } from "@/lib/capsules/load";
 
-type Capsule = Database["public"]["Tables"]["time_capsules"]["Row"];
+type Capsule = CapsuleView;
 
 export function CapsuleCard({ capsule }: { capsule: Capsule }) {
   const t = useTranslations("capsula");
@@ -35,7 +35,7 @@ export function CapsuleCard({ capsule }: { capsule: Capsule }) {
 
       {delivered ? (
         <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed">
-          {capsule.message}
+          {capsule.message ?? t("deliveredNote")}
         </p>
       ) : (
         <p className="mt-2 text-sm text-muted-foreground">
