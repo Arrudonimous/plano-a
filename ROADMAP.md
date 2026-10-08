@@ -1,52 +1,56 @@
-# Plano A — Roadmap
+# Plano A: Roadmap
 
-## Status: Núcleo Essencial (v1) — concluído
+## Estado
 
-- [x] Scaffold Next.js (App Router) + PWA (Serwist) + i18n (next-intl) + Supabase
-- [x] Autenticação (cadastro/login/logout) via Supabase Auth
-- [x] Meu Dia
-- [x] Lista dos Sonhos
-- [x] Meus Objetivos (6 meses / 1 ano / 5 anos / 10 anos)
-- [x] Minha Ação — Hoje + Hábitos
-- [x] Aplicar as migrations em um projeto Supabase real e configurar `.env.local`
-- [x] Gerar `src/lib/types/database.types.ts` a partir do projeto real (`supabase gen types typescript`)
-- [x] Identidade visual final: acento âmbar sobre base creme/marinho, logo, ícones SVG na navegação e nova Página Inicial (hero, progresso do dia, atalhos). Ajustável via tokens em `globals.css`
-- [x] Ícones finais do PWA (gerados por `node scripts/generate-icons.mjs` a partir da marca)
-- [x] Corrigir tradução (i18n): mensagens de erro de login/cadastro traduzidas e seletor de idioma funcional adicionado em Configurações
-- [x] Meus Objetivos: onboarding via placeholders de exemplo por período + feedback de "Salvo"
+Todas as funcionalidades planejadas estão implementadas e testadas (unitários, banco/RLS e E2E contra um Supabase local). O que falta é **ligar os serviços reais e validar com pessoas**: veja [docs/LAUNCH.md](./docs/LAUNCH.md).
 
-## Backlog — Minha Visão (grupo)
+## Concluído
 
-- [x] Mural dos Sonhos / Vision Board: aba "Mural" em Sonhos com imagens (upload direto ao Supabase Storage, redimensionadas no navegador) e textos, comentários e editar/excluir. Pendente: export/compartilhamento (ver Share Cards) e aplicar a migration `0007_dream_board.sql` no projeto Supabase real
-- [x] Cápsula do Tempo: aba "Cápsula" em Sonhos (mensagem + data de envio, até 1 ano), e-mail via Resend por job diário (`/api/cron/deliver-capsules`, idempotente, com retentativas). O design já prevê a retenção estendida paga (`retention_tier = 'extended'`, hoje bloqueada por RLS); a cobrança em si depende do item "Pagamentos e assinaturas". Pendente para entrar no ar: aplicar `0008_time_capsules.sql`, configurar Resend/`CRON_SECRET` (ver README). Observação: o conteúdo de cápsulas pendentes fica oculto na interface, mas o próprio dono ainda consegue lê-lo via API
-- [x] Gratidão: página `/gratidao` (registros diários do que foi bom, agrupados por dia, com excluir); conta como "dia com passo" no Progresso. Pendente para entrar no ar: aplicar `0010_gratitude.sql`
+### v1: núcleo
+- [x] Auth, Meu Dia, Lista dos Sonhos, Meus Objetivos (6 meses / 1 / 5 / 10 anos), Minha Ação (hoje + hábitos), Configurações
+- [x] PWA (Serwist), i18n, identidade visual, ícones, seletor de idioma
 
-## Backlog — Minha Ação (grupo, estendido)
+### Minha Visão
+- [x] Mural dos Sonhos (upload direto ao Storage, comentários, exportar como imagem)
+- [x] Cápsula do Tempo (e-mail via Resend, selada no banco, retenção estendida de até 5 anos no Premium)
+- [x] Gratidão
 
-- [x] Planejamento / Projetos: terceira aba de Minha Ação (`/acao` → Projetos) e detalhe em `/acao/projetos/[id]`: passos ordenáveis (mover, editar, excluir), progresso, meta e sonho ligado opcionais, concluir/reabrir, e "Enviar para hoje" transforma um passo em ação do dia. Conta nas conquistas de Progresso (primeiro projeto, projeto concluído). Pendente para entrar no ar: aplicar `0011_projects.sql`
-- [x] Plano Financeiro v1: página `/financeiro` (atalho em Meu Dia) com Resumo (sobra do mês, cobertura da reserva), Orçamento (rendas e despesas mensais), Dívidas (saldo, parcela e estimativa de quitação sem juros), Reserva de emergência (meta em meses de custo) e Metas (valor guardado, sugestão de quanto guardar por mês até a data). Valores em centavos, numa única moeda (a preferida do perfil; sem conversão). Tom não punitivo quando a sobra é negativa. Fora do v1: lançamentos/extrato por data, categorias, juros nas dívidas, várias moedas, ligar meta a um sonho. Pendente para entrar no ar: aplicar `0012_finance.sql`
-- [ ] CLT → Negócio (jornada de transição de carreira)
+### Minha Ação
+- [x] Projetos com passos, "Enviar para hoje"
+- [x] Plano Financeiro: orçamento, lançamentos por mês e categoria, dívidas com juros, reserva, metas ligadas a sonhos, várias moedas com cotação diária
+- [x] Jornada CLT → Negócio (jornada guiada que vira projeto com os passos práticos)
 
-## Backlog — Minha Evolução (grupo)
+### Minha Evolução
+- [x] Afirmações diárias (Claude)
+- [x] Programas, Jornadas e Mentalizações (motor de conteúdo guiado com player YouTube/Vimeo/arquivo/Storage, progresso e acesso Premium por RLS)
+- [x] Meu Espaço (espiritualidade sem rótulo: reflexões, práticas, intenções, inspirações, pergunta do dia)
+- [x] Progresso e 21 conquistas derivadas do histórico; cartões de compartilhamento (imagem PNG)
 
-- [x] Afirmações: página `/afirmacoes` com 3 afirmações novas por dia geradas pela API do Claude (personalizadas por sonhos/objetivos, sem repetir as recentes), com histórico e cartão "Afirmação do dia" em Meu Dia. Pendente para entrar no ar: aplicar `0009_affirmations.sql` e definir `ANTHROPIC_API_KEY`
-- [ ] Mentalizações (vídeos guiados) / Programas (conteúdo guiado)
-- [ ] Espiritualidade (Meu Espaço de Fé)
-- [x] Progresso / Conquistas: página `/progresso` com mapa da jornada (4 horizontes), mapa de constância (12 semanas) e 17 conquistas derivadas do histórico (sem tabela nova; nunca se perdem, sem marcar falhas). Lógica pura testada com `npm test`
+### Plataforma
+- [x] Assinatura Premium (Stripe: checkout, portal, webhook com assinatura verificada)
+- [x] Painel /admin: CRUD de conteúdo, upload de mídia, métricas agregadas
+- [x] Analytics pseudonimizado, só com consentimento
+- [x] Espanhol completo (para revisão humana) e idioma preferido sincronizado com e-mails/afirmações
+- [x] Segurança: RLS testada, rate limiting, CSP e cabeçalhos, marca d'água em conteúdo premium, Storage por pasta, cronos protegidos
+- [x] Conta: exportar dados (JSON) e excluir conta (cancela assinatura, apaga arquivos)
+- [x] Páginas públicas de Privacidade e Termos (rascunho a revisar)
+- [x] Acessibilidade (axe: WCAG 2.1 AA nas telas principais), páginas de erro, registro de erros do servidor
+- [x] CI (tipos, lint, testes, traduções, build, migrations/RLS) e E2E
 
-## Backlog — Plataforma / Infra
+## Depende do dono (não dá para fazer no código)
 
-- [ ] Pagamentos e assinaturas (planos, cobrança)
-- [ ] Painel Admin / CMS (Academia, programas, conteúdo)
-- [ ] Analytics de produto (retenção, uso — respeitando privacidade)
-- [ ] Expansão i18n: tradução completa en/es (revisão humana, seletor pt-BR/en já implementado em Configurações), conversão de moeda
-- [ ] Hardening de proteção de conteúdo (screenshot protection, watermark em share cards, rate limiting, anti-scraping)
-- [ ] Share Cards (geração de imagem compartilhável para conquistas/sonhos/streaks)
-- [ ] Academia / CMS (cursos, conteúdo guiado)
+Ver [docs/LAUNCH.md](./docs/LAUNCH.md): aplicar migrations e configurar Supabase/Vercel/Resend/Anthropic/Stripe, testar com serviços e dispositivos reais, revisar conteúdo e textos jurídicos, definir preços, gravar mídias, revisão humana de en/es.
+
+## Ideias para depois do lançamento
+
+- Notificações push (lembrete gentil do dia, cápsula entregue)
+- Importação de extrato/Open Finance no Plano Financeiro
+- Novas jornadas e programas (o painel já suporta; é conteúdo)
+- Compartilhamento do progresso entre parceiros/família (hoje tudo é individual)
+- Migrar a CSP para nonce e adicionar legendas aos vídeos
+- Subir as 6 vulnerabilidades de dev (eslint/brace-expansion) quando houver versão compatível
 
 ## Notas
 
-- Cada item acima deve virar uma issue própria quando entrar em planejamento; ao iniciar o trabalho, mover para "Em progresso" nesta seção e linkar o PR.
-- O grafo do `graphify` deste projeto deve ser gerado/atualizado com `plano-a/` como working root — nunca a partir da raiz `Freelancer/`.
-- Supabase Storage agora existe (bucket privado `dream-board`, policies por pasta `<user_id>/` na migration 0007) e pode ser reutilizado. Cron/agendamento agora existe (rota protegida por `CRON_SECRET` + `vercel.json`) e e-mail transacional via Resend (`src/lib/email/resend.ts`); ambos são reutilizáveis para as Afirmações.
-- Preocupação de posicionamento de produto: hoje o app está parecendo mais um app de planejamento do que algo que guia a pessoa a se desenvolver. Não está claro se completar o restante do backlog (mural, cápsula, afirmações, mentalização) resolve isso — tratar como questão de posicionamento de produto, não só de features faltando.
+- O grafo do `graphify` deste projeto deve ser gerado/atualizado com `plano-a/` como working root, nunca a partir da raiz `Freelancer/`.
+- Preocupação de posicionamento: o app não pode parecer só um planejador; deve guiar a pessoa a se desenvolver. A home destaca "Sua jornada" e o conteúdo guiado está no centro do menu "Mais", mas isso é questão de produto e conteúdo, não só de funcionalidades.

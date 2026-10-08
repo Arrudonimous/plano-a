@@ -127,6 +127,13 @@ await step("cápsula estendida: assinante pode escolher data > 1 ano", async () 
   assert(sql(`select retention_tier from time_capsules where user_id='${uid}' and deliver_on > current_date + 400`) === "extended", "tier errado");
 });
 
+await step("conteúdo da jornada aparece em espanhol em /es", async () => {
+  await page.goto(`${BASE}/es/conteudo/clt-para-negocio`);
+  await page.getByText("Empleado → Negocio").first().waitFor();
+  await page.locator("summary", { hasText: "Claridad: por qué y para qué" }).click();
+  await page.getByText("Escribir en una página").waitFor();
+});
+
 await step("sem erros de console", async () => {
   assert(errors.length === 0, errors.join(" | ").slice(0, 400));
 });

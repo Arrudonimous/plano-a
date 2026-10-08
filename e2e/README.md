@@ -22,7 +22,7 @@ npm run build
 NODE_OPTIONS="--require $PWD/e2e/stub-fetch.cjs" npm start
 
 # 4. Em outro terminal:
-for f in smoke flows money-content admin-account integrations affirmations-failure api-security; do node e2e/$f.mjs || break; done
+for f in smoke flows money-content admin-account integrations affirmations-failure api-security sw-privacy a11y; do node e2e/$f.mjs || break; done
 ```
 
 Variáveis úteis: `E2E_BASE` (URL do app), `E2E_DB` (conexão do Postgres), `CHROMIUM` (caminho do navegador).

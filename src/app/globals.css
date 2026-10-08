@@ -7,13 +7,13 @@
   --surface-muted: #f0ece3;
   --primary: #1e2a4a;
   --primary-foreground: #ffffff;
-  --accent: #a8631f;
+  --accent: #9a5a1a;
   --accent-foreground: #ffffff;
   --hero-from: #1e2a4a;
   --hero-to: #34436b;
   --danger: #dc2626;
   --border: #e4ddd0;
-  --muted-foreground: #6b7280;
+  --muted-foreground: #5d6573;
 }
 
 @theme inline {

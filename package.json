@@ -7,14 +7,16 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test \"src/**/*.test.ts\""
+    "test": "node --test \"src/**/*.test.ts\"",
+    "check": "tsc --noEmit && eslint && npm test && node scripts/check-messages.mjs && node scripts/check-use-server.mjs",
+    "test:db": "./scripts/db/test.sh"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",
     "@serwist/next": "^9.5.12",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.116.0",
-    "next": "16.3.5",
+    "next": "16.3.8",
     "next-intl": "^4.14.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -26,8 +28,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axe-core": "^4.10.2",
     "eslint": "^9",
-    "eslint-config-next": "16.3.5",
+    "eslint-config-next": "^16.3.8",
     "supabase": "^2.117.0",
     "tailwindcss": "^4",
     "typescript": "^5"

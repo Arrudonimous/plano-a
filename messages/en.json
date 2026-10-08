@@ -722,5 +722,14 @@
     "dreamRealized": "Dream come true",
     "dreamLine": "One step at a time, the day has come.",
     "tagline": "Dream. Plan. Act. Advance."
+  },
+  "erro": {
+    "title": "Something went wrong",
+    "body": "Your data is safe. Try again; if it keeps happening, come back in a little while.",
+    "code": "Code: {code}",
+    "retry": "Try again",
+    "home": "Go to Today",
+    "notFoundTitle": "We couldn't find this page",
+    "notFoundBody": "The address may have changed or may not exist. How about going back to the start?"
   }
 }

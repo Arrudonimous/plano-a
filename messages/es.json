@@ -722,5 +722,14 @@
     "dreamRealized": "Sueño cumplido",
     "dreamLine": "Un paso a la vez, llegó el día.",
     "tagline": "Sueña. Planifica. Actúa. Avanza."
+  },
+  "erro": {
+    "title": "Algo salió mal",
+    "body": "Tus datos están seguros. Inténtalo de nuevo; si sigue pasando, vuelve en un rato.",
+    "code": "Código: {code}",
+    "retry": "Intentar de nuevo",
+    "home": "Ir a Hoy",
+    "notFoundTitle": "No encontramos esta página",
+    "notFoundBody": "Puede que la dirección haya cambiado o no exista. ¿Qué tal volver al inicio?"
   }
 }

@@ -37,9 +37,9 @@ export function ObjectivePeriodEditor({
 
   return (
     <form action={formAction} className="space-y-3">
-      <h3 className="text-sm font-semibold text-primary">
+      <h2 className="text-sm font-semibold text-primary">
         {t(PERIOD_LABEL_KEY[period])}
-      </h3>
+      </h2>
       <Textarea
         name="declaration"
         defaultValue={declaration}

@@ -56,6 +56,6 @@ jobs:
         env:
           CHROMIUM: ""
         run: |
-          for f in smoke flows money-content admin-account integrations affirmations-failure api-security; do
+          for f in smoke flows money-content admin-account integrations affirmations-failure api-security sw-privacy a11y; do
             node e2e/$f.mjs || exit 1
           done

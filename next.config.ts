@@ -50,7 +50,7 @@ const nextConfig: NextConfig = {
       { source: "/:path*", headers: securityHeaders },
       // Área logada não deve ser indexada nem guardada em cache compartilhado.
       {
-        source: "/:path((?!privacidade|termos|login|signup).*)",
+        source: "/:path((?!(?:en/|es/)?(?:privacidade|termos|login|signup)).*)",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];

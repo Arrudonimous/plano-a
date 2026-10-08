@@ -722,5 +722,14 @@
     "dreamRealized": "Sonho realizado",
     "dreamLine": "Um passo de cada vez, chegou o dia.",
     "tagline": "Sonhe. Planeje. Aja. Avance."
+  },
+  "erro": {
+    "title": "Algo saiu do previsto",
+    "body": "Seus dados estão seguros. Tente de novo; se continuar, volte daqui a pouco.",
+    "code": "Código: {code}",
+    "retry": "Tentar de novo",
+    "home": "Ir para Meu Dia",
+    "notFoundTitle": "Não encontramos esta página",
+    "notFoundBody": "O endereço pode ter mudado ou não existir. Que tal voltar ao começo?"
   }
 }
