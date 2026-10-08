@@ -70,8 +70,10 @@ export default async function SonhosPage() {
     comments: (boardComments ?? []).filter((c) => c.item_id === item.id),
   }));
 
+  const { data: premium } = await supabase.rpc("has_premium");
   const { min: capsuleMin, max: capsuleMax } = capsuleDateBounds(
     todayInTimeZone(profile?.timezone ?? "America/Sao_Paulo"),
+    Boolean(premium),
   );
 
   const list = (
@@ -100,6 +102,7 @@ export default async function SonhosPage() {
             capsules={capsules}
             minDate={capsuleMin}
             maxDate={capsuleMax}
+            premium={Boolean(premium)}
           />
         }
       />

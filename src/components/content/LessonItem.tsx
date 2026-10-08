@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { toggleLesson } from "@/lib/actions/content";
 import { localized, localizedList, parseBody } from "@/lib/content/localized";
 import type { LessonView } from "@/lib/content/load";
+import { Watermark } from "@/components/content/Watermark";
 
 function Player({ lesson, title }: { lesson: LessonView; title: string }) {
   const media = lesson.media;
@@ -26,9 +27,9 @@ function Player({ lesson, title }: { lesson: LessonView; title: string }) {
   }
   if (!lesson.playUrl) return null;
   return media.audio ? (
-    <audio controls preload="none" src={lesson.playUrl} className="w-full" />
+    <audio controls controlsList="nodownload" preload="none" src={lesson.playUrl} className="w-full" />
   ) : (
-    <video controls playsInline preload="metadata" src={lesson.playUrl} className="w-full rounded-xl bg-black" />
+    <video controls controlsList="nodownload" disablePictureInPicture playsInline preload="metadata" src={lesson.playUrl} className="w-full rounded-xl bg-black" />
   );
 }
 
@@ -36,11 +37,14 @@ export function LessonItem({
   lesson,
   index,
   canTrack,
+  watermark,
 }: {
   lesson: LessonView;
   index: number;
   /** Só rastreia progresso depois de iniciar o programa. */
   canTrack: boolean;
+  /** Texto da marca d'água (e-mail) em conteúdo premium. */
+  watermark?: string;
 }) {
   const t = useTranslations("conteudo");
   const locale = useLocale();
@@ -68,7 +72,9 @@ export function LessonItem({
             <span className="text-xs text-muted-foreground">{t("minutes", { count: lesson.duration_minutes })}</span>
           )}
         </summary>
-        <div className="space-y-3 border-t border-border px-4 py-4">
+        <div className="border-t border-border">
+        <WatermarkIf text={watermark}>
+        <div className="space-y-3 px-4 py-4">
           <Player lesson={lesson} title={title} />
           {blocks.map((block, i) =>
             block.type === "p" ? (
@@ -113,7 +119,13 @@ export function LessonItem({
             <p className="text-xs text-muted-foreground">{t("startToTrack")}</p>
           )}
         </div>
+        </WatermarkIf>
+        </div>
       </details>
     </li>
   );
+}
+
+function WatermarkIf({ text, children }: { text?: string; children: React.ReactNode }) {
+  return text ? <Watermark text={text}>{children}</Watermark> : <>{children}</>;
 }

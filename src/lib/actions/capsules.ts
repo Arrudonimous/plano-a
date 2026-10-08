@@ -37,15 +37,21 @@ export async function createCapsule(
     .select("timezone")
     .eq("id", user.id)
     .single();
-  const { min, max } = capsuleDateBounds(
+  const { data: premium } = await supabase.rpc("has_premium");
+  const { min, max, freeMax } = capsuleDateBounds(
     todayInTimeZone(profile?.timezone ?? "America/Sao_Paulo"),
+    Boolean(premium),
   );
   if (deliverOn < min) return { error: t("errorDatePast") };
-  if (deliverOn > max) return { error: t("errorDateTooFar") };
+  if (deliverOn > max) return { error: t(premium ? "errorDateTooFarPremium" : "errorDateTooFar") };
 
-  const { error } = await supabase
-    .from("time_capsules")
-    .insert({ user_id: user.id, message, deliver_on: deliverOn });
+  // Além de 1 ano só com retenção estendida (Premium); o banco também exige.
+  const { error } = await supabase.from("time_capsules").insert({
+    user_id: user.id,
+    message,
+    deliver_on: deliverOn,
+    retention_tier: deliverOn > freeMax ? "extended" : "free",
+  });
   if (error) return { error: t("errorGeneric") };
 
   revalidatePath("/sonhos");

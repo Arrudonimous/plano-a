@@ -9,16 +9,18 @@ export function TimeCapsule({
   capsules,
   minDate,
   maxDate,
+  premium,
 }: {
   capsules: Capsule[];
   minDate: string;
   maxDate: string;
+  premium: boolean;
 }) {
   const t = useTranslations("capsula");
 
   return (
     <div className="space-y-6">
-      <CapsuleForm minDate={minDate} maxDate={maxDate} />
+      <CapsuleForm minDate={minDate} maxDate={maxDate} premium={premium} />
       {capsules.length > 0 ? (
         <div className="space-y-3">
           {capsules.map((capsule) => (

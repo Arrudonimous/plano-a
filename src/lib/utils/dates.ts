@@ -36,3 +36,13 @@ export function greetingPeriod(timeZone: string): GreetingPeriod {
   if (hour < 18) return "afternoon";
   return "evening";
 }
+
+/** true se o nome é um fuso IANA reconhecido (um fuso inválido quebra o cálculo de datas). */
+export function isValidTimeZone(timeZone: string): boolean {
+  try {
+    new Intl.DateTimeFormat("en", { timeZone });
+    return Boolean(timeZone);
+  } catch {
+    return false;
+  }
+}

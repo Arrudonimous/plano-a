@@ -30,7 +30,9 @@
     "goToLogin": "Entrar",
     "tagline": "Sonhe. Planeje. Aja. Avance.",
     "missingFields": "Preencha e-mail e senha.",
-    "invalidCredentials": "E-mail ou senha incorretos."
+    "invalidCredentials": "E-mail ou senha incorretos.",
+    "tooManyAttempts": "Muitas tentativas. Aguarde alguns minutos e tente de novo.",
+    "legalNote": "Ao criar a conta, você concorda com os <terms>Termos de Uso</terms> e a <privacy>Política de Privacidade</privacy>."
   },
   "meuDia": {
     "greetingMorning": "Bom dia, {name}",
@@ -126,7 +128,27 @@
     "language": "Idioma",
     "currency": "Moeda",
     "timezone": "Fuso horário",
-    "saved": "Preferências salvas"
+    "saved": "Preferências salvas",
+    "privacyTitle": "Privacidade",
+    "analyticsLabel": "Ajudar a melhorar o Plano A",
+    "analyticsHint": "Compartilha eventos de uso anônimos (por exemplo, \"concluiu uma aula\"). Nunca enviamos o que você escreve. Você pode desligar quando quiser.",
+    "aiNote": "As Afirmações diárias usam inteligência artificial (Anthropic): seus sonhos e objetivos em aberto são enviados ao serviço apenas para gerar as frases.",
+    "privacyLink": "Política de privacidade",
+    "termsLink": "Termos de uso",
+    "dataTitle": "Seus dados",
+    "dataBody": "Baixe uma cópia de tudo que você registrou no Plano A, em formato JSON. Cápsulas ainda seladas só incluem a data.",
+    "exportButton": "Baixar meus dados",
+    "deleteTitle": "Excluir minha conta",
+    "deleteBody": "Apaga sua conta e todos os seus dados de forma permanente: sonhos, objetivos, finanças, registros, mural e cápsulas. Se houver assinatura ativa, ela será cancelada. Não dá para desfazer.",
+    "deleteType": "Para confirmar, digite seu e-mail ({email})",
+    "deleteConfirm": "Excluir a conta e todos os dados? Isso é permanente.",
+    "deleteButton": "Excluir minha conta",
+    "deleteError": {
+      "confirm": "O e-mail digitado não confere.",
+      "billing": "Não conseguimos cancelar sua assinatura agora. Tente de novo em instantes ou gerencie-a em Planos.",
+      "failed": "Não foi possível excluir a conta. Tente novamente.",
+      "limit": "Muitas tentativas. Aguarde um pouco."
+    }
   },
   "pwa": {
     "installButton": "Instalar Plano A",
@@ -141,7 +163,7 @@
     "deliverOn": "Enviar em",
     "seal": "Selar cápsula",
     "sealing": "Selando...",
-    "limitHint": "Prazo de até 1 ano. Prazos maiores virão com um plano de retenção estendida (em breve).",
+    "limitHint": "Prazo de até 1 ano no plano gratuito.",
     "sealed": "Cápsula selada. Ela chegará no seu e-mail na data escolhida.",
     "empty": "Nenhuma cápsula ainda. Que tal escrever a primeira para o seu eu do futuro?",
     "sealedUntil": "Selada · será enviada em {date}",
@@ -155,9 +177,12 @@
     "errorTooLong": "A mensagem é longa demais (máx. 5.000 caracteres).",
     "errorDate": "Escolha uma data de envio.",
     "errorDatePast": "A data de envio precisa ser a partir de amanhã.",
-    "errorDateTooFar": "No plano gratuito o prazo máximo é de 1 ano.",
+    "errorDateTooFar": "No plano gratuito o prazo máximo é de 1 ano. Veja os planos para prazos de até 5 anos.",
     "errorGeneric": "Não foi possível selar a cápsula. Tente novamente.",
-    "deliveredNote": "Esta mensagem foi enviada para o seu e-mail."
+    "deliveredNote": "Esta mensagem foi enviada para o seu e-mail.",
+    "limitHintPremium": "Como assinante, você pode escolher uma data de até 5 anos.",
+    "seePlans": "Ver planos",
+    "errorDateTooFarPremium": "O prazo máximo é de 5 anos."
   },
   "afirmacoes": {
     "title": "Afirmações",
@@ -450,6 +475,14 @@
     "espaco": {
       "title": "Meu Espaço",
       "hint": "Reflexões, práticas e intenções, do seu jeito"
+    },
+    "planos": {
+      "title": "Planos",
+      "hint": "Premium: conteúdo extra e cápsulas de até 5 anos"
+    },
+    "admin": {
+      "title": "Painel de conteúdo",
+      "hint": "Só para administradores"
     }
   },
   "conteudo": {
@@ -521,6 +554,154 @@
       "p12": "Que silêncio me faria bem hoje?",
       "p13": "O que me faz sentir parte de algo maior do que eu?",
       "p14": "Se eu confiasse mais, qual seria o próximo passo?"
+    }
+  },
+  "admin": {
+    "title": "Painel de conteúdo",
+    "metrics": "Métricas",
+    "metricsNote": "Dados agregados e pseudonimizados, apenas de quem consentiu. Nenhum texto das pessoas é coletado.",
+    "active7": "Ativos (7 dias)",
+    "active30": "Ativos (30 dias)",
+    "subscribers": "Assinantes",
+    "events30": "Eventos (30 dias)",
+    "noEvents": "Sem eventos ainda.",
+    "event": "Evento",
+    "total": "Total",
+    "people": "Pessoas",
+    "kinds": {
+      "program": "Programa",
+      "journey": "Jornada",
+      "meditation": "Mentalização"
+    },
+    "published": "Publicado",
+    "draft": "Rascunho",
+    "premium": "Premium",
+    "free": "Gratuito",
+    "newProgram": "Novo conteúdo",
+    "slugPlaceholder": "slug-do-conteudo",
+    "kind": "Tipo",
+    "titleLabel": "Título",
+    "summaryLabel": "Resumo",
+    "bodyLabel": "Texto da aula",
+    "create": "Criar",
+    "access": "Acesso",
+    "position": "Ordem",
+    "lessons": "Aulas",
+    "newLesson": "Nova aula",
+    "duration": "Duração (minutos)",
+    "stepsLabel": "Passos práticos",
+    "stepsHint": "um por linha",
+    "mediaLabel": "Mídia (URL do YouTube/Vimeo, arquivo https ou envio)",
+    "mediaPlaceholder": "https://youtu.be/... ou storage:...",
+    "mediaUpload": "Enviar arquivo de vídeo/áudio (até 50 MB)",
+    "uploading": "Enviando...",
+    "uploaded": "Arquivo enviado. Salve a aula para aplicar.",
+    "uploadError": "Não foi possível enviar (máx. 50 MB; só administradores enviam).",
+    "moveUp": "Mover para cima",
+    "moveDown": "Mover para baixo",
+    "confirmDeleteLesson": "Excluir esta aula?",
+    "confirmDeleteProgram": "Excluir este conteúdo e todas as aulas?"
+  },
+  "planos": {
+    "title": "Planos",
+    "subtitle": "O Plano A é gratuito para começar. O Premium libera conteúdos guiados extras e retenção estendida da Cápsula do Tempo.",
+    "premiumTitle": "Plano Premium",
+    "b1": "Programas, jornadas e mentalizações exclusivos",
+    "b2": "Cápsula do Tempo com prazo de até 5 anos",
+    "b3": "Novos conteúdos guiados todos os meses",
+    "b4": "Apoio ao desenvolvimento do Plano A",
+    "freeNote": "Tudo que você já usa continua gratuito: sonhos, objetivos, ações, hábitos, finanças, afirmações, gratidão e progresso.",
+    "monthly": "Mensal",
+    "yearly": "Anual",
+    "subscribe": "Assinar",
+    "active": "Você é assinante Premium. Obrigado!",
+    "renewsOn": "Renova em",
+    "endsOn": "Acesso até",
+    "manage": "Gerenciar assinatura",
+    "thanks": "Pagamento recebido! Sua assinatura será ativada em instantes.",
+    "soon": "As assinaturas ainda não estão abertas. Em breve!",
+    "cancelNote": "Você pode cancelar quando quiser, pelo portal de assinatura."
+  },
+  "legal": {
+    "updated": "Última atualização: outubro de 2026",
+    "draftNotice": "Rascunho informativo preparado com o produto. Deve ser revisado por um advogado antes do lançamento público.",
+    "privacy": {
+      "title": "Política de Privacidade",
+      "s1": {
+        "title": "1. Quem somos",
+        "body": "O Plano A é operado por {company} (\"nós\"), controladora dos dados pessoais tratados no aplicativo. Para falar sobre privacidade ou exercer seus direitos, escreva para {email}."
+      },
+      "s2": {
+        "title": "2. Dados que tratamos",
+        "body": "- Conta: e-mail e senha (a senha é guardada de forma protegida pelo provedor de autenticação).\n- Conteúdo que você registra: sonhos, objetivos, ações, hábitos, gratidão, registros do Meu Espaço, projetos, dados financeiros que você informa, imagens e textos do mural, mensagens da Cápsula do Tempo e progresso em aulas.\n- Preferências: idioma, moeda e fuso horário.\n- Assinatura: status e datas do plano. Os dados do cartão ficam com o processador de pagamentos; nós não os armazenamos.\n- Uso do aplicativo: somente se você marcar a opção de ajudar a melhorar o Plano A, em forma pseudonimizada e sem textos que você escreve."
+      },
+      "s3": {
+        "title": "3. Para que usamos e bases legais",
+        "body": "- Prestar o serviço que você contratou ao criar a conta (execução de contrato).\n- Enviar a Cápsula do Tempo no dia que você escolheu (execução de contrato).\n- Gerar as Afirmações diárias personalizadas (execução de contrato).\n- Processar assinaturas e cobranças (execução de contrato e obrigação legal).\n- Medir o uso para melhorar o produto (seu consentimento, que você pode retirar em Configurações).\n- Proteger o serviço contra abusos e fraudes (legítimo interesse)."
+      },
+      "s4": {
+        "title": "4. Com quem compartilhamos",
+        "body": "Usamos prestadores (operadores) que tratam dados em nosso nome, apenas para as finalidades acima:\n\n- Supabase: banco de dados, autenticação e armazenamento de arquivos.\n- Vercel: hospedagem do aplicativo.\n- Resend: envio do e-mail da Cápsula do Tempo (recebe seu e-mail e a mensagem).\n- Stripe: pagamentos e assinaturas.\n- Anthropic: geração das Afirmações (recebe textos dos seus sonhos e objetivos em aberto, sem seu e-mail).\n\nNão vendemos seus dados e não os usamos para publicidade."
+      },
+      "s5": {
+        "title": "5. Transferência internacional",
+        "body": "Alguns prestadores podem armazenar ou processar dados fora do Brasil. Adotamos contratos e garantias compatíveis com a LGPD para essas transferências."
+      },
+      "s6": {
+        "title": "6. Por quanto tempo guardamos",
+        "body": "Mantemos seus dados enquanto sua conta existir. Ao excluir a conta em Configurações, os dados são apagados do banco e os arquivos do mural são removidos; cópias de segurança podem levar um tempo limitado para expirar. Registros de pagamento podem ser mantidos pelo prazo exigido em lei. Eventos de uso pseudonimizados não permitem identificar você."
+      },
+      "s7": {
+        "title": "7. Seus direitos",
+        "body": "Pela LGPD você pode: confirmar que tratamos seus dados, acessá-los, corrigi-los, pedir portabilidade, eliminar dados, revogar consentimentos e pedir informações sobre compartilhamento.\n\nNo aplicativo você já pode baixar seus dados e excluir sua conta em Configurações. Para outros pedidos, escreva para {email}."
+      },
+      "s8": {
+        "title": "8. Segurança",
+        "body": "Usamos conexão criptografada, controle de acesso por usuário no banco de dados (cada pessoa só acessa os próprios dados), arquivos privados com links temporários e limites contra abuso. Nenhum sistema é totalmente invulnerável; em caso de incidente relevante, comunicaremos você e a autoridade competente conforme a lei."
+      },
+      "s9": {
+        "title": "9. Menores e alterações",
+        "body": "O Plano A é destinado a maiores de 18 anos. Podemos atualizar esta política; mudanças relevantes serão avisadas no aplicativo."
+      }
+    },
+    "terms": {
+      "title": "Termos de Uso",
+      "s1": {
+        "title": "1. Aceite",
+        "body": "Ao criar uma conta no Plano A, operado por {company}, você concorda com estes termos e com a Política de Privacidade. Se não concordar, não use o aplicativo."
+      },
+      "s2": {
+        "title": "2. O que é o Plano A",
+        "body": "Uma plataforma de desenvolvimento pessoal e planejamento de vida: sonhos, objetivos, ações, hábitos, finanças pessoais, conteúdo guiado e ferramentas de reflexão."
+      },
+      "s3": {
+        "title": "3. Sua conta",
+        "body": "Você é responsável por manter sua senha em segurança e pelas atividades na sua conta. Informe dados verdadeiros e tenha pelo menos 18 anos."
+      },
+      "s4": {
+        "title": "4. Não é aconselhamento profissional",
+        "body": "O conteúdo e as ferramentas têm finalidade educativa e de organização pessoal. Eles não substituem aconselhamento financeiro, contábil, jurídico, médico ou psicológico. Decisões importantes, como deixar um emprego ou assumir dívidas, devem considerar sua situação e, quando necessário, profissionais habilitados. Simulações (como quitação de dívidas) são estimativas e podem diferir da realidade."
+      },
+      "s5": {
+        "title": "5. Conteúdo gerado por inteligência artificial",
+        "body": "As Afirmações são geradas por IA a partir do que você registra e podem conter imprecisões. Use com discernimento."
+      },
+      "s6": {
+        "title": "6. Seu conteúdo",
+        "body": "O que você registra continua sendo seu. Você nos autoriza apenas a armazená-lo e processá-lo para operar o serviço para você. Não use o aplicativo para conteúdo ilegal ou que viole direitos de terceiros."
+      },
+      "s7": {
+        "title": "7. Planos pagos",
+        "body": "O plano Premium é uma assinatura recorrente cobrada pelo processador de pagamentos. Você pode cancelar a qualquer momento pelo portal de assinatura; o acesso segue até o fim do período já pago. Em compras feitas à distância, você tem direito de arrependimento em até 7 dias da contratação, conforme o Código de Defesa do Consumidor. Os preços mostrados na tela de planos são os vigentes."
+      },
+      "s8": {
+        "title": "8. Disponibilidade e responsabilidade",
+        "body": "Buscamos manter o serviço disponível e seguro, mas ele é oferecido \"como está\", sem garantia de funcionamento ininterrupto. Na extensão permitida em lei, não respondemos por danos indiretos decorrentes do uso do aplicativo."
+      },
+      "s9": {
+        "title": "9. Encerramento, alterações e foro",
+        "body": "Você pode excluir sua conta a qualquer momento em Configurações. Podemos suspender contas que violem estes termos. Podemos atualizar os termos, avisando mudanças relevantes. Fica eleito o foro do domicílio do consumidor para dirimir conflitos, aplicando-se a lei brasileira. Contato: {email}."
+      }
     }
   }
 }

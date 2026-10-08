@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { createCapsule, type CapsuleActionState } from "@/lib/actions/capsules";
 import { CAPSULE_MAX_MESSAGE_LENGTH } from "@/lib/capsules/config";
 import { Input } from "@/components/ui/Input";
@@ -10,7 +11,15 @@ import { Button } from "@/components/ui/Button";
 
 const initialState: CapsuleActionState = {};
 
-export function CapsuleForm({ minDate, maxDate }: { minDate: string; maxDate: string }) {
+export function CapsuleForm({
+  minDate,
+  maxDate,
+  premium,
+}: {
+  minDate: string;
+  maxDate: string;
+  premium: boolean;
+}) {
   const t = useTranslations("capsula");
   const [state, formAction, pending] = useActionState(createCapsule, initialState);
   const formRef = useRef<HTMLFormElement>(null);
@@ -45,7 +54,14 @@ export function CapsuleForm({ minDate, maxDate }: { minDate: string; maxDate: st
           {pending ? t("sealing") : t("seal")}
         </Button>
       </div>
-      <p className="text-xs text-muted-foreground">{t("limitHint")}</p>
+      <p className="text-xs text-muted-foreground">
+        {premium ? t("limitHintPremium") : t("limitHint")}{" "}
+        {!premium && (
+          <Link href="/planos" className="font-medium text-primary">
+            {t("seePlans")}
+          </Link>
+        )}
+      </p>
       {state.error && (
         <p role="alert" className="text-sm text-danger">
           {state.error}

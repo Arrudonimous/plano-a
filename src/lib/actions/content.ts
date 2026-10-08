@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
+import { track } from "@/lib/analytics";
 import { createClient } from "@/lib/supabase/server";
 import { localized, localizedList } from "@/lib/content/localized";
 
@@ -22,6 +23,7 @@ export async function startProgram(programId: string) {
     .from("program_enrollments")
     .upsert({ user_id: user.id, program_id: programId }, { onConflict: "user_id,program_id", ignoreDuplicates: true });
 
+  await track("program_started");
   revalidatePath("/conteudo/[slug]", "page");
 }
 
@@ -33,6 +35,7 @@ export async function toggleLesson(lessonId: string, done: boolean) {
     await supabase
       .from("lesson_progress")
       .upsert({ user_id: user.id, lesson_id: lessonId }, { onConflict: "user_id,lesson_id", ignoreDuplicates: true });
+    await track("lesson_done");
   } else {
     await supabase.from("lesson_progress").delete().eq("user_id", user.id).eq("lesson_id", lessonId);
   }
@@ -92,6 +95,7 @@ export async function createJourneyProject(programId: string) {
     .from("program_enrollments")
     .upsert({ user_id: user.id, program_id: programId, project_id: project.id }, { onConflict: "user_id,program_id" });
 
+  await track("journey_project_created");
   revalidatePath("/acao");
   redirect({ href: `/acao/projetos/${project.id}`, locale });
 }

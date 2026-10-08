@@ -76,7 +76,13 @@ export default async function ProgramPage({
           </div>
           <ol className="space-y-2">
             {lessons.map((lesson, index) => (
-              <LessonItem key={lesson.id} lesson={lesson} index={index} canTrack={enrolled} />
+              <LessonItem
+                key={lesson.id}
+                lesson={lesson}
+                index={index}
+                canTrack={enrolled}
+                watermark={program.access === "premium" ? user!.email ?? undefined : undefined}
+              />
             ))}
           </ol>
         </>

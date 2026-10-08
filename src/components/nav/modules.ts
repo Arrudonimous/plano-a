@@ -8,7 +8,8 @@ export const MORE_MODULES = [
   { href: "/gratidao", key: "gratidao" },
   { href: "/progresso", key: "progresso" },
   { href: "/financeiro", key: "financeiro" },
+  { href: "/planos", key: "planos" },
   { href: "/configuracoes", key: "configuracoes" },
 ] as const;
 
-export const MORE_HREFS: string[] = ["/mais", "/conteudo", ...MORE_MODULES.map((m) => m.href)];
+export const MORE_HREFS: string[] = ["/mais", "/conteudo", "/admin", ...MORE_MODULES.map((m) => m.href)];

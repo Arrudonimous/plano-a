@@ -128,6 +128,34 @@ insert into public.exchange_rates values ('BRL', 5, now());
 select t.as_user('bbbbbbbb-0000-0000-0000-000000000002');
 select t.check(t.count('select 1 from public.exchange_rates') = 1, 'usuário lê cotações');
 
+-- ===== analytics e cápsula estendida =====
+select t.as_user('aaaaaaaa-0000-0000-0000-000000000001');
+select t.check(t.fails('select * from public.analytics_events'), 'usuário não lê eventos de analytics');
+select t.check(t.fails($q$insert into public.analytics_events (event, user_hash) values ('x', 'h')$q$), 'usuário não grava eventos direto');
+select t.check(t.count('select * from public.analytics_summary(30)') = 0, 'não-admin recebe resumo vazio');
+select t.check(t.fails($q$insert into public.time_capsules (user_id, message, deliver_on, retention_tier) values ('aaaaaaaa-0000-0000-0000-000000000001', 'm', current_date + 900, 'extended')$q$), 'cápsula estendida exige premium');
+select t.as_super();
+update public.subscriptions set current_period_end = now() + interval '30 days' where user_id = 'aaaaaaaa-0000-0000-0000-000000000001';
+select t.as_user('aaaaaaaa-0000-0000-0000-000000000001');
+insert into public.time_capsules (user_id, message, deliver_on, retention_tier) values ('aaaaaaaa-0000-0000-0000-000000000001', 'm', current_date + 900, 'extended');
+select t.check(true, 'premium cria cápsula estendida');
+select t.check(t.fails($q$insert into public.time_capsules (user_id, message, deliver_on, retention_tier) values ('aaaaaaaa-0000-0000-0000-000000000001', 'm', current_date + 2500, 'extended')$q$), 'estendida tem teto de ~5 anos');
+select t.check(t.fails($q$insert into public.time_capsules (user_id, message, deliver_on) values ('aaaaaaaa-0000-0000-0000-000000000001', 'm', current_date + 900)$q$), 'gratuita continua limitada a 1 ano');
+select t.as_super();
+insert into public.analytics_events (event, user_hash) values ('lesson_done', 'h1'), ('lesson_done', 'h2'), ('program_started', 'h1');
+select t.as_user('cccccccc-0000-0000-0000-000000000003');
+select t.check((select total from public.analytics_summary(30) where event = 'lesson_done') = 2, 'admin vê o resumo de analytics');
+select t.check((select public.analytics_active_users(30)) = 2, 'admin vê usuários ativos');
+
+-- ===== rate limit =====
+select t.as_user('aaaaaaaa-0000-0000-0000-000000000001');
+select t.check(t.fails($q$select public.rate_limit_hit('k', 1, 60)$q$), 'usuário não chama o rate limit');
+select t.as_service();
+select t.check((select public.rate_limit_hit('teste', 2, 3600)), 'rate limit: 1ª chamada passa');
+select t.check((select public.rate_limit_hit('teste', 2, 3600)), 'rate limit: 2ª chamada passa');
+select t.check(not (select public.rate_limit_hit('teste', 2, 3600)), 'rate limit: 3ª chamada é bloqueada');
+select t.check((select public.rate_limit_hit('outra', 2, 3600)), 'rate limit: chaves são independentes');
+
 select t.as_super();
 rollback;
 \echo 'RLS: tudo certo.'

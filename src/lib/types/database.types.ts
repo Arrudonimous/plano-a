@@ -552,6 +552,48 @@ export type Database = {
         }
         Relationships: []
       }
+      analytics_events: {
+        Row: {
+          created_at: string
+          event: string
+          id: number
+          props: Json
+          user_hash: string
+        }
+        Insert: {
+          created_at?: string
+          event: string
+          id?: number
+          props?: Json
+          user_hash: string
+        }
+        Update: {
+          created_at?: string
+          event?: string
+          id?: number
+          props?: Json
+          user_hash?: string
+        }
+        Relationships: []
+      }
+      rate_limits: {
+        Row: {
+          hits: number
+          key: string
+          window_start: string
+        }
+        Insert: {
+          hits?: number
+          key: string
+          window_start: string
+        }
+        Update: {
+          hits?: number
+          key?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
       gratitude_entries: {
         Row: {
           created_at: string
@@ -658,6 +700,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          analytics_opt_in: boolean
           created_at: string
           display_name: string | null
           id: string
@@ -667,6 +710,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          analytics_opt_in?: boolean
           created_at?: string
           display_name?: string | null
           id: string
@@ -676,6 +720,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          analytics_opt_in?: boolean
           created_at?: string
           display_name?: string | null
           id?: string
@@ -812,7 +857,26 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      analytics_active_users: {
+        Args: { days: number }
+        Returns: number
+      }
+      analytics_summary: {
+        Args: { days: number }
+        Returns: { event: string; total: number; users: number }[]
+      }
+      has_premium: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      rate_limit_hit: {
+        Args: { p_key: string; p_max: number; p_window_seconds: number }
+        Returns: boolean
+      }
+      is_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
     }
     Enums: {
       objective_period: "6_MONTHS" | "1_YEAR" | "5_YEARS" | "10_YEARS"

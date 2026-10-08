@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getTranslations } from "next-intl/server";
+import { rateLimit } from "@/lib/rateLimit";
 import { createClient } from "@/lib/supabase/server";
 import { addDaysISO, todayInTimeZone } from "@/lib/utils/dates";
 import { AFFIRMATIONS_AVOID_REPEAT_DAYS } from "@/lib/affirmations/config";
@@ -36,6 +37,9 @@ export async function generateTodaysAffirmations(): Promise<AffirmationActionSta
     .eq("for_date", today)
     .limit(1);
   if (existing && existing.length > 0) return { success: true };
+
+  // Cada tentativa pode custar uma chamada à API: limita falhas repetidas.
+  if (!(await rateLimit(`affirmations:${user.id}`, 6, 3600))) return { error: t("errorGeneric") };
 
   const [{ data: dreams }, { data: objectives }, { data: recent }] = await Promise.all([
     supabase

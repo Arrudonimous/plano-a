@@ -43,13 +43,27 @@ export default function SignupPage() {
             type="password"
             name="password"
             required
-            minLength={6}
+            minLength={8}
           />
         </div>
         {state.error && <p className="text-sm text-danger">{state.error}</p>}
         <Button type="submit" disabled={pending} className="w-full">
           {t("signupButton")}
         </Button>
+        <p className="text-center text-xs text-muted-foreground">
+          {t.rich("legalNote", {
+            terms: (chunks) => (
+              <Link href="/termos" className="underline">
+                {chunks}
+              </Link>
+            ),
+            privacy: (chunks) => (
+              <Link href="/privacidade" className="underline">
+                {chunks}
+              </Link>
+            ),
+          })}
+        </p>
       </form>
 
       <p className="text-center text-sm text-muted-foreground">

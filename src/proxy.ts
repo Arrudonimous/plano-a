@@ -6,6 +6,8 @@ import { getUserForRequest } from "@/lib/supabase/middleware";
 const intlMiddleware = createIntlMiddleware(routing);
 
 const AUTH_PATHS = ["/login", "/signup"];
+// Páginas públicas (acessíveis sem login).
+const PUBLIC_PATHS = ["/privacidade", "/termos"];
 
 function getLocaleFromPathname(pathname: string): string | null {
   for (const locale of routing.locales) {
@@ -33,7 +35,7 @@ export async function proxy(request: NextRequest) {
 
   const isAuthPath = AUTH_PATHS.includes(pathWithoutLocale);
 
-  if (!user && !isAuthPath) {
+  if (!user && !isAuthPath && !PUBLIC_PATHS.includes(pathWithoutLocale)) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = withLocalePrefix(locale, "/login");
     return NextResponse.redirect(loginUrl);
@@ -50,6 +52,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|auth|_next|favicon.ico|manifest.webmanifest|sw.js|icons/).*)",
+    "/((?!api|auth|_next|favicon.ico|manifest.webmanifest|sw.js|robots.txt|sitemap.xml|icons/).*)",
   ],
 };

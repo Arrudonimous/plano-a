@@ -30,7 +30,9 @@
     "goToLogin": "Log in",
     "tagline": "Dream. Plan. Act. Move forward.",
     "missingFields": "Please fill in email and password.",
-    "invalidCredentials": "Incorrect email or password."
+    "invalidCredentials": "Incorrect email or password.",
+    "tooManyAttempts": "Too many attempts. Please wait a few minutes and try again.",
+    "legalNote": "By creating an account you agree to the <terms>Terms of Use</terms> and the <privacy>Privacy Policy</privacy>."
   },
   "meuDia": {
     "greetingMorning": "Good morning, {name}",
@@ -126,7 +128,27 @@
     "language": "Language",
     "currency": "Currency",
     "timezone": "Timezone",
-    "saved": "Preferences saved"
+    "saved": "Preferences saved",
+    "privacyTitle": "Privacy",
+    "analyticsLabel": "Help improve Plano A",
+    "analyticsHint": "Shares anonymous usage events (for example, \"completed a lesson\"). We never send what you write. You can turn it off anytime.",
+    "aiNote": "Daily Affirmations use artificial intelligence (Anthropic): your open dreams and goals are sent to the service only to generate the sentences.",
+    "privacyLink": "Privacy policy",
+    "termsLink": "Terms of use",
+    "dataTitle": "Your data",
+    "dataBody": "Download a copy of everything you recorded in Plano A, in JSON format. Capsules still sealed include only the date.",
+    "exportButton": "Download my data",
+    "deleteTitle": "Delete my account",
+    "deleteBody": "Permanently deletes your account and all your data: dreams, goals, finances, entries, board and capsules. If there is an active subscription it will be canceled. This cannot be undone.",
+    "deleteType": "To confirm, type your email ({email})",
+    "deleteConfirm": "Delete the account and all data? This is permanent.",
+    "deleteButton": "Delete my account",
+    "deleteError": {
+      "confirm": "The email you typed does not match.",
+      "billing": "We could not cancel your subscription right now. Try again shortly or manage it in Plans.",
+      "failed": "Could not delete the account. Please try again.",
+      "limit": "Too many attempts. Please wait a moment."
+    }
   },
   "pwa": {
     "installButton": "Install Plano A",
@@ -141,7 +163,7 @@
     "deliverOn": "Send on",
     "seal": "Seal capsule",
     "sealing": "Sealing...",
-    "limitHint": "Up to 1 year ahead. Longer periods will come with an extended retention plan (coming soon).",
+    "limitHint": "Up to 1 year on the free plan.",
     "sealed": "Capsule sealed. It will reach your inbox on the chosen date.",
     "empty": "No capsules yet. Why not write the first one to your future self?",
     "sealedUntil": "Sealed · will be sent on {date}",
@@ -155,9 +177,12 @@
     "errorTooLong": "The message is too long (max 5,000 characters).",
     "errorDate": "Choose a delivery date.",
     "errorDatePast": "The delivery date must be tomorrow or later.",
-    "errorDateTooFar": "On the free plan the maximum is 1 year.",
+    "errorDateTooFar": "On the free plan the maximum is 1 year. See the plans for up to 5 years.",
     "errorGeneric": "Couldn't seal the capsule. Please try again.",
-    "deliveredNote": "This message was sent to your email."
+    "deliveredNote": "This message was sent to your email.",
+    "limitHintPremium": "As a subscriber you can choose a date up to 5 years away.",
+    "seePlans": "See plans",
+    "errorDateTooFarPremium": "The maximum is 5 years."
   },
   "afirmacoes": {
     "title": "Affirmations",
@@ -450,6 +475,14 @@
     "espaco": {
       "title": "My Space",
       "hint": "Reflections, practices and intentions, your way"
+    },
+    "planos": {
+      "title": "Plans",
+      "hint": "Premium: extra content and capsules up to 5 years"
+    },
+    "admin": {
+      "title": "Content panel",
+      "hint": "Admins only"
     }
   },
   "conteudo": {
@@ -521,6 +554,154 @@
       "p12": "What kind of silence would do me good today?",
       "p13": "What makes me feel part of something bigger than me?",
       "p14": "If I trusted more, what would the next step be?"
+    }
+  },
+  "admin": {
+    "title": "Content panel",
+    "metrics": "Metrics",
+    "metricsNote": "Aggregated, pseudonymized data from people who opted in only. No personal text is collected.",
+    "active7": "Active (7 days)",
+    "active30": "Active (30 days)",
+    "subscribers": "Subscribers",
+    "events30": "Events (30 days)",
+    "noEvents": "No events yet.",
+    "event": "Event",
+    "total": "Total",
+    "people": "People",
+    "kinds": {
+      "program": "Program",
+      "journey": "Journey",
+      "meditation": "Visualization"
+    },
+    "published": "Published",
+    "draft": "Draft",
+    "premium": "Premium",
+    "free": "Free",
+    "newProgram": "New content",
+    "slugPlaceholder": "content-slug",
+    "kind": "Type",
+    "titleLabel": "Title",
+    "summaryLabel": "Summary",
+    "bodyLabel": "Lesson text",
+    "create": "Create",
+    "access": "Access",
+    "position": "Order",
+    "lessons": "Lessons",
+    "newLesson": "New lesson",
+    "duration": "Duration (minutes)",
+    "stepsLabel": "Practical steps",
+    "stepsHint": "one per line",
+    "mediaLabel": "Media (YouTube/Vimeo URL, https file or upload)",
+    "mediaPlaceholder": "https://youtu.be/... or storage:...",
+    "mediaUpload": "Upload a video/audio file (up to 50 MB)",
+    "uploading": "Uploading...",
+    "uploaded": "File uploaded. Save the lesson to apply.",
+    "uploadError": "Could not upload (max 50 MB; admins only).",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "confirmDeleteLesson": "Delete this lesson?",
+    "confirmDeleteProgram": "Delete this content and all its lessons?"
+  },
+  "planos": {
+    "title": "Plans",
+    "subtitle": "Plano A is free to start. Premium unlocks extra guided content and extended Time Capsule retention.",
+    "premiumTitle": "Premium plan",
+    "b1": "Exclusive programs, journeys and visualizations",
+    "b2": "Time Capsule with up to 5 years of delay",
+    "b3": "New guided content every month",
+    "b4": "Support for the development of Plano A",
+    "freeNote": "Everything you already use stays free: dreams, goals, actions, habits, finances, affirmations, gratitude and progress.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "subscribe": "Subscribe",
+    "active": "You are a Premium subscriber. Thank you!",
+    "renewsOn": "Renews on",
+    "endsOn": "Access until",
+    "manage": "Manage subscription",
+    "thanks": "Payment received! Your subscription will be active in a moment.",
+    "soon": "Subscriptions are not open yet. Coming soon!",
+    "cancelNote": "You can cancel anytime from the subscription portal."
+  },
+  "legal": {
+    "updated": "Last updated: October 2026",
+    "draftNotice": "Informational draft prepared with the product. It must be reviewed by a lawyer before public launch.",
+    "privacy": {
+      "title": "Privacy Policy",
+      "s1": {
+        "title": "1. Who we are",
+        "body": "Plano A is operated by {company} (\"we\"), the controller of the personal data processed in the app. To talk about privacy or exercise your rights, write to {email}."
+      },
+      "s2": {
+        "title": "2. Data we process",
+        "body": "- Account: email and password (the password is stored in protected form by the authentication provider).\n- Content you record: dreams, goals, actions, habits, gratitude, My Space entries, projects, financial data you enter, dream board images and texts, Time Capsule messages and lesson progress.\n- Preferences: language, currency and time zone.\n- Subscription: plan status and dates. Card data stays with the payment processor; we do not store it.\n- App usage: only if you opt in to helping improve Plano A, pseudonymized and without any text you write."
+      },
+      "s3": {
+        "title": "3. Why we use it and legal bases",
+        "body": "- To provide the service you signed up for (performance of a contract).\n- To send the Time Capsule on the day you chose (performance of a contract).\n- To generate personalized daily Affirmations (performance of a contract).\n- To process subscriptions and payments (performance of a contract and legal obligation).\n- To measure usage and improve the product (your consent, which you can withdraw in Settings).\n- To protect the service against abuse and fraud (legitimate interest)."
+      },
+      "s4": {
+        "title": "4. Who we share it with",
+        "body": "We use providers (processors) that handle data on our behalf, only for the purposes above:\n\n- Supabase: database, authentication and file storage.\n- Vercel: app hosting.\n- Resend: sending the Time Capsule email (receives your email and the message).\n- Stripe: payments and subscriptions.\n- Anthropic: generating Affirmations (receives texts of your open dreams and goals, not your email).\n\nWe do not sell your data and do not use it for advertising."
+      },
+      "s5": {
+        "title": "5. International transfers",
+        "body": "Some providers may store or process data outside Brazil. We rely on contracts and safeguards consistent with the LGPD for these transfers."
+      },
+      "s6": {
+        "title": "6. How long we keep it",
+        "body": "We keep your data while your account exists. When you delete the account in Settings, data is erased from the database and dream board files are removed; backups may take a limited time to expire. Payment records may be kept for as long as the law requires. Pseudonymized usage events do not identify you."
+      },
+      "s7": {
+        "title": "7. Your rights",
+        "body": "Under the LGPD you may: confirm that we process your data, access it, correct it, request portability, delete data, withdraw consent and ask about sharing.\n\nIn the app you can already download your data and delete your account in Settings. For other requests, write to {email}."
+      },
+      "s8": {
+        "title": "8. Security",
+        "body": "We use encrypted connections, per-user access control in the database (each person can only access their own data), private files with temporary links and abuse limits. No system is completely invulnerable; in case of a relevant incident we will notify you and the competent authority as required by law."
+      },
+      "s9": {
+        "title": "9. Minors and changes",
+        "body": "Plano A is intended for people over 18. We may update this policy; relevant changes will be announced in the app."
+      }
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "s1": {
+        "title": "1. Acceptance",
+        "body": "By creating an account on Plano A, operated by {company}, you agree to these terms and to the Privacy Policy. If you do not agree, do not use the app."
+      },
+      "s2": {
+        "title": "2. What Plano A is",
+        "body": "A personal development and life planning platform: dreams, goals, actions, habits, personal finances, guided content and reflection tools."
+      },
+      "s3": {
+        "title": "3. Your account",
+        "body": "You are responsible for keeping your password safe and for activity on your account. Provide truthful information and be at least 18 years old."
+      },
+      "s4": {
+        "title": "4. Not professional advice",
+        "body": "Content and tools are for education and personal organization. They do not replace financial, accounting, legal, medical or psychological advice. Important decisions, such as leaving a job or taking on debt, should consider your situation and, where needed, qualified professionals. Simulations (such as debt payoff) are estimates and may differ from reality."
+      },
+      "s5": {
+        "title": "5. AI-generated content",
+        "body": "Affirmations are generated by AI from what you record and may contain inaccuracies. Use your own judgment."
+      },
+      "s6": {
+        "title": "6. Your content",
+        "body": "What you record remains yours. You authorize us only to store and process it to operate the service for you. Do not use the app for illegal content or content that infringes others' rights."
+      },
+      "s7": {
+        "title": "7. Paid plans",
+        "body": "The Premium plan is a recurring subscription billed by the payment processor. You can cancel anytime from the subscription portal; access continues until the end of the period already paid. For purchases made at a distance, you have a 7-day right of withdrawal under Brazilian consumer law. Prices shown on the plans page are the current ones."
+      },
+      "s8": {
+        "title": "8. Availability and liability",
+        "body": "We aim to keep the service available and secure, but it is provided \"as is\", with no guarantee of uninterrupted operation. To the extent permitted by law, we are not liable for indirect damages arising from use of the app."
+      },
+      "s9": {
+        "title": "9. Termination, changes and jurisdiction",
+        "body": "You can delete your account anytime in Settings. We may suspend accounts that violate these terms. We may update the terms and will announce relevant changes. Brazilian law applies, and the consumer's home forum is chosen to settle disputes. Contact: {email}."
+      }
     }
   }
 }

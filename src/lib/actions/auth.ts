@@ -2,6 +2,7 @@
 
 import { getLocale, getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
+import { clientIp, rateLimit } from "@/lib/rateLimit";
 import { createClient } from "@/lib/supabase/server";
 
 export interface AuthActionState {
@@ -18,6 +19,11 @@ export async function signUpAction(
   if (!email || !password) {
     const t = await getTranslations("auth");
     return { error: t("missingFields") };
+  }
+
+  if (!(await rateLimit(`signup:${await clientIp()}`, 10, 3600))) {
+    const t = await getTranslations("auth");
+    return { error: t("tooManyAttempts") };
   }
 
   const supabase = await createClient();
@@ -44,6 +50,15 @@ export async function signInAction(
 ): Promise<AuthActionState> {
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
+
+  const ip = await clientIp();
+  if (
+    !(await rateLimit(`login-ip:${ip}`, 30, 600)) ||
+    !(await rateLimit(`login-email:${email.toLowerCase()}`, 10, 600))
+  ) {
+    const t = await getTranslations("auth");
+    return { error: t("tooManyAttempts") };
+  }
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });

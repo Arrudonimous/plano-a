@@ -48,3 +48,35 @@ test("parseMedia: embeds, arquivos, storage e entradas inválidas", () => {
     assert.equal(parseMedia(bad as string | null), null, String(bad));
   }
 });
+
+import { isValidSlug, readLocalized, readLocalizedSteps, stepsToLines } from "./form.ts";
+
+function form(values: Record<string, string>) {
+  return { get: (name: string) => (name in values ? values[name] : null) };
+}
+
+test("readLocalized guarda só idiomas preenchidos", () => {
+  assert.deepEqual(readLocalized(form({ "title.pt-BR": " Olá ", "title.en": "  ", "title.es": "Hola" }), "title"), {
+    "pt-BR": "Olá",
+    es: "Hola",
+  });
+  assert.deepEqual(readLocalized(form({}), "title"), {});
+});
+
+test("readLocalizedSteps alinha passos por linha entre idiomas", () => {
+  const steps = readLocalizedSteps(
+    form({ "steps.pt-BR": "um\n\ndois\ntrês", "steps.en": "one\ntwo" }),
+    "steps",
+  );
+  assert.deepEqual(steps, [
+    { "pt-BR": "um", en: "one" },
+    { "pt-BR": "dois", en: "two" },
+    { "pt-BR": "três" },
+  ]);
+  assert.equal(stepsToLines(steps, "en"), "one\ntwo\n");
+});
+
+test("isValidSlug", () => {
+  assert.equal(isValidSlug("clt-para-negocio"), true);
+  for (const bad of ["", "a", "Maiúscula", "com espaço", "x".repeat(61), "../x"]) assert.equal(isValidSlug(bad), false, bad);
+});

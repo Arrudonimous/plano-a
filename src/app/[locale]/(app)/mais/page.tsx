@@ -1,16 +1,19 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { getAdmin } from "@/lib/admin";
 import { MORE_MODULES } from "@/components/nav/modules";
 import { Card } from "@/components/ui/Card";
 
 export default async function MaisPage() {
   const t = await getTranslations("mais");
+  const isAdmin = Boolean(await getAdmin());
+  const modules = isAdmin ? [...MORE_MODULES, { href: "/admin", key: "admin" } as const] : MORE_MODULES;
 
   return (
     <div className="mx-auto max-w-2xl space-y-4 px-4 py-6">
       <h1 className="text-xl font-semibold">{t("title")}</h1>
       <ul className="space-y-3">
-        {MORE_MODULES.map(({ href, key }) => (
+        {modules.map(({ href, key }) => (
           <li key={href}>
             <Link href={href} className="block">
               <Card className="flex items-center gap-4 p-4 transition-colors hover:bg-surface-muted">
