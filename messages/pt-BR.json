@@ -259,6 +259,22 @@
       "projectCompleted": {
         "title": "Projeto concluído",
         "description": "Você concluiu um projeto inteiro."
+      },
+      "weekOfReflection": {
+        "title": "Uma semana de reflexão",
+        "description": "Você registrou o seu Espaço em 7 dias diferentes."
+      },
+      "firstLesson": {
+        "title": "Primeira aula",
+        "description": "Você concluiu a sua primeira aula."
+      },
+      "tenLessons": {
+        "title": "Dez aulas",
+        "description": "Você concluiu 10 aulas."
+      },
+      "firstFinancePlan": {
+        "title": "Primeiro passo financeiro",
+        "description": "Você começou o seu Plano Financeiro."
       }
     }
   },
@@ -381,6 +397,93 @@
     "configuracoes": {
       "title": "Configurações",
       "hint": "Idioma, moeda, fuso e conta"
+    },
+    "programas": {
+      "title": "Programas",
+      "hint": "Aulas guiadas, no seu ritmo"
+    },
+    "jornadas": {
+      "title": "Jornadas",
+      "hint": "Caminhos completos, como CLT → Negócio"
+    },
+    "mentalizacoes": {
+      "title": "Mentalizações",
+      "hint": "Práticas guiadas de visualização"
+    },
+    "espaco": {
+      "title": "Meu Espaço",
+      "hint": "Reflexões, práticas e intenções, do seu jeito"
+    }
+  },
+  "conteudo": {
+    "empty": "Nada publicado aqui ainda. Volte em breve.",
+    "premium": "Premium",
+    "open": "Abrir",
+    "progressOf": "{done} de {total} aulas",
+    "minutes": "{count} min",
+    "practice": "Para praticar",
+    "markDone": "Marcar aula como concluída",
+    "startToTrack": "Toque em \"Começar\" para acompanhar seu progresso.",
+    "start": "Começar",
+    "createProject": "Criar projeto com os passos",
+    "openProject": "Abrir meu projeto",
+    "lockedTitle": "Conteúdo exclusivo para assinantes",
+    "lockedBody": "Este conteúdo faz parte do plano Premium.",
+    "seePlans": "Ver planos",
+    "programs": {
+      "title": "Programas",
+      "subtitle": "Conteúdo guiado, em aulas curtas, para você avançar no seu ritmo."
+    },
+    "journeys": {
+      "title": "Jornadas",
+      "subtitle": "Caminhos completos para uma transformação específica, com passos práticos que viram projeto."
+    },
+    "meditations": {
+      "title": "Mentalizações",
+      "subtitle": "Práticas guiadas para visualizar o que você quer viver e dar o próximo passo."
+    }
+  },
+  "espaco": {
+    "title": "Meu Espaço",
+    "subtitle": "Um cantinho para o seu lado interior, do seu jeito: fé, meditação, silêncio, natureza ou apenas pensar na vida. Sem rótulos nem regras.",
+    "promptTitle": "Pergunta para hoje",
+    "kindLabel": "Tipo de registro",
+    "add": "Registrar",
+    "save": "Salvar",
+    "kinds": {
+      "reflection": "Reflexão",
+      "practice": "Prática (oração, meditação...)",
+      "intention": "Intenção",
+      "inspiration": "Inspiração"
+    },
+    "placeholders": {
+      "reflection": "O que está vivo em você hoje?",
+      "practice": "Como foi sua prática hoje?",
+      "intention": "Que intenção você quer carregar hoje?",
+      "inspiration": "Uma frase, leitura ou momento que tocou você..."
+    },
+    "labelTitle": "Como você chama a sua prática? (opcional)",
+    "labelHint": "Por exemplo: fé cristã, meditação, yoga, natureza, ou deixe em branco. É só para você.",
+    "labelPlaceholder": "Minha prática",
+    "empty": "Nenhum registro ainda. Comece com uma reflexão curta.",
+    "today": "Hoje",
+    "confirmDelete": "Excluir este registro?",
+    "privacy": "Seus registros são privados: só você os vê e eles não são enviados a terceiros.",
+    "prompts": {
+      "p1": "Pelo que meu coração é grato neste momento?",
+      "p2": "O que eu preciso soltar para ter mais leveza?",
+      "p3": "Quem eu quero ser quando o dia terminar?",
+      "p4": "O que me dá paz, mesmo quando tudo está corrido?",
+      "p5": "Que medo eu posso olhar com mais gentileza hoje?",
+      "p6": "Que pequena atitude de cuidado posso ter com alguém?",
+      "p7": "O que eu aprendi recentemente que mudou meu jeito de ver as coisas?",
+      "p8": "Em que momento me senti realmente presente esta semana?",
+      "p9": "O que significa \"suficiente\" para mim hoje?",
+      "p10": "Que valor eu quero honrar nas minhas escolhas de hoje?",
+      "p11": "O que eu perdoaria, em mim ou em alguém, para seguir mais livre?",
+      "p12": "Que silêncio me faria bem hoje?",
+      "p13": "O que me faz sentir parte de algo maior do que eu?",
+      "p14": "Se eu confiasse mais, qual seria o próximo passo?"
     }
   }
 }

@@ -21,6 +21,9 @@ const empty: ProgressCounts = {
   gratitudeDays: 0,
   projectsStarted: 0,
   projectsCompleted: 0,
+  spiritDays: 0,
+  lessonsDone: 0,
+  financeItems: 0,
 };
 
 test("longestStreak: vazio, único, quebras e duplicatas", () => {
@@ -102,4 +105,15 @@ test("conquistas de projeto: começar e concluir são independentes", () => {
 
   a = byId({ ...empty, projectsStarted: 2, projectsCompleted: 1 });
   assert.equal(a.projectCompleted.unlocked, true);
+});
+
+test("conquistas de aulas, espaço e finanças", () => {
+  const a = Object.fromEntries(
+    evaluateAchievements({ ...empty, lessonsDone: 10, spiritDays: 3, financeItems: 1 }).map((x) => [x.id, x]),
+  );
+  assert.equal(a.firstLesson.unlocked, true);
+  assert.equal(a.tenLessons.unlocked, true);
+  assert.equal(a.weekOfReflection.unlocked, false);
+  assert.equal(a.weekOfReflection.current, 3);
+  assert.equal(a.firstFinancePlan.unlocked, true);
 });

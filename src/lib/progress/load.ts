@@ -44,6 +44,9 @@ export async function loadProgress(
     affirmationRows,
     gratitudeRows,
     { data: projects },
+    spiritRows,
+    lessonRows,
+    { count: financeItems },
   ] = await Promise.all([
     supabase.from("dreams").select("realized_at").eq("user_id", userId),
     supabase.from("objectives").select("period, declaration").eq("user_id", userId),
@@ -93,6 +96,28 @@ export async function loadProgress(
         .range(from, to),
     ),
     supabase.from("projects").select("completed_at").eq("user_id", userId),
+    fetchAll((from, to) =>
+      supabase
+        .from("spirit_entries")
+        .select("entry_date")
+        .eq("user_id", userId)
+        .order("entry_date")
+        .order("id")
+        .range(from, to),
+    ),
+    fetchAll((from, to) =>
+      supabase
+        .from("lesson_progress")
+        .select("done_at, lesson_id")
+        .eq("user_id", userId)
+        .order("done_at")
+        .order("lesson_id")
+        .range(from, to),
+    ),
+    supabase
+      .from("finance_items")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId),
   ]);
 
   const checkinsByHabit = new Map<string, string[]>();
@@ -107,10 +132,14 @@ export async function loadProgress(
   const completedAt = doneActions.flatMap(({ done_at }) => (done_at ? [done_at] : []));
   const actionDates = completedAt.map((doneAt) => dateInTimeZone(new Date(doneAt), timeZone));
   const gratitudeDates = gratitudeRows.map((r) => r.entry_date);
+  const spiritDates = spiritRows.map((r) => r.entry_date);
+  const lessonDates = lessonRows.map((r) => dateInTimeZone(new Date(r.done_at), timeZone));
   const activeDates = new Set([
     ...checkins.map((c) => c.checkin_date),
     ...actionDates,
     ...gratitudeDates,
+    ...spiritDates,
+    ...lessonDates,
   ]);
 
   const definedPeriods = (objectives ?? [])
@@ -130,6 +159,9 @@ export async function loadProgress(
     gratitudeDays: new Set(gratitudeDates).size,
     projectsStarted: projects?.length ?? 0,
     projectsCompleted: (projects ?? []).filter((p) => p.completed_at).length,
+    spiritDays: new Set(spiritDates).size,
+    lessonsDone: lessonRows.length,
+    financeItems: financeItems ?? 0,
   };
 
   const activity = buildActivityMap(activeDates, today);

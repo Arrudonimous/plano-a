@@ -259,6 +259,22 @@
       "projectCompleted": {
         "title": "Project completed",
         "description": "You completed a whole project."
+      },
+      "weekOfReflection": {
+        "title": "A week of reflection",
+        "description": "You logged My Space on 7 different days."
+      },
+      "firstLesson": {
+        "title": "First lesson",
+        "description": "You completed your first lesson."
+      },
+      "tenLessons": {
+        "title": "Ten lessons",
+        "description": "You completed 10 lessons."
+      },
+      "firstFinancePlan": {
+        "title": "First financial step",
+        "description": "You started your Financial Plan."
       }
     }
   },
@@ -381,6 +397,93 @@
     "configuracoes": {
       "title": "Settings",
       "hint": "Language, currency, time zone and account"
+    },
+    "programas": {
+      "title": "Programs",
+      "hint": "Guided lessons, at your pace"
+    },
+    "jornadas": {
+      "title": "Journeys",
+      "hint": "Complete paths, like Employee → Business"
+    },
+    "mentalizacoes": {
+      "title": "Visualizations",
+      "hint": "Guided visualization practices"
+    },
+    "espaco": {
+      "title": "My Space",
+      "hint": "Reflections, practices and intentions, your way"
+    }
+  },
+  "conteudo": {
+    "empty": "Nothing published here yet. Check back soon.",
+    "premium": "Premium",
+    "open": "Open",
+    "progressOf": "{done} of {total} lessons",
+    "minutes": "{count} min",
+    "practice": "To practice",
+    "markDone": "Mark lesson as done",
+    "startToTrack": "Tap \"Start\" to track your progress.",
+    "start": "Start",
+    "createProject": "Create a project with the steps",
+    "openProject": "Open my project",
+    "lockedTitle": "Subscribers-only content",
+    "lockedBody": "This content is part of the Premium plan.",
+    "seePlans": "See plans",
+    "programs": {
+      "title": "Programs",
+      "subtitle": "Guided content in short lessons, so you can move at your own pace."
+    },
+    "journeys": {
+      "title": "Journeys",
+      "subtitle": "Complete paths for a specific transformation, with practical steps that become a project."
+    },
+    "meditations": {
+      "title": "Visualizations",
+      "subtitle": "Guided practices to visualize what you want to live and take the next step."
+    }
+  },
+  "espaco": {
+    "title": "My Space",
+    "subtitle": "A corner for your inner life, your way: faith, meditation, silence, nature or simply thinking about life. No labels or rules.",
+    "promptTitle": "Question for today",
+    "kindLabel": "Type of entry",
+    "add": "Save entry",
+    "save": "Save",
+    "kinds": {
+      "reflection": "Reflection",
+      "practice": "Practice (prayer, meditation...)",
+      "intention": "Intention",
+      "inspiration": "Inspiration"
+    },
+    "placeholders": {
+      "reflection": "What is alive in you today?",
+      "practice": "How was your practice today?",
+      "intention": "What intention do you want to carry today?",
+      "inspiration": "A phrase, reading or moment that touched you..."
+    },
+    "labelTitle": "What do you call your practice? (optional)",
+    "labelHint": "For example: Christian faith, meditation, yoga, nature, or leave it blank. It is just for you.",
+    "labelPlaceholder": "My practice",
+    "empty": "No entries yet. Start with a short reflection.",
+    "today": "Today",
+    "confirmDelete": "Delete this entry?",
+    "privacy": "Your entries are private: only you can see them and they are not sent to third parties.",
+    "prompts": {
+      "p1": "What is my heart grateful for right now?",
+      "p2": "What do I need to let go of to feel lighter?",
+      "p3": "Who do I want to be when the day ends?",
+      "p4": "What gives me peace, even when everything is rushed?",
+      "p5": "Which fear can I look at more gently today?",
+      "p6": "What small act of care can I offer someone?",
+      "p7": "What did I recently learn that changed how I see things?",
+      "p8": "When did I feel truly present this week?",
+      "p9": "What does \"enough\" mean to me today?",
+      "p10": "Which value do I want to honor in today's choices?",
+      "p11": "What would I forgive, in myself or someone else, to move forward freer?",
+      "p12": "What kind of silence would do me good today?",
+      "p13": "What makes me feel part of something bigger than me?",
+      "p14": "If I trusted more, what would the next step be?"
     }
   }
 }

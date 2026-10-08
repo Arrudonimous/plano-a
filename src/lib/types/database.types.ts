@@ -273,6 +273,216 @@ export type Database = {
         }
         Relationships: []
       }
+      admins: {
+        Row: {
+          created_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          cancel_at_period_end: boolean
+          current_period_end: string | null
+          plan: string
+          provider: string
+          provider_customer_id: string | null
+          provider_subscription_id: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cancel_at_period_end?: boolean
+          current_period_end?: string | null
+          plan?: string
+          provider?: string
+          provider_customer_id?: string | null
+          provider_subscription_id?: string | null
+          status: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cancel_at_period_end?: boolean
+          current_period_end?: string | null
+          plan?: string
+          provider?: string
+          provider_customer_id?: string | null
+          provider_subscription_id?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      programs: {
+        Row: {
+          access: string
+          created_at: string
+          id: string
+          kind: string
+          position: number
+          published: boolean
+          slug: string
+          summary: Json
+          title: Json
+          updated_at: string
+        }
+        Insert: {
+          access?: string
+          created_at?: string
+          id?: string
+          kind: string
+          position?: number
+          published?: boolean
+          slug: string
+          summary?: Json
+          title: Json
+          updated_at?: string
+        }
+        Update: {
+          access?: string
+          created_at?: string
+          id?: string
+          kind?: string
+          position?: number
+          published?: boolean
+          slug?: string
+          summary?: Json
+          title?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      program_lessons: {
+        Row: {
+          body: Json
+          created_at: string
+          duration_minutes: number | null
+          id: string
+          media_url: string | null
+          position: number
+          program_id: string
+          steps: Json
+          title: Json
+        }
+        Insert: {
+          body?: Json
+          created_at?: string
+          duration_minutes?: number | null
+          id?: string
+          media_url?: string | null
+          position?: number
+          program_id: string
+          steps?: Json
+          title: Json
+        }
+        Update: {
+          body?: Json
+          created_at?: string
+          duration_minutes?: number | null
+          id?: string
+          media_url?: string | null
+          position?: number
+          program_id?: string
+          steps?: Json
+          title?: Json
+        }
+        Relationships: []
+      }
+      program_enrollments: {
+        Row: {
+          program_id: string
+          project_id: string | null
+          started_at: string
+          user_id: string
+        }
+        Insert: {
+          program_id: string
+          project_id?: string | null
+          started_at?: string
+          user_id: string
+        }
+        Update: {
+          program_id?: string
+          project_id?: string | null
+          started_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      lesson_progress: {
+        Row: {
+          done_at: string
+          lesson_id: string
+          user_id: string
+        }
+        Insert: {
+          done_at?: string
+          lesson_id: string
+          user_id: string
+        }
+        Update: {
+          done_at?: string
+          lesson_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      spirit_settings: {
+        Row: {
+          practice_label: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          practice_label?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          practice_label?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      spirit_entries: {
+        Row: {
+          created_at: string
+          entry_date: string
+          id: string
+          kind: string
+          text: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          entry_date: string
+          id?: string
+          kind: string
+          text: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          entry_date?: string
+          id?: string
+          kind?: string
+          text?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       gratitude_entries: {
         Row: {
           created_at: string

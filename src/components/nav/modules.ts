@@ -1,5 +1,9 @@
 /** Módulos acessados pelo hub "Mais" (e agrupados no destaque da BottomNav). */
 export const MORE_MODULES = [
+  { href: "/jornadas", key: "jornadas" },
+  { href: "/programas", key: "programas" },
+  { href: "/mentalizacoes", key: "mentalizacoes" },
+  { href: "/espaco", key: "espaco" },
   { href: "/afirmacoes", key: "afirmacoes" },
   { href: "/gratidao", key: "gratidao" },
   { href: "/progresso", key: "progresso" },
@@ -7,4 +11,4 @@ export const MORE_MODULES = [
   { href: "/configuracoes", key: "configuracoes" },
 ] as const;
 
-export const MORE_HREFS: string[] = ["/mais", ...MORE_MODULES.map((m) => m.href)];
+export const MORE_HREFS: string[] = ["/mais", "/conteudo", ...MORE_MODULES.map((m) => m.href)];
