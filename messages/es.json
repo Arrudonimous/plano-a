@@ -1,0 +1,721 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Añadir",
+    "loading": "Cargando...",
+    "back": "Volver"
+  },
+  "nav": {
+    "meuDia": "Hoy",
+    "sonhos": "Sueños",
+    "objetivos": "Metas",
+    "acao": "Mi Acción",
+    "configuracoes": "Ajustes",
+    "mais": "Más"
+  },
+  "auth": {
+    "loginTitle": "Iniciar sesión",
+    "signupTitle": "Crear cuenta",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "loginButton": "Iniciar sesión",
+    "signupButton": "Crear cuenta",
+    "logout": "Salir",
+    "noAccount": "¿Aún no tienes cuenta?",
+    "createAccount": "Crear cuenta",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "goToLogin": "Iniciar sesión",
+    "tagline": "Sueña. Planifica. Actúa. Avanza.",
+    "missingFields": "Completa el correo y la contraseña.",
+    "invalidCredentials": "Correo o contraseña incorrectos.",
+    "tooManyAttempts": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "legalNote": "Al crear la cuenta aceptas los <terms>Términos de Uso</terms> y la <privacy>Política de Privacidad</privacy>."
+  },
+  "meuDia": {
+    "greetingMorning": "Buenos días, {name}",
+    "greetingAfternoon": "Buenas tardes, {name}",
+    "greetingEvening": "Buenas noches, {name}",
+    "dailyMessage": "Lo estás construyendo, un día a la vez.",
+    "progressTitle": "Tu día",
+    "progressSummary": "{done} de {total} pasos hoy",
+    "progressComplete": "Día completo. Siéntete orgulloso/a del camino.",
+    "dreamsEmpty": "Empieza escribiendo un sueño",
+    "dreamsSummary": "{realized} de {total} cumplidos",
+    "actionSummary": "{actions, plural, one {# acción} other {# acciones}} · {habits, plural, one {# hábito} other {# hábitos}}",
+    "objectivesSummary": "{count} de 4 horizontes definidos",
+    "emptyToday": "Nada planeado para hoy. ¿Qué tal un pequeño paso?",
+    "viewActions": "Ver Mi Acción",
+    "affirmationTitle": "Afirmación del día",
+    "affirmationEmpty": "Recibe cada día afirmaciones nuevas, hechas para ti.",
+    "affirmationCta": "Recibir las afirmaciones de hoy",
+    "affirmationMore": "Ver las afirmaciones de hoy",
+    "gratitudeTile": "Gratitud",
+    "gratitudeHint": "Registra lo que salió bien",
+    "progressTile": "Progreso",
+    "progressHint": "Camino y logros",
+    "financeTile": "Plan Financiero",
+    "financeHint": "Ingresos, deudas, reserva y metas"
+  },
+  "sonhos": {
+    "title": "Lista de Sueños",
+    "addNew": "Añadir un sueño",
+    "descriptionPlaceholder": "Escribe un sueño tuyo...",
+    "targetDate": "Fecha objetivo (opcional)",
+    "markRealized": "Marcar como cumplido",
+    "unmarkRealized": "Deshacer cumplido",
+    "realizedOn": "Cumplido",
+    "empty": "Tus sueños aún no están escritos aquí. Empieza ahora.",
+    "realizedMessage": "Hiciste que este sueño sucediera. ✨",
+    "confirmDelete": "¿Eliminar este sueño?",
+    "tabList": "Lista",
+    "tabBoard": "Tablero",
+    "tabCapsule": "Cápsula"
+  },
+  "mural": {
+    "placeholder": "Escribe una frase, afirmación o leyenda...",
+    "addImage": "Añadir imagen",
+    "changeImage": "Cambiar imagen",
+    "add": "Añadir al tablero",
+    "saving": "Subiendo...",
+    "empty": "Tu tablero está vacío. Reúne imágenes y frases que representen lo que quieres vivir.",
+    "imageAlt": "Imagen del tablero",
+    "confirmDelete": "¿Eliminar este elemento del tablero?",
+    "commentsCount": "{count, plural, =0 {Comentar} one {# comentario} other {# comentarios}}",
+    "commentPlaceholder": "Escribe un comentario...",
+    "comment": "Comentar",
+    "confirmDeleteComment": "¿Eliminar este comentario?",
+    "errorEmpty": "Escribe algo o elige una imagen.",
+    "errorInvalid": "Elige un archivo de imagen.",
+    "errorTooBig": "La imagen es demasiado grande (máx. 15 MB).",
+    "errorUpload": "No se pudo subir. Inténtalo de nuevo.",
+    "export": "Exportar como imagen",
+    "exporting": "Creando imagen...",
+    "exportError": "No se pudo exportar el tablero ahora.",
+    "exportTitle": "Mi Tablero de Sueños"
+  },
+  "objetivos": {
+    "title": "Mis Metas",
+    "subtitle": "¿Qué quieres haber logrado?",
+    "period6Months": "6 meses",
+    "period1Year": "1 año",
+    "period5Years": "5 años",
+    "period10Years": "10 años",
+    "placeholder6Months": "Ej.: Terminé el curso de inglés y ya puedo mantener una conversación sencilla.",
+    "placeholder1Year": "Ej.: Pagué la deuda de la tarjeta de crédito y empecé a formar un fondo de emergencia.",
+    "placeholder5Years": "Ej.: Cambié de carrera a algo que realmente me da energía cada día.",
+    "placeholder10Years": "Ej.: Compré mi propia casa y tengo la libertad de elegir dónde vivir.",
+    "saved": "Guardado",
+    "error": "No se pudo guardar. Inicia sesión de nuevo."
+  },
+  "acao": {
+    "title": "Mi Acción",
+    "tabHoje": "Hoy",
+    "tabHabitos": "Hábitos",
+    "addAction": "Nueva acción",
+    "actionPlaceholder": "¿Qué harás hoy?",
+    "addHabit": "Nuevo hábito",
+    "habitPlaceholder": "Nombre del hábito",
+    "streakLabel": "{count, plural, =0 {sin racha todavía} one {# día seguido} other {# días seguidos}}",
+    "checkIn": "Registrar hoy",
+    "undoCheckIn": "Deshacer",
+    "missedDayMessage": "Sin problema, retómalo cuando estés listo/a.",
+    "emptyActions": "Aún no hay acciones para hoy.",
+    "emptyHabits": "Aún no hay hábitos.",
+    "archiveHabit": "Archivar",
+    "tabProjetos": "Proyectos"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "currency": "Moneda",
+    "timezone": "Zona horaria",
+    "saved": "Preferencias guardadas",
+    "privacyTitle": "Privacidad",
+    "analyticsLabel": "Ayudar a mejorar Plano A",
+    "analyticsHint": "Comparte eventos de uso anónimos (por ejemplo, \"completó una lección\"). Nunca enviamos lo que escribes. Puedes desactivarlo cuando quieras.",
+    "aiNote": "Las Afirmaciones diarias usan inteligencia artificial (Anthropic): tus sueños y metas abiertos se envían al servicio solo para generar las frases.",
+    "privacyLink": "Política de privacidad",
+    "termsLink": "Términos de uso",
+    "dataTitle": "Tus datos",
+    "dataBody": "Descarga una copia de todo lo que registraste en Plano A, en formato JSON. Las cápsulas aún selladas solo incluyen la fecha.",
+    "exportButton": "Descargar mis datos",
+    "deleteTitle": "Eliminar mi cuenta",
+    "deleteBody": "Elimina de forma permanente tu cuenta y todos tus datos: sueños, metas, finanzas, registros, tablero y cápsulas. Si hay una suscripción activa, se cancelará. No se puede deshacer.",
+    "deleteType": "Para confirmar, escribe tu correo ({email})",
+    "deleteConfirm": "¿Eliminar la cuenta y todos los datos? Es permanente.",
+    "deleteButton": "Eliminar mi cuenta",
+    "deleteError": {
+      "confirm": "El correo escrito no coincide.",
+      "billing": "No pudimos cancelar tu suscripción ahora. Inténtalo en unos instantes o gestiónala en Planes.",
+      "failed": "No se pudo eliminar la cuenta. Inténtalo de nuevo.",
+      "limit": "Demasiados intentos. Espera un momento."
+    }
+  },
+  "pwa": {
+    "installButton": "Instalar Plano A",
+    "installTitle": "Lleva Plano A contigo",
+    "installBody": "Instala la app para acceder más rápido, desde tu pantalla de inicio.",
+    "iosInstallHint": "Toca Compartir y luego \"Añadir a pantalla de inicio\" para instalar Plano A.",
+    "dismiss": "Ahora no"
+  },
+  "capsula": {
+    "intro": "Escribe un mensaje para tu yo del futuro: ¿qué quieres haber logrado? Elige una fecha y te lo enviaremos por correo ese día.",
+    "messagePlaceholder": "Dentro de un tiempo quiero haber...",
+    "deliverOn": "Enviar el",
+    "seal": "Sellar cápsula",
+    "sealing": "Sellando...",
+    "limitHint": "Hasta 1 año en el plan gratuito.",
+    "sealed": "Cápsula sellada. Llegará a tu correo en la fecha elegida.",
+    "empty": "Aún no hay cápsulas. ¿Y si escribes la primera para tu yo del futuro?",
+    "sealedUntil": "Sellada · se enviará el {date}",
+    "sealedNote": "Escrita el {date}. El contenido permanece sellado hasta la fecha de envío.",
+    "deliveredOn": "Enviada el {date}",
+    "deliveryFailed": "No se pudo enviar esta cápsula",
+    "cancelCapsule": "Cancelar cápsula",
+    "confirmDeletePending": "¿Cancelar esta cápsula? El mensaje se borrará y no se enviará.",
+    "confirmDeleteDelivered": "¿Eliminar esta cápsula?",
+    "errorMessage": "Escribe un mensaje.",
+    "errorTooLong": "El mensaje es demasiado largo (máx. 5.000 caracteres).",
+    "errorDate": "Elige una fecha de envío.",
+    "errorDatePast": "La fecha de envío debe ser desde mañana.",
+    "errorDateTooFar": "En el plan gratuito el plazo máximo es de 1 año. Mira los planes para plazos de hasta 5 años.",
+    "errorGeneric": "No se pudo sellar la cápsula. Inténtalo de nuevo.",
+    "deliveredNote": "Este mensaje fue enviado a tu correo.",
+    "limitHintPremium": "Como suscriptor puedes elegir una fecha de hasta 5 años.",
+    "seePlans": "Ver planes",
+    "errorDateTooFarPremium": "El plazo máximo es de 5 años."
+  },
+  "afirmacoes": {
+    "title": "Afirmaciones",
+    "subtitle": "Frases para recordarte quién estás llegando a ser. Nuevas cada día.",
+    "today": "Hoy",
+    "generating": "Preparando las afirmaciones de hoy...",
+    "errorGeneric": "No pudimos preparar tus afirmaciones ahora. Inténtalo de nuevo.",
+    "retry": "Intentar de nuevo",
+    "previous": "Días anteriores",
+    "aiNote": "Generadas por IA a partir de tus sueños y metas. Para ello, esos textos se envían a Anthropic (Claude) en el momento de la generación."
+  },
+  "progresso": {
+    "title": "Progreso",
+    "summaryActive": "{count, plural, one {Diste pasos en # día} other {Diste pasos en # días}} en los últimos 30 días. Eso es construir.",
+    "summaryStart": "Cada comienzo cuenta. ¿Qué tal un pequeño paso hoy?",
+    "statDreams": "Sueños cumplidos",
+    "statDreamsValue": "{realized} de {total}",
+    "statSteps": "Acciones completadas",
+    "statActiveDays": "Días con pasos (30 días)",
+    "statStreak": "Mayor racha de hábito",
+    "statStreakValue": "{count, plural, =0 {empezando} one {# día} other {# días}}",
+    "mapTitle": "Mapa del camino",
+    "horizonDefined": "definido",
+    "horizonOpen": "aún abierto",
+    "activityTitle": "Constancia",
+    "activityLegend": "Un día en que diste un paso",
+    "activityAria": "{count, plural, one {# día} other {# días}} con pasos en las últimas {weeks} semanas",
+    "achievementsTitle": "Logros",
+    "unlockedCount": "{unlocked} de {total}",
+    "noneYet": "Tus primeros logros aparecen aquí a medida que avanzas.",
+    "inProgress": "En camino",
+    "toDiscover": "Por descubrir",
+    "progressOf": "{current}/{target}",
+    "achievements": {
+      "firstDream": {
+        "title": "Primer sueño",
+        "description": "Escribiste tu primer sueño."
+      },
+      "dreamRealized": {
+        "title": "Sueño cumplido",
+        "description": "Hiciste realidad un sueño."
+      },
+      "fourHorizons": {
+        "title": "Cuatro horizontes",
+        "description": "Definiste metas de 6 meses a 10 años."
+      },
+      "firstStep": {
+        "title": "Primer paso",
+        "description": "Completaste tu primera acción."
+      },
+      "tenSteps": {
+        "title": "Diez pasos",
+        "description": "Completaste 10 acciones."
+      },
+      "fiftySteps": {
+        "title": "Cincuenta pasos",
+        "description": "Completaste 50 acciones."
+      },
+      "habitWeek": {
+        "title": "Una semana de constancia",
+        "description": "7 días seguidos en un hábito."
+      },
+      "habitMonth": {
+        "title": "Un mes de constancia",
+        "description": "30 días seguidos en un hábito."
+      },
+      "tenActiveDays": {
+        "title": "Diez días presente",
+        "description": "Diste un paso en 10 días distintos."
+      },
+      "thirtyActiveDays": {
+        "title": "Treinta días presente",
+        "description": "Diste un paso en 30 días distintos."
+      },
+      "firstBoardItem": {
+        "title": "Primera visión",
+        "description": "Añadiste el primer elemento a tu tablero."
+      },
+      "tenBoardItems": {
+        "title": "Tablero en marcha",
+        "description": "Ya tienes 10 elementos en tu tablero."
+      },
+      "firstCapsule": {
+        "title": "Mensaje al futuro",
+        "description": "Sellaste tu primera cápsula del tiempo."
+      },
+      "weekOfAffirmations": {
+        "title": "Siete días de afirmaciones",
+        "description": "Recibiste afirmaciones durante 7 días."
+      },
+      "weekOfGratitude": {
+        "title": "Siete días de gratitud",
+        "description": "Registraste gratitud durante 7 días."
+      },
+      "firstProject": {
+        "title": "Primer proyecto",
+        "description": "Empezaste tu primer proyecto."
+      },
+      "projectCompleted": {
+        "title": "Proyecto completado",
+        "description": "Completaste un proyecto entero."
+      },
+      "weekOfReflection": {
+        "title": "Una semana de reflexión",
+        "description": "Registraste Mi Espacio en 7 días distintos."
+      },
+      "firstLesson": {
+        "title": "Primera lección",
+        "description": "Completaste tu primera lección."
+      },
+      "tenLessons": {
+        "title": "Diez lecciones",
+        "description": "Completaste 10 lecciones."
+      },
+      "firstFinancePlan": {
+        "title": "Primer paso financiero",
+        "description": "Empezaste tu Plan Financiero."
+      }
+    }
+  },
+  "gratidao": {
+    "title": "Gratitud",
+    "subtitle": "Pequeñas notas sobre lo que salió bien. Cambian la forma de mirar el día.",
+    "placeholder": "Hoy agradezco por...",
+    "add": "Añadir",
+    "empty": "Nada registrado todavía. Empieza con algo bueno de hoy.",
+    "today": "Hoy",
+    "confirmDelete": "¿Eliminar este registro?"
+  },
+  "projetos": {
+    "newPlaceholder": "Nombre del proyecto...",
+    "create": "Crear proyecto",
+    "empty": "Aún no hay proyectos. Los proyectos reúnen varios pasos hacia algo más grande que una tarea diaria.",
+    "completed": "Completado",
+    "noSteps": "Aún sin pasos",
+    "progressOf": "{done} de {total} pasos",
+    "targetOn": "Meta: {date}",
+    "descriptionPlaceholder": "¿Para qué sirve este proyecto? (opcional)",
+    "targetDateLabel": "Fecha objetivo (opcional)",
+    "linkedDream": "Sueño que ayuda a cumplir",
+    "noDream": "Ninguno",
+    "forDream": "Hacia: {dream}",
+    "complete": "Completar proyecto",
+    "reopen": "Reabrir proyecto",
+    "confirmDeleteProject": "¿Eliminar este proyecto y todos sus pasos?",
+    "stepPlaceholder": "Añade un paso...",
+    "addStep": "Añadir",
+    "stepsEmpty": "Divide el proyecto en pasos pequeños y empieza por el primero.",
+    "allDone": "Todos los pasos listos. ¿Qué tal completar el proyecto?",
+    "sendToToday": "Enviar a hoy",
+    "sentToToday": "Enviado a hoy",
+    "moveUp": "Subir",
+    "moveDown": "Bajar",
+    "confirmDeleteStep": "¿Eliminar este paso?"
+  },
+  "financeiro": {
+    "title": "Plan Financiero",
+    "subtitle": "Claridad sobre tu dinero, a tu ritmo. Sin juicios: solo un mapa de dónde estás.",
+    "tabSummary": "Resumen",
+    "tabBudget": "Presupuesto",
+    "tabDebts": "Deudas",
+    "tabReserve": "Reserva y metas",
+    "invalid": "Revisa el nombre y el monto.",
+    "saved": "Guardado",
+    "add": "Añadir",
+    "save": "Guardar",
+    "confirmDelete": "¿Eliminar este elemento?",
+    "amount": "Monto",
+    "amountPlaceholder": "Monto mensual (ej.: 2.500,00)",
+    "income": "Ingresos",
+    "expenses": "Gastos",
+    "debtPayments": "Cuotas de deudas",
+    "monthlyBalance": "Lo que sobra del mes",
+    "surplusPositive": "Tus ingresos cubren tus gastos y todavía sobra. Ese espacio puede convertirse en reserva o meta.",
+    "surplusZero": "Ingresos y gastos están equilibrados. Pequeños ajustes ya abren espacio.",
+    "surplusNegative": "Los gastos superan los ingresos en este momento. Es un punto de partida, no un veredicto: mira la pestaña Presupuesto con calma y elige un ajuste pequeño.",
+    "summaryEmpty": "Añade tus ingresos y gastos en la pestaña Presupuesto (y deudas, si las hay) para ver el resumen del mes.",
+    "budgetIntro": "Anota lo que entra y lo que sale cada mes. Valores aproximados ya ayudan.",
+    "incomeEmpty": "Ningún ingreso añadido.",
+    "expensesEmpty": "Ningún gasto añadido.",
+    "incomeNamePlaceholder": "Ej.: sueldo",
+    "expenseNamePlaceholder": "Ej.: alquiler",
+    "debtsTitle": "Deudas",
+    "debtsIntro": "Anota el saldo, la cuota y, si lo sabes, el interés mensual. Sin interés, la estimación de pago es un mínimo.",
+    "debtsEmpty": "Ninguna deuda añadida.",
+    "debtNamePlaceholder": "Ej.: tarjeta de crédito",
+    "balance": "Saldo pendiente",
+    "balancePlaceholder": "Saldo pendiente (ej.: 3.000,00)",
+    "payment": "Cuota mensual",
+    "paymentPlaceholder": "Cuota mensual (opcional)",
+    "addDebt": "Añadir deuda",
+    "updateBalance": "Actualizar saldo",
+    "debtPaid": "Pagada. ¡Felicidades por llegar hasta aquí!",
+    "debtNoPayment": "Define una cuota mensual para ver una estimación de pago.",
+    "debtPayoff": "Pagando {payment} al mes, unos {months, plural, one {# mes} other {# meses}} para saldarla.",
+    "debtTotalHint": "Saldo total de las deudas añadidas.",
+    "reserveTitle": "Reserva de emergencia",
+    "reserveIntro": "Un colchón para imprevistos, medido en meses de tu costo de vida (gastos + cuotas).",
+    "reserveBalance": "Cuánto tienes ya ahorrado",
+    "reserveMonths": "Meta, en meses de costo (1 a 24)",
+    "reserveNeedsBudget": "Añade tus gastos para calcular la meta de la reserva.",
+    "reserveCovers": "Tu reserva cubre unos {months, plural, =0 {0 meses} one {# mes} other {# meses}} de tu costo de vida.",
+    "reserveProgress": "{saved} de {target}",
+    "goalsTitle": "Metas financieras",
+    "goalsEmpty": "Aún no hay metas. ¿Y si le pones un número a un sueño?",
+    "goalNamePlaceholder": "Ej.: viaje, enganche del departamento",
+    "target": "Monto de la meta",
+    "targetPlaceholder": "Monto de la meta (ej.: 10.000,00)",
+    "goalDate": "Fecha deseada (opcional)",
+    "addGoal": "Añadir meta",
+    "goalProgress": "{saved} de {target} ({percent}%)",
+    "goalReached": "¡Meta alcanzada! 🎉",
+    "goalPerMonth": "Para llegar a la fecha, aparta unos {amount} al mes.",
+    "savedAmount": "Monto ahorrado",
+    "savedPlaceholder": "¿Cuánto apartaste?",
+    "addSaving": "Registrar monto ahorrado",
+    "privacy": "Tus cifras quedan solo en tu cuenta y no se envían a terceros.",
+    "currencyLabel": "Moneda",
+    "missingRates": "Algunos montos están en monedas sin cotización disponible y se sumaron sin conversión. Las cotizaciones se actualizan una vez al día.",
+    "convertedNote": "Los montos en otras monedas se convierten a {currency} con la cotización del día (aproximada).",
+    "tabTransactions": "Movimientos",
+    "prevMonth": "Mes anterior",
+    "nextMonth": "Mes siguiente",
+    "monthBalance": "Saldo del mes",
+    "plannedVsActual": "Gastos previstos en el presupuesto: {planned}. Registrados este mes: {actual}.",
+    "addTransaction": "Registrar movimiento",
+    "transactionType": "Tipo y categoría",
+    "description": "Descripción",
+    "descriptionPlaceholder": "Descripción (opcional)",
+    "amountOnly": "Monto",
+    "date": "Fecha",
+    "transactionsEmpty": "Sin movimientos este mes.",
+    "categories": {
+      "housing": "Vivienda",
+      "food": "Alimentación",
+      "transport": "Transporte",
+      "health": "Salud",
+      "education": "Educación",
+      "leisure": "Ocio",
+      "family": "Familia",
+      "debts": "Deudas",
+      "other": "Otros",
+      "salary": "Sueldo",
+      "freelance": "Trabajo extra",
+      "investments": "Inversiones"
+    },
+    "rate": "Interés al mes (%)",
+    "ratePlaceholder": "Interés al mes, % (opcional)",
+    "updateDebt": "Actualizar deuda",
+    "debtNeverEnds": "Con esta cuota y este interés la deuda no llega a cero: la cuota apenas cubre el interés. Subir la cuota o renegociar ayuda.",
+    "debtInterest": "Interés estimado hasta saldarla: {amount}.",
+    "goalDream": "Ligada al sueño: {dream}",
+    "goalDreamLabel": "Sueño ligado (opcional)",
+    "goalNoDream": "Sin sueño ligado"
+  },
+  "mais": {
+    "title": "Más",
+    "afirmacoes": {
+      "title": "Afirmaciones",
+      "hint": "Tres frases nuevas al día, hechas para ti"
+    },
+    "gratidao": {
+      "title": "Gratitud",
+      "hint": "Anota lo que salió bien hoy"
+    },
+    "progresso": {
+      "title": "Progreso",
+      "hint": "Tu camino y tus logros"
+    },
+    "financeiro": {
+      "title": "Plan Financiero",
+      "hint": "Ingresos, deudas, reserva y metas"
+    },
+    "configuracoes": {
+      "title": "Ajustes",
+      "hint": "Idioma, moneda, zona horaria y cuenta"
+    },
+    "programas": {
+      "title": "Programas",
+      "hint": "Lecciones guiadas, a tu ritmo"
+    },
+    "jornadas": {
+      "title": "Trayectos",
+      "hint": "Caminos completos, como Empleado → Negocio"
+    },
+    "mentalizacoes": {
+      "title": "Visualizaciones",
+      "hint": "Prácticas guiadas de visualización"
+    },
+    "espaco": {
+      "title": "Mi Espacio",
+      "hint": "Reflexiones, prácticas e intenciones, a tu manera"
+    },
+    "planos": {
+      "title": "Planes",
+      "hint": "Premium: contenido extra y cápsulas de hasta 5 años"
+    },
+    "admin": {
+      "title": "Panel de contenido",
+      "hint": "Solo para administradores"
+    }
+  },
+  "conteudo": {
+    "empty": "Aún no hay nada publicado aquí. Vuelve pronto.",
+    "premium": "Premium",
+    "open": "Abrir",
+    "progressOf": "{done} de {total} lecciones",
+    "minutes": "{count} min",
+    "practice": "Para practicar",
+    "markDone": "Marcar lección como completada",
+    "startToTrack": "Toca \"Empezar\" para seguir tu progreso.",
+    "start": "Empezar",
+    "createProject": "Crear un proyecto con los pasos",
+    "openProject": "Abrir mi proyecto",
+    "lockedTitle": "Contenido exclusivo para suscriptores",
+    "lockedBody": "Este contenido forma parte del plan Premium.",
+    "seePlans": "Ver planes",
+    "programs": {
+      "title": "Programas",
+      "subtitle": "Contenido guiado en lecciones cortas, para que avances a tu ritmo."
+    },
+    "journeys": {
+      "title": "Trayectos",
+      "subtitle": "Caminos completos para una transformación específica, con pasos prácticos que se vuelven proyecto."
+    },
+    "meditations": {
+      "title": "Visualizaciones",
+      "subtitle": "Prácticas guiadas para visualizar lo que quieres vivir y dar el siguiente paso."
+    }
+  },
+  "espaco": {
+    "title": "Mi Espacio",
+    "subtitle": "Un rincón para tu vida interior, a tu manera: fe, meditación, silencio, naturaleza o simplemente pensar en la vida. Sin etiquetas ni reglas.",
+    "promptTitle": "Pregunta para hoy",
+    "kindLabel": "Tipo de registro",
+    "add": "Guardar registro",
+    "save": "Guardar",
+    "kinds": {
+      "reflection": "Reflexión",
+      "practice": "Práctica (oración, meditación...)",
+      "intention": "Intención",
+      "inspiration": "Inspiración"
+    },
+    "placeholders": {
+      "reflection": "¿Qué está vivo en ti hoy?",
+      "practice": "¿Cómo fue tu práctica hoy?",
+      "intention": "¿Qué intención quieres llevar hoy?",
+      "inspiration": "Una frase, lectura o momento que te tocó..."
+    },
+    "labelTitle": "¿Cómo llamas a tu práctica? (opcional)",
+    "labelHint": "Por ejemplo: fe cristiana, meditación, yoga, naturaleza, o déjalo en blanco. Es solo para ti.",
+    "labelPlaceholder": "Mi práctica",
+    "empty": "Aún no hay registros. Empieza con una breve reflexión.",
+    "today": "Hoy",
+    "confirmDelete": "¿Eliminar este registro?",
+    "privacy": "Tus registros son privados: solo tú los ves y no se envían a terceros.",
+    "prompts": {
+      "p1": "¿Por qué está agradecido mi corazón en este momento?",
+      "p2": "¿Qué necesito soltar para sentirme más ligero/a?",
+      "p3": "¿Quién quiero ser cuando termine el día?",
+      "p4": "¿Qué me da paz, incluso cuando todo va deprisa?",
+      "p5": "¿Qué miedo puedo mirar hoy con más amabilidad?",
+      "p6": "¿Qué pequeño gesto de cuidado puedo tener con alguien?",
+      "p7": "¿Qué aprendí recientemente que cambió mi forma de ver las cosas?",
+      "p8": "¿Cuándo me sentí realmente presente esta semana?",
+      "p9": "¿Qué significa \"suficiente\" para mí hoy?",
+      "p10": "¿Qué valor quiero honrar en mis decisiones de hoy?",
+      "p11": "¿Qué perdonaría, en mí o en alguien más, para seguir más libre?",
+      "p12": "¿Qué tipo de silencio me haría bien hoy?",
+      "p13": "¿Qué me hace sentir parte de algo más grande que yo?",
+      "p14": "Si confiara más, ¿cuál sería el siguiente paso?"
+    }
+  },
+  "admin": {
+    "title": "Panel de contenido",
+    "metrics": "Métricas",
+    "metricsNote": "Datos agregados y seudonimizados, solo de quienes dieron su consentimiento. No se recoge ningún texto personal.",
+    "active7": "Activos (7 días)",
+    "active30": "Activos (30 días)",
+    "subscribers": "Suscriptores",
+    "events30": "Eventos (30 días)",
+    "noEvents": "Aún no hay eventos.",
+    "event": "Evento",
+    "total": "Total",
+    "people": "Personas",
+    "kinds": {
+      "program": "Programa",
+      "journey": "Trayecto",
+      "meditation": "Visualización"
+    },
+    "published": "Publicado",
+    "draft": "Borrador",
+    "premium": "Premium",
+    "free": "Gratuito",
+    "newProgram": "Nuevo contenido",
+    "slugPlaceholder": "slug-del-contenido",
+    "kind": "Tipo",
+    "titleLabel": "Título",
+    "summaryLabel": "Resumen",
+    "bodyLabel": "Texto de la lección",
+    "create": "Crear",
+    "access": "Acceso",
+    "position": "Orden",
+    "lessons": "Lecciones",
+    "newLesson": "Nueva lección",
+    "duration": "Duración (minutos)",
+    "stepsLabel": "Pasos prácticos",
+    "stepsHint": "uno por línea",
+    "mediaLabel": "Medio (URL de YouTube/Vimeo, archivo https o subida)",
+    "mediaPlaceholder": "https://youtu.be/... o storage:...",
+    "mediaUpload": "Subir un archivo de video/audio (hasta 50 MB)",
+    "uploading": "Subiendo...",
+    "uploaded": "Archivo subido. Guarda la lección para aplicar.",
+    "uploadError": "No se pudo subir (máx. 50 MB; solo administradores).",
+    "moveUp": "Subir",
+    "moveDown": "Bajar",
+    "confirmDeleteLesson": "¿Eliminar esta lección?",
+    "confirmDeleteProgram": "¿Eliminar este contenido y todas sus lecciones?"
+  },
+  "planos": {
+    "title": "Planes",
+    "subtitle": "Plano A es gratis para empezar. Premium desbloquea contenido guiado extra y retención extendida de la Cápsula del Tiempo.",
+    "premiumTitle": "Plan Premium",
+    "b1": "Programas, trayectos y visualizaciones exclusivos",
+    "b2": "Cápsula del Tiempo con plazo de hasta 5 años",
+    "b3": "Nuevo contenido guiado cada mes",
+    "b4": "Apoyo al desarrollo de Plano A",
+    "freeNote": "Todo lo que ya usas sigue siendo gratis: sueños, metas, acciones, hábitos, finanzas, afirmaciones, gratitud y progreso.",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "subscribe": "Suscribirme",
+    "active": "Eres suscriptor Premium. ¡Gracias!",
+    "renewsOn": "Se renueva el",
+    "endsOn": "Acceso hasta el",
+    "manage": "Gestionar suscripción",
+    "thanks": "¡Pago recibido! Tu suscripción se activará en unos instantes.",
+    "soon": "Las suscripciones aún no están abiertas. ¡Pronto!",
+    "cancelNote": "Puedes cancelar cuando quieras desde el portal de suscripción."
+  },
+  "legal": {
+    "updated": "Última actualización: octubre de 2026",
+    "draftNotice": "Borrador informativo preparado junto con el producto. Debe ser revisado por un abogado antes del lanzamiento público.",
+    "privacy": {
+      "title": "Política de Privacidad",
+      "s1": {
+        "title": "1. Quiénes somos",
+        "body": "Plano A es operado por {company} (\"nosotros\"), responsable de los datos personales tratados en la aplicación. Para hablar de privacidad o ejercer tus derechos, escribe a {email}."
+      },
+      "s2": {
+        "title": "2. Datos que tratamos",
+        "body": "- Cuenta: correo y contraseña (la contraseña la guarda de forma protegida el proveedor de autenticación).\n- Contenido que registras: sueños, metas, acciones, hábitos, gratitud, registros de Mi Espacio, proyectos, datos financieros que ingresas, imágenes y textos del tablero, mensajes de la Cápsula del Tiempo y progreso en lecciones.\n- Preferencias: idioma, moneda y zona horaria.\n- Suscripción: estado y fechas del plan. Los datos de la tarjeta quedan con el procesador de pagos; nosotros no los almacenamos.\n- Uso de la aplicación: solo si activas la opción de ayudar a mejorar Plano A, de forma seudonimizada y sin los textos que escribes."
+      },
+      "s3": {
+        "title": "3. Para qué los usamos y bases legales",
+        "body": "- Prestar el servicio que contrataste al crear la cuenta (ejecución de contrato).\n- Enviar la Cápsula del Tiempo el día que elegiste (ejecución de contrato).\n- Generar las Afirmaciones diarias personalizadas (ejecución de contrato).\n- Procesar suscripciones y cobros (ejecución de contrato y obligación legal).\n- Medir el uso para mejorar el producto (tu consentimiento, que puedes retirar en Ajustes).\n- Proteger el servicio contra abusos y fraudes (interés legítimo)."
+      },
+      "s4": {
+        "title": "4. Con quién los compartimos",
+        "body": "Usamos proveedores (encargados) que tratan datos en nuestro nombre, solo para las finalidades anteriores:\n\n- Supabase: base de datos, autenticación y almacenamiento de archivos.\n- Vercel: alojamiento de la aplicación.\n- Resend: envío del correo de la Cápsula del Tiempo (recibe tu correo y el mensaje).\n- Stripe: pagos y suscripciones.\n- Anthropic: generación de las Afirmaciones (recibe textos de tus sueños y metas abiertos, sin tu correo).\n\nNo vendemos tus datos ni los usamos para publicidad."
+      },
+      "s5": {
+        "title": "5. Transferencias internacionales",
+        "body": "Algunos proveedores pueden almacenar o procesar datos fuera de Brasil. Adoptamos contratos y garantías compatibles con la LGPD para esas transferencias."
+      },
+      "s6": {
+        "title": "6. Por cuánto tiempo los guardamos",
+        "body": "Conservamos tus datos mientras exista tu cuenta. Al eliminar la cuenta en Ajustes, los datos se borran de la base y se eliminan los archivos del tablero; las copias de seguridad pueden tardar un tiempo limitado en expirar. Los registros de pago pueden conservarse por el plazo que exija la ley. Los eventos de uso seudonimizados no permiten identificarte."
+      },
+      "s7": {
+        "title": "7. Tus derechos",
+        "body": "Según la LGPD puedes: confirmar que tratamos tus datos, acceder a ellos, corregirlos, solicitar portabilidad, eliminar datos, revocar consentimientos y pedir información sobre el intercambio.\n\nEn la aplicación ya puedes descargar tus datos y eliminar tu cuenta en Ajustes. Para otras solicitudes, escribe a {email}."
+      },
+      "s8": {
+        "title": "8. Seguridad",
+        "body": "Usamos conexión cifrada, control de acceso por usuario en la base de datos (cada persona solo accede a sus propios datos), archivos privados con enlaces temporales y límites contra abuso. Ningún sistema es totalmente invulnerable; ante un incidente relevante te avisaremos a ti y a la autoridad competente según la ley."
+      },
+      "s9": {
+        "title": "9. Menores y cambios",
+        "body": "Plano A está destinado a mayores de 18 años. Podemos actualizar esta política; los cambios relevantes se avisarán en la aplicación."
+      }
+    },
+    "terms": {
+      "title": "Términos de Uso",
+      "s1": {
+        "title": "1. Aceptación",
+        "body": "Al crear una cuenta en Plano A, operado por {company}, aceptas estos términos y la Política de Privacidad. Si no estás de acuerdo, no uses la aplicación."
+      },
+      "s2": {
+        "title": "2. Qué es Plano A",
+        "body": "Una plataforma de desarrollo personal y planificación de vida: sueños, metas, acciones, hábitos, finanzas personales, contenido guiado y herramientas de reflexión."
+      },
+      "s3": {
+        "title": "3. Tu cuenta",
+        "body": "Eres responsable de mantener tu contraseña segura y de la actividad en tu cuenta. Proporciona datos verdaderos y ten al menos 18 años."
+      },
+      "s4": {
+        "title": "4. No es asesoría profesional",
+        "body": "El contenido y las herramientas tienen fines educativos y de organización personal. No sustituyen la asesoría financiera, contable, jurídica, médica ni psicológica. Las decisiones importantes, como dejar un empleo o asumir deudas, deben considerar tu situación y, cuando sea necesario, a profesionales habilitados. Las simulaciones (como el pago de deudas) son estimaciones y pueden diferir de la realidad."
+      },
+      "s5": {
+        "title": "5. Contenido generado por inteligencia artificial",
+        "body": "Las Afirmaciones son generadas por IA a partir de lo que registras y pueden contener imprecisiones. Úsalas con criterio."
+      },
+      "s6": {
+        "title": "6. Tu contenido",
+        "body": "Lo que registras sigue siendo tuyo. Solo nos autorizas a almacenarlo y procesarlo para operar el servicio para ti. No uses la aplicación para contenido ilegal o que infrinja derechos de terceros."
+      },
+      "s7": {
+        "title": "7. Planes de pago",
+        "body": "El plan Premium es una suscripción recurrente cobrada por el procesador de pagos. Puedes cancelar en cualquier momento desde el portal de suscripción; el acceso continúa hasta el final del período ya pagado. En compras a distancia tienes derecho de arrepentimiento de 7 días desde la contratación, según el Código de Defensa del Consumidor de Brasil. Los precios mostrados en la pantalla de planes son los vigentes."
+      },
+      "s8": {
+        "title": "8. Disponibilidad y responsabilidad",
+        "body": "Buscamos mantener el servicio disponible y seguro, pero se ofrece \"tal como está\", sin garantía de funcionamiento ininterrumpido. En la medida permitida por la ley, no respondemos por daños indirectos derivados del uso de la aplicación."
+      },
+      "s9": {
+        "title": "9. Terminación, cambios y jurisdicción",
+        "body": "Puedes eliminar tu cuenta en cualquier momento en Ajustes. Podemos suspender cuentas que infrinjan estos términos. Podemos actualizar los términos y avisaremos los cambios relevantes. Se aplica la ley brasileña y se elige el foro del domicilio del consumidor para resolver conflictos. Contacto: {email}."
+      }
+    }
+  },
+  "share": {
+    "share": "Compartir",
+    "preparing": "Preparando...",
+    "error": "No se pudo crear la imagen.",
+    "shareText": "Mi progreso en Plano A. Sueña. Planifica. Actúa. Avanza.",
+    "achievement": "Logro desbloqueado",
+    "dreamRealized": "Sueño cumplido",
+    "dreamLine": "Un paso a la vez, llegó el día.",
+    "tagline": "Sueña. Planifica. Actúa. Avanza."
+  }
+}

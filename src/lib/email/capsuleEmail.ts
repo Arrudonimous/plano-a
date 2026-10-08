@@ -24,6 +24,14 @@ const COPY = {
     cta: "Open Plano A",
     locale: "en",
   },
+  es: {
+    subject: "Llegó un mensaje de tu pasado",
+    intro: (written: string) =>
+      `El ${written}, escribiste este mensaje para tu yo del futuro:`,
+    outro: "Mira hasta dónde has llegado. ¿Cuánto de este camino ya recorriste?",
+    cta: "Abrir Plano A",
+    locale: "es",
+  },
 } as const;
 
 export function buildCapsuleEmail({
@@ -37,12 +45,14 @@ export function buildCapsuleEmail({
   createdAt: string;
   siteUrl: string;
 }) {
-  const copy = language?.toLowerCase().startsWith("en") ? COPY.en : COPY["pt-BR"];
+  const lang = language?.toLowerCase() ?? "";
+  const copy = lang.startsWith("en") ? COPY.en : lang.startsWith("es") ? COPY.es : COPY["pt-BR"];
   const written = new Intl.DateTimeFormat(copy.locale, {
     dateStyle: "long",
     timeZone: "UTC",
   }).format(new Date(createdAt));
-  const link = `${siteUrl}/sonhos`;
+  const prefix = copy.locale === "pt-BR" ? "" : `/${copy.locale}`;
+  const link = `${siteUrl}${prefix}/sonhos`;
 
   const text = `${copy.intro(written)}\n\n${message}\n\n${copy.outro}\n${link}`;
   const html = `<div style="font-family:system-ui,sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#1b1f2a">

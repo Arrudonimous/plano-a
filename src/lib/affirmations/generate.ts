@@ -35,7 +35,8 @@ const OUTPUT_SCHEMA = {
 };
 
 function buildUserPrompt(ctx: AffirmationContext) {
-  const language = ctx.language?.toLowerCase().startsWith("en") ? "inglês" : "português do Brasil";
+  const lang = ctx.language?.toLowerCase() ?? "";
+  const language = lang.startsWith("en") ? "inglês" : lang.startsWith("es") ? "espanhol" : "português do Brasil";
   const list = (items: string[]) =>
     items.length > 0 ? items.map((item) => `- ${item}`).join("\n") : "(nenhum)";
 
