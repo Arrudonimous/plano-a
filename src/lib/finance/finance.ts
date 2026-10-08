@@ -259,3 +259,23 @@ export function monthBounds(month: string): { start: string; end: string } {
   const last = new Date(Date.UTC(y, m, 0)).getUTCDate();
   return { start: `${month}-01`, end: `${month}-${String(last).padStart(2, "0")}` };
 }
+
+/**
+ * Extrai de uma resposta da API de cotações (formato open.er-api.com:
+ * {"result":"success","rates":{"BRL":5.4,...}}) apenas as moedas suportadas
+ * com valores válidos. Lança erro se a resposta não for utilizável.
+ */
+export function parseRatesResponse(body: unknown): { currency: string; per_usd: number }[] {
+  const data = body as { result?: unknown; rates?: Record<string, unknown> } | null;
+  if (!data || data.result !== "success" || !data.rates || typeof data.rates !== "object") {
+    throw new Error("cotações: resposta inesperada");
+  }
+  const rows = SUPPORTED_CURRENCIES.filter((c) => c !== "USD").flatMap((currency) => {
+    const value = data.rates![currency];
+    return typeof value === "number" && Number.isFinite(value) && value > 0
+      ? [{ currency, per_usd: value }]
+      : [];
+  });
+  if (rows.length === 0) throw new Error("cotações: nenhuma moeda reconhecida");
+  return rows;
+}

@@ -57,7 +57,12 @@
     "progressTile": "Progress",
     "progressHint": "Journey and achievements",
     "financeTile": "Financial Plan",
-    "financeHint": "Income, debts, reserve and goals"
+    "financeHint": "Income, debts, reserve and goals",
+    "journeyTitle": "Your journey",
+    "journeyNext": "Next lesson: {lesson} · {done} of {total} completed",
+    "journeyDiscover": "Learn at your own pace: guided journeys, like going from employee to your own business, and visualizations.",
+    "journeyContinue": "Continue",
+    "journeyStart": "Explore journeys"
   },
   "sonhos": {
     "title": "Dream List",

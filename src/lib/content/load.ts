@@ -94,3 +94,39 @@ export async function loadLessons(
     }),
   );
 }
+
+export interface ContinueCard {
+  program: Program;
+  done: number;
+  total: number;
+  /** Posição (1-based) da próxima aula não concluída. */
+  nextLesson: number;
+}
+
+/** Primeiro programa iniciado e ainda não concluído (o mais recente), para a home. */
+export async function loadContinue(supabase: Supabase, userId: string): Promise<ContinueCard | null> {
+  const { data: enrollments } = await supabase
+    .from("program_enrollments")
+    .select("program_id")
+    .eq("user_id", userId)
+    .order("started_at", { ascending: false })
+    .limit(5);
+  if (!enrollments?.length) return null;
+
+  const ids = enrollments.map((e) => e.program_id);
+  const [{ data: programs }, { data: lessons }, { data: progress }] = await Promise.all([
+    supabase.from("programs").select("*").in("id", ids).eq("published", true),
+    supabase.from("program_lessons").select("id, program_id, position").in("program_id", ids).order("position"),
+    supabase.from("lesson_progress").select("lesson_id").eq("user_id", userId),
+  ]);
+  const doneIds = new Set((progress ?? []).map((p) => p.lesson_id));
+
+  for (const id of ids) {
+    const program = programs?.find((p) => p.id === id);
+    const own = (lessons ?? []).filter((l) => l.program_id === id);
+    const done = own.filter((l) => doneIds.has(l.id)).length;
+    if (!program || own.length === 0 || done === own.length) continue;
+    return { program, done, total: own.length, nextLesson: own.findIndex((l) => !doneIds.has(l.id)) + 1 };
+  }
+  return null;
+}

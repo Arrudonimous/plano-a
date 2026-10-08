@@ -57,7 +57,12 @@
     "progressTile": "Progresso",
     "progressHint": "Jornada e conquistas",
     "financeTile": "Plano Financeiro",
-    "financeHint": "Renda, dívidas, reserva e metas"
+    "financeHint": "Renda, dívidas, reserva e metas",
+    "journeyTitle": "Sua jornada",
+    "journeyNext": "Próxima aula: {lesson} · {done} de {total} concluídas",
+    "journeyDiscover": "Aprenda no seu ritmo: jornadas guiadas, como sair do emprego para o próprio negócio, e mentalizações.",
+    "journeyContinue": "Continuar",
+    "journeyStart": "Explorar jornadas"
   },
   "sonhos": {
     "title": "Lista dos Sonhos",

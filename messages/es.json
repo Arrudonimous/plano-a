@@ -57,7 +57,12 @@
     "progressTile": "Progreso",
     "progressHint": "Camino y logros",
     "financeTile": "Plan Financiero",
-    "financeHint": "Ingresos, deudas, reserva y metas"
+    "financeHint": "Ingresos, deudas, reserva y metas",
+    "journeyTitle": "Tu trayecto",
+    "journeyNext": "Próxima lección: {lesson} · {done} de {total} completadas",
+    "journeyDiscover": "Aprende a tu ritmo: trayectos guiados, como pasar de empleado a tu propio negocio, y visualizaciones.",
+    "journeyContinue": "Continuar",
+    "journeyStart": "Explorar trayectos"
   },
   "sonhos": {
     "title": "Lista de Sueños",

@@ -54,7 +54,7 @@ export default async function AdminPage() {
       <Card>
         <h2 className="mb-3 text-sm font-semibold">{t("newProgram")}</h2>
         <form action={createProgram} className="space-y-3">
-          <Input name="slug" placeholder={t("slugPlaceholder")} pattern="[a-z0-9-]{2,60}" required />
+          <Input name="slug" placeholder={t("slugPlaceholder")} pattern="[a-z0-9\-]{2,60}" required />
           <select
             name="kind"
             defaultValue="program"

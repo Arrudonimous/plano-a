@@ -133,3 +133,16 @@ test("meses: validação, deslocamento e limites", () => {
   assert.equal(shiftMonth("2026-12", 1), "2027-01");
   assert.deepEqual(monthBounds("2028-02"), { start: "2028-02-01", end: "2028-02-29" });
 });
+
+import { parseRatesResponse } from "./finance.ts";
+
+test("parseRatesResponse filtra moedas suportadas e valores válidos", () => {
+  const rows = parseRatesResponse({
+    result: "success",
+    rates: { USD: 1, BRL: 5.4, EUR: 0.92, XYZ: 3, GBP: -1, JPY: "x", MXN: 17.1 },
+  });
+  assert.deepEqual(rows.map((r) => r.currency).sort(), ["BRL", "EUR", "MXN"]);
+  assert.throws(() => parseRatesResponse({ result: "error" }), /inesperada/);
+  assert.throws(() => parseRatesResponse(null), /inesperada/);
+  assert.throws(() => parseRatesResponse({ result: "success", rates: { XYZ: 1 } }), /nenhuma moeda/);
+});

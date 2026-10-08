@@ -15,13 +15,15 @@ export function Tabs({ tabs, initial }: { tabs: TabItem[]; initial?: string }) {
 
   return (
     <div>
-      <div className="mb-4 flex gap-4 border-b border-border">
+      <div className="mb-4 flex gap-4 overflow-x-auto border-b border-border [scrollbar-width:none]" role="tablist">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             type="button"
             onClick={() => setActive(tab.id)}
-            className={`border-b-2 px-1 pb-2 text-sm ${
+            role="tab"
+            aria-selected={active === tab.id}
+            className={`shrink-0 whitespace-nowrap border-b-2 px-1 pb-2 text-sm ${
               active === tab.id
                 ? "border-primary font-medium text-primary"
                 : "border-transparent text-muted-foreground"
@@ -32,7 +34,7 @@ export function Tabs({ tabs, initial }: { tabs: TabItem[]; initial?: string }) {
         ))}
       </div>
       {tabs.map((tab) => (
-        <div key={tab.id} hidden={active !== tab.id}>
+        <div key={tab.id} role="tabpanel" hidden={active !== tab.id}>
           {tab.content}
         </div>
       ))}

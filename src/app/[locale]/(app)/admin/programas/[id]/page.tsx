@@ -61,7 +61,7 @@ export default async function AdminProgramPage({ params }: { params: Promise<{ i
 
       <Card>
         <form action={updateProgram.bind(null, id)} className="space-y-3">
-          <Input name="slug" defaultValue={program.slug} pattern="[a-z0-9-]{2,60}" required aria-label="slug" />
+          <Input name="slug" defaultValue={program.slug} pattern="[a-z0-9\-]{2,60}" required aria-label="slug" />
           <select name="kind" defaultValue={program.kind} className={select} aria-label={t("kind")}>
             {(["program", "journey", "meditation"] as const).map((k) => (
               <option key={k} value={k}>

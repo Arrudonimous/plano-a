@@ -1,0 +1,61 @@
+name: E2E (manual)
+
+# Roda os testes de ponta a ponta contra um Supabase local. Manual para não bloquear PRs;
+# detalhes e passos locais em e2e/README.md.
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Supabase local
+        run: |
+          supabase init
+          rm -rf supabase/migrations
+          git checkout -- supabase/migrations
+          sed -i 's/^enable_confirmations = true/enable_confirmations = false/' supabase/config.toml
+          supabase start -x studio,imgproxy,edge-runtime,logflare,vector,realtime,mailpit,postgres-meta,supavisor
+          supabase status -o env > /tmp/supabase.env
+      - name: Variáveis de ambiente
+        run: |
+          set -a; source /tmp/supabase.env; set +a
+          cat > .env.local <<EOT
+          NEXT_PUBLIC_SUPABASE_URL=$API_URL
+          NEXT_PUBLIC_SUPABASE_ANON_KEY=$ANON_KEY
+          SUPABASE_SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY
+          NEXT_PUBLIC_SITE_URL=http://localhost:3000
+          CRON_SECRET=test-cron-secret
+          ANALYTICS_SALT=test-salt
+          STRIPE_WEBHOOK_SECRET=whsec_test
+          RESEND_API_KEY=re_test
+          RESEND_FROM_EMAIL=Plano A <capsula@teste.com>
+          ANTHROPIC_API_KEY=sk-ant-test
+          STRIPE_SECRET_KEY=sk_test_x
+          STRIPE_PRICE_MONTHLY=price_m
+          STRIPE_PRICE_YEARLY=price_y
+          EOT
+          echo "E2E_ANON=$ANON_KEY" >> "$GITHUB_ENV"
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Servidor com stub das integrações
+        run: |
+          NODE_OPTIONS="--require $PWD/e2e/stub-fetch.cjs" npm start &
+          npx wait-on http://localhost:3000/login
+      - name: Testes
+        env:
+          CHROMIUM: ""
+        run: |
+          for f in smoke flows money-content admin-account integrations affirmations-failure api-security; do
+            node e2e/$f.mjs || exit 1
+          done

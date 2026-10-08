@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { todayInTimeZone } from "@/lib/utils/dates";
 
-export const SPIRIT_KINDS = ["reflection", "practice", "intention", "inspiration"] as const;
+const SPIRIT_KINDS = ["reflection", "practice", "intention", "inspiration"] as const;
 const MAX_TEXT = 2000;
 const MAX_LABEL = 60;
 

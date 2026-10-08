@@ -1,7 +1,9 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { greetingPeriod, todayInTimeZone } from "@/lib/utils/dates";
 import { Link } from "@/i18n/navigation";
+import { loadContinue } from "@/lib/content/load";
+import { localized } from "@/lib/content/localized";
 import { Card } from "@/components/ui/Card";
 import { ActionIcon, StarIcon, TargetIcon, WalletIcon } from "@/components/nav/NavIcons";
 
@@ -18,6 +20,7 @@ export default async function HojePage() {
   } = await supabase.auth.getUser();
   const t = await getTranslations("meuDia");
   const tNav = await getTranslations("nav");
+  const locale = await getLocale();
 
   const { data: profile } = await supabase
     .from("profiles")
@@ -66,6 +69,7 @@ export default async function HojePage() {
       .limit(1),
   ]);
 
+  const journey = await loadContinue(supabase, user!.id);
   const activeHabits = habits ?? [];
   const checkedInHabitIds = new Set((checkins ?? []).map((c) => c.habit_id));
   const habitsDone = activeHabits.filter((h) => checkedInHabitIds.has(h.id)).length;
@@ -138,6 +142,25 @@ export default async function HojePage() {
           )}
           <p className="mt-3 text-xs font-medium text-primary">
             {todayAffirmation?.[0] ? t("affirmationMore") : t("affirmationCta")} →
+          </p>
+        </Card>
+      </Link>
+
+      <Link href={journey ? `/conteudo/${journey.program.slug}` : "/jornadas"} className="block">
+        <Card className="transition-colors hover:bg-surface-muted">
+          <p className="text-xs font-medium text-accent">{t("journeyTitle")}</p>
+          {journey ? (
+            <>
+              <p className="mt-2 text-base font-semibold">{localized(journey.program.title, locale)}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {t("journeyNext", { lesson: journey.nextLesson, done: journey.done, total: journey.total })}
+              </p>
+            </>
+          ) : (
+            <p className="mt-2 text-sm text-muted-foreground">{t("journeyDiscover")}</p>
+          )}
+          <p className="mt-3 text-xs font-medium text-primary">
+            {journey ? t("journeyContinue") : t("journeyStart")} →
           </p>
         </Card>
       </Link>

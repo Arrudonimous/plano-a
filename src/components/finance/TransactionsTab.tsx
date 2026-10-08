@@ -62,7 +62,7 @@ export function TransactionsTab({
         <Link href={nav(shiftMonth(month, -1))} className="rounded-full px-3 py-1.5 text-sm text-primary hover:bg-surface-muted" aria-label={t("prevMonth")}>
           ←
         </Link>
-        <h2 className="text-sm font-semibold capitalize">{monthLabel}</h2>
+        <h2 className="text-sm font-semibold first-letter:uppercase">{monthLabel}</h2>
         <Link href={nav(shiftMonth(month, 1))} className="rounded-full px-3 py-1.5 text-sm text-primary hover:bg-surface-muted" aria-label={t("nextMonth")}>
           →
         </Link>
